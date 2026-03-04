@@ -139,9 +139,137 @@
   color: var(--color-dark-text-muted);
 }
 
-/* ─── HERO EMAIL GATE ───────────────────────────── */
-.hero-gate {
+/* ─── LANDING SECTIONS (below hero fold) ────────── */
+.assess-landing {
+  background: var(--color-dark-bg);
+  padding: 0 var(--section-x) var(--space-96);
+}
+.assess-landing-inner {
+  max-width: 680px;
+}
+
+/* What you'll discover */
+.assess-discover {
+  margin-bottom: var(--space-64);
+}
+.assess-discover h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-32);
+}
+.discover-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.discover-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid oklch(94% 0 0 / 0.06);
+}
+.discover-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--color-accent-on-dark);
+  flex-shrink: 0;
+  width: 28px;
+  padding-top: 2px;
+}
+.discover-text {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-dark-text-muted);
+}
+.discover-text strong {
+  font-weight: 500;
+  color: var(--color-dark-text);
+}
+
+/* Report preview */
+.assess-report-preview {
+  margin-bottom: var(--space-64);
+}
+.assess-report-preview h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-24);
+}
+.report-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+.report-feature {
+  padding: var(--space-20) var(--space-24);
+  background: var(--color-dark-surface);
+  border-left: 2px solid var(--color-accent-on-dark);
+}
+.report-feature-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--text-body-sm);
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-4);
+}
+.report-feature-desc {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-caption);
+  color: var(--color-dark-text-muted);
+  line-height: var(--leading-body);
+}
+
+/* Credibility strip */
+.assess-credibility {
+  display: flex;
+  gap: var(--space-32);
+  margin-bottom: var(--space-64);
+  padding: var(--space-24) 0;
+  border-top: 1px solid oklch(94% 0 0 / 0.06);
+  border-bottom: 1px solid oklch(94% 0 0 / 0.06);
+}
+.credibility-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.credibility-val {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  color: var(--color-dark-text);
+}
+.credibility-label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-medium);
+  text-transform: uppercase;
+  color: var(--color-dark-text-muted);
+}
+
+/* Gate form (at bottom of landing) */
+.assess-gate {
   max-width: 420px;
+}
+.assess-gate-heading {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-16);
 }
 .hero-gate-form {
   display: flex;
@@ -633,32 +761,6 @@
   border-color: var(--color-accent);
 }
 
-/* ─── SHARE ROW ──────────────────────────────────── */
-.share-row {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-16);
-  margin-top: var(--space-32);
-  margin-bottom: var(--space-48);
-}
-.share-btn {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-medium);
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  background: none;
-  border: 1px solid var(--color-border);
-  padding: 0.6em 1.4em;
-  cursor: pointer;
-  text-decoration: none;
-  transition: border-color var(--dur-fast), color var(--dur-fast);
-}
-.share-btn:hover {
-  border-color: var(--color-text);
-  color: var(--color-text);
-}
 
 /* ─── CTA SECTION ────────────────────────────────── */
 .assess-cta {
@@ -709,12 +811,15 @@
     font-size: clamp(1rem, 1.3vw, 1.1rem);
     min-height: 48px;
   }
-  .share-row {
-    flex-direction: column;
-    align-items: center;
-  }
   .hero-gate-form {
     flex-direction: column;
+  }
+  .report-features {
+    grid-template-columns: 1fr;
+  }
+  .assess-credibility {
+    flex-wrap: wrap;
+    gap: var(--space-24);
   }
 }
 
@@ -776,7 +881,7 @@
     <div class="assess-hero-content">
       <span class="eyebrow">Diagnostic Assessment</span>
       <h1>Where does your <em>gap</em> live?</h1>
-      <p class="assess-hero-sub">You know more than you communicate. This 18-question diagnostic identifies exactly where the signal breaks down &mdash; whether it's pressure, anxiety, skill, identity, or blind spots.</p>
+      <p class="assess-hero-sub">You know more than you communicate. Most people do. The question is where the signal breaks down &mdash; and that's almost never where you think.</p>
       <div class="assess-hero-meta">
         <div class="assess-hero-meta-item">
           <span class="assess-hero-meta-val">3 min</span>
@@ -791,7 +896,82 @@
           <span class="assess-hero-meta-label">Constructs measured</span>
         </div>
       </div>
-      <div class="hero-gate">
+    </div>
+  </section>
+
+  <!-- Landing page value prop -->
+  <section class="assess-landing">
+    <div class="assess-landing-inner">
+
+      <div class="assess-discover">
+        <h2>What the assessment reveals.</h2>
+        <div class="discover-list">
+          <div class="discover-item">
+            <span class="discover-num">1</span>
+            <p class="discover-text"><strong>Your primary gap pattern.</strong> Not a vague personality label. A specific diagnosis of which of five constructs is driving the breakdown between what you know and what others receive.</p>
+          </div>
+          <div class="discover-item">
+            <span class="discover-num">2</span>
+            <p class="discover-text"><strong>Why it's happening.</strong> Each construct maps to a different root cause &mdash; neurological, psychological, or structural. The report explains the mechanism behind your pattern, not just the symptom.</p>
+          </div>
+          <div class="discover-item">
+            <span class="discover-num">3</span>
+            <p class="discover-text"><strong>What to do about it.</strong> Research-backed recommendations specific to your score tier. Not generic advice. Specific interventions drawn from validated psychometric instruments and clinical research.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="assess-report-preview">
+        <h2>Your report includes.</h2>
+        <div class="report-features">
+          <div class="report-feature">
+            <div class="report-feature-title">Radar Visualization</div>
+            <div class="report-feature-desc">Five-axis chart showing your score across all constructs with the 60% threshold marked.</div>
+          </div>
+          <div class="report-feature">
+            <div class="report-feature-title">Construct Breakdown</div>
+            <div class="report-feature-desc">Score interpretation, what it means at your level, and the science behind it &mdash; per construct.</div>
+          </div>
+          <div class="report-feature">
+            <div class="report-feature-title">Action Plan</div>
+            <div class="report-feature-desc">Specific, research-backed recommendations for each elevated area. Not "be more confident." Actual interventions.</div>
+          </div>
+          <div class="report-feature">
+            <div class="report-feature-title">Priority Sequencing</div>
+            <div class="report-feature-desc">Which construct to address first and why. The order matters &mdash; some gaps unlock others when resolved.</div>
+          </div>
+          <div class="report-feature">
+            <div class="report-feature-title">Research Basis</div>
+            <div class="report-feature-desc">The validated instruments that informed your results: PRCA-24, BFNE-S, CIPS-10, and 7 others.</div>
+          </div>
+          <div class="report-feature">
+            <div class="report-feature-title">Recommended Reading</div>
+            <div class="report-feature-desc">Profile-specific articles from the archive that address your particular pattern.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="assess-credibility">
+        <div class="credibility-item">
+          <span class="credibility-val">10</span>
+          <span class="credibility-label">Validated instruments</span>
+        </div>
+        <div class="credibility-item">
+          <span class="credibility-val">36</span>
+          <span class="credibility-label">Primary sources</span>
+        </div>
+        <div class="credibility-item">
+          <span class="credibility-val">6</span>
+          <span class="credibility-label">Gap profiles</span>
+        </div>
+        <div class="credibility-item">
+          <span class="credibility-val">Free</span>
+          <span class="credibility-label">Always</span>
+        </div>
+      </div>
+
+      <div class="assess-gate">
+        <h2 class="assess-gate-heading">Take the assessment.</h2>
         <form class="hero-gate-form" id="hero-gate-form" aria-label="Enter email to begin assessment">
           <label class="sr-only" for="gate-email">Email address</label>
           <input type="email" id="gate-email" name="email" placeholder="Your email" required autocomplete="email" aria-label="Email address">
@@ -799,8 +979,9 @@
           <button type="submit" class="btn-primary btn-primary--light">Begin</button>
         </form>
         <div class="hero-gate-error" id="hero-gate-error">Something went wrong. Please try again.</div>
-        <p class="hero-gate-privacy">Your results are delivered instantly. You'll also receive the Presence Under Pressure newsletter. Unsubscribe any time.</p>
+        <p class="hero-gate-privacy">Results delivered instantly on completion. You'll also receive the Presence Under Pressure newsletter. Unsubscribe any time.</p>
       </div>
+
     </div>
   </section>
 </div>
@@ -875,10 +1056,6 @@
         <div id="read-next-links"></div>
       </div>
 
-      <div class="share-row">
-        <button class="share-btn" id="btn-copy-link">Copy Link</button>
-        <a class="share-btn" id="btn-share-linkedin" href="#" target="_blank" rel="noopener">Share on LinkedIn</a>
-      </div>
     </div>
   </section>
 
@@ -1691,22 +1868,6 @@
     // Draw radar
     setTimeout(function () { drawRadar(); }, 200);
 
-    // Share links
-    var shareUrl = window.location.origin + window.location.pathname + '#' + encodeResults();
-    var shareText = 'I just took the Gap Map assessment from Pathos Labs. My profile: ' + profile.name + '.';
-
-    document.getElementById('btn-copy-link').addEventListener('click', function () {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(shareUrl).then(function () {
-          this.textContent = 'Copied';
-          var self = this;
-          setTimeout(function () { self.textContent = 'Copy Link'; }, 2000);
-        }.bind(this));
-      }
-    });
-
-    document.getElementById('btn-share-linkedin').href =
-      'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
   }
 
   // ─── RADAR CHART (CANVAS) ──────────────────────────────
