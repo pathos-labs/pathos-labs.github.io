@@ -201,6 +201,20 @@
 </footer>
 </main>
 
+<!-- ─── NEWSLETTER MODAL ──────────────────────────── -->
+<div class="modal-backdrop" aria-hidden="true"></div>
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+  <button class="modal-close" aria-label="Close">&times;</button>
+  <h2 id="modal-heading">Presence Under Pressure.</h2>
+  <p>A weekly letter on communication, human performance, and the internal blockers that keep capable people from landing the way they should. No filler. Just the thinking.</p>
+  <form class="newsletter-form" aria-label="Newsletter signup">
+    <label class="sr-only" for="email-modal">Email address</label>
+    <input type="email" id="email-modal" name="email" placeholder="Your email" required autocomplete="email">
+    <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" class="btn-primary">Subscribe</button>
+  </form>
+</div>
+
 <script src="../assets/main.js"></script>
 </body>
 </html>
