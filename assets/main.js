@@ -147,23 +147,27 @@
       if (btn) { btn.textContent = 'Sending\u2026'; btn.disabled = true; }
 
       var formLocation = 'unknown';
-      if (form.closest('.newsletter-hero')) formLocation = 'hero';
-      else if (form.closest('.footer')) formLocation = 'footer';
-      else if (form.closest('.section-newsletter')) formLocation = 'inline';
-      else if (form.closest('.modal')) formLocation = 'modal';
+      var sourceTagId = null;
+      if (form.closest('.newsletter-hero')) { formLocation = 'hero'; sourceTagId = 17002547; }
+      else if (form.closest('.footer')) { formLocation = 'footer'; sourceTagId = 17002548; }
+      else if (form.closest('.section-newsletter')) { formLocation = 'inline'; sourceTagId = 17002546; }
+      else if (form.closest('.modal')) { formLocation = 'modal'; sourceTagId = 17002545; }
+
+      var payload = {
+        api_key: KIT_API_KEY,
+        email: email,
+        fields: {
+          source: 'newsletter-' + formLocation,
+          page: window.location.pathname,
+          referrer: document.referrer || 'direct'
+        }
+      };
+      if (sourceTagId) payload.tags = [sourceTagId];
 
       fetch('https://api.convertkit.com/v3/forms/' + KIT_FORM_ID + '/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          api_key: KIT_API_KEY,
-          email: email,
-          fields: {
-            source: 'newsletter-' + formLocation,
-            page: window.location.pathname,
-            referrer: document.referrer || 'direct'
-          }
-        })
+        body: JSON.stringify(payload)
       })
       .then(function (res) {
         if (!res.ok) throw new Error('Subscription failed');
