@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
   <url>
     <loc>https://pathoslabs.co/</loc>
     <lastmod>2026-03-04</lastmod>
@@ -7,7 +9,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pathoslabs.co/about.html</loc>
+    <loc>https://pathoslabs.co/about/</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -19,9 +21,150 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pathoslabs.co/newsletter.html</loc>
+    <loc>https://pathoslabs.co/newsletter/</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://pathoslabs.co/writing/youre-drifting-and-you-dont-know-it.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/start-treating-people-like-theyre-an-ai.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/treasure-hunting.html</loc>
+    <lastmod>2026-02-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/how-to-have-great-conversations.html</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/even-100m-entrepreneurs-get-nervous-heres-why.html</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/why-arent-my-dms-being-answered.html</loc>
+    <lastmod>2026-01-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/stop-avoiding-conflict-use-this-framework-instead.html</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/the-forbidden-fruit-of-social-interaction.html</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/your-mission-should-you-choose-to-accept-it.html</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/i-messed-up-this-week.html</loc>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/how-to-deliver-bad-news.html</loc>
+    <lastmod>2025-12-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/10-research-backed-tools-to-calm-down.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/how-to-get-buy-in-for-your-decisions.html</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/trying-harder-will-make-it-worse.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/if-i-could-only-tell-you-one-thing-about-communication.html</loc>
+    <lastmod>2025-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/i-stopped-asking-ai-for-answers-and-thats-when-it-got-powerf.html</loc>
+    <lastmod>2025-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/if-your-product-is-good-why-are-you-afraid.html</loc>
+    <lastmod>2025-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/influence-isnt-cognitive-its-biological.html</loc>
+    <lastmod>2025-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/axios-charges-for-this-youll-get-it-here-free.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/colorless-green-ideas-sleep-furiously-and-so-do-your-audienc.html</loc>
+    <lastmod>2025-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/dont-pitch-your-idea-until-youve-done-this-first.html</loc>
+    <lastmod>2025-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/influence-starts-before-you-open-your-mouth.html</loc>
+    <lastmod>2025-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pathoslabs.co/writing/cold-outreach-is-like-asking-for-a-date-most-people-are-doin.html</loc>
+    <lastmod>2025-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

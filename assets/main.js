@@ -146,10 +146,24 @@
       var originalText = btn ? btn.textContent : '';
       if (btn) { btn.textContent = 'Sending\u2026'; btn.disabled = true; }
 
+      var formLocation = 'unknown';
+      if (form.closest('.newsletter-hero')) formLocation = 'hero';
+      else if (form.closest('.footer')) formLocation = 'footer';
+      else if (form.closest('.section-newsletter')) formLocation = 'inline';
+      else if (form.closest('.modal')) formLocation = 'modal';
+
       fetch('https://api.convertkit.com/v3/forms/' + KIT_FORM_ID + '/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ api_key: KIT_API_KEY, email: email })
+        body: JSON.stringify({
+          api_key: KIT_API_KEY,
+          email: email,
+          fields: {
+            source: 'newsletter-' + formLocation,
+            page: window.location.pathname,
+            referrer: document.referrer || 'direct'
+          }
+        })
       })
       .then(function (res) {
         if (!res.ok) throw new Error('Subscription failed');
@@ -338,4 +352,46 @@
     script.src = '//gc.zgo.at/count.js';
     document.head.appendChild(script);
   }
+
+  /* ─── EVENT TRACKING (GoatCounter) ─────────────── */
+  function trackEvent(name) {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'event/' + name, title: name, event: true });
+    }
+  }
+
+  // Track Cal.com CTA clicks
+  document.querySelectorAll('a[href*="cal.com/pathos-labs"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      trackEvent('cta-book-call');
+    });
+  });
+
+  // Track newsletter signups by location (hero, footer, modal)
+  document.querySelectorAll('.newsletter-form').forEach(function (form) {
+    form.addEventListener('submit', function () {
+      var location = 'unknown';
+      if (form.closest('.newsletter-hero')) location = 'hero';
+      else if (form.closest('.footer')) location = 'footer';
+      else if (form.closest('.section-newsletter')) location = 'inline';
+      else if (form.closest('.modal')) location = 'modal';
+      trackEvent('newsletter-signup-' + location);
+    });
+  });
+
+  // Track research deck card clicks
+  document.querySelectorAll('.research-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var title = card.querySelector('.research-card-title');
+      var slug = title ? title.textContent.trim().toLowerCase().replace(/\s+/g, '-').slice(0, 40) : 'unknown';
+      trackEvent('research-card-click-' + slug);
+    });
+  });
+
+  // Track writing filter tab clicks
+  document.querySelectorAll('.filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      trackEvent('filter-' + (btn.getAttribute('data-filter') || 'unknown'));
+    });
+  });
 })();

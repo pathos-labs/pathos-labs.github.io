@@ -1,24 +1,53 @@
 # Pathos Labs
 
-> Executive communication advisory for founders and senior leaders.
+> Executive communication advisory for founders and senior leaders. Closes the gap between capability and perception.
 
-## What We Do
-Pathos Labs closes the gap between capability and perception for high-performing executives. The gap is never ability — it's perception, communication, or structure. We diagnose precisely, build new defaults, and produce measurable results in weeks, not months.
+## About
+Pathos Labs is a coaching and advisory practice run by Sam Millunchick. We work with founders, CEOs, and senior executives whose constraint is communication, not competence. The method: diagnostic immersion, intensive reconstruction against real events, and consolidation with a system that holds under pressure.
 
-## Who We Work With
-Founders, CEOs, and senior executives who are capable but underleveraged — where the constraint is communication, not competence.
+## People
+- Sam Millunchick — Founder. IDF combat medic, ordained rabbi, former community rabbi in London (~100 funerals). Now coaching executives on high-stakes communication and performance under pressure. Based in Israel.
 
-## The Method
-1. Diagnostic Immersion: Evidence-based pattern mapping — find where the gap opens
-2. Intensive Reconstruction: Live rehearsal against real upcoming events — build new defaults
-3. Consolidation & Architecture: Verify change holds under pressure — exit with a system, not a dependency
-
-## Key Pages
+## Primary Pages
 - Homepage: https://pathoslabs.co/
-- About: https://pathoslabs.co/about.html
-- Writing: https://pathoslabs.co/writing/
-- Newsletter: https://pathoslabs.co/newsletter.html
+- About Sam: https://pathoslabs.co/about/
+- Writing & Research: https://pathoslabs.co/writing/
+- Newsletter (Presence Under Pressure): https://pathoslabs.co/newsletter/
+- Book a conversation: https://cal.com/pathos-labs/fit-match-30
+
+## Research Decks (email-gated)
+- Executive Coaching Methods — what the evidence says: https://research.pathoslabs.co/executive-coaching-methods/
+- From Networking to Business — persuasion psychology + tactics: https://research.pathoslabs.co/networking-to-business/
+- Manufacturing Psychological Safety — 7 tactics for pressure: https://research.pathoslabs.co/psychological-safety-tactics/
+
+## Writing
+- You're drifting and you don't know it (2026-02-27): https://pathoslabs.co/writing/youre-drifting-and-you-dont-know-it.html
+- Start treating people like they're an AI (2026-02-20): https://pathoslabs.co/writing/start-treating-people-like-theyre-an-ai.html
+- Treasure hunting (2026-02-13): https://pathoslabs.co/writing/treasure-hunting.html
+- How to have great conversations (2026-02-06): https://pathoslabs.co/writing/how-to-have-great-conversations.html
+- Even $100M entrepreneurs get nervous (2026-01-30): https://pathoslabs.co/writing/even-100m-entrepreneurs-get-nervous-heres-why.html
+- Why aren't my DMs being answered? (2026-01-21): https://pathoslabs.co/writing/why-arent-my-dms-being-answered.html
+- Stop avoiding conflict — use this framework (2026-01-14): https://pathoslabs.co/writing/stop-avoiding-conflict-use-this-framework-instead.html
+- The forbidden fruit of social interaction (2026-01-07): https://pathoslabs.co/writing/the-forbidden-fruit-of-social-interaction.html
+- Your mission, should you choose to accept it (2025-12-18): https://pathoslabs.co/writing/your-mission-should-you-choose-to-accept-it.html
+- I messed up this week (2025-12-11): https://pathoslabs.co/writing/i-messed-up-this-week.html
+- How to deliver bad news (2025-12-04): https://pathoslabs.co/writing/how-to-deliver-bad-news.html
+- 10 research-backed tools to calm down (2025-11-27): https://pathoslabs.co/writing/10-research-backed-tools-to-calm-down.html
+- How to get buy-in for your decisions (2025-11-20): https://pathoslabs.co/writing/how-to-get-buy-in-for-your-decisions.html
+- Trying harder will make it worse (2025-11-13): https://pathoslabs.co/writing/trying-harder-will-make-it-worse.html
+- If I could only tell you one thing about communication (2025-11-05): https://pathoslabs.co/writing/if-i-could-only-tell-you-one-thing-about-communication.html
+- I stopped asking AI for answers (2025-10-29): https://pathoslabs.co/writing/i-stopped-asking-ai-for-answers-and-thats-when-it-got-powerf.html
+- If your product is good, why are you afraid? (2025-10-22): https://pathoslabs.co/writing/if-your-product-is-good-why-are-you-afraid.html
+- Influence isn't cognitive — it's biological (2025-10-15): https://pathoslabs.co/writing/influence-isnt-cognitive-its-biological.html
+- Axios charges for this — you'll get it here free (2025-10-08): https://pathoslabs.co/writing/axios-charges-for-this-youll-get-it-here-free.html
+- Colorless green ideas sleep furiously (2025-10-01): https://pathoslabs.co/writing/colorless-green-ideas-sleep-furiously-and-so-do-your-audienc.html
+- Don't pitch your idea until you've done this first (2025-09-25): https://pathoslabs.co/writing/dont-pitch-your-idea-until-youve-done-this-first.html
+- Influence starts before you open your mouth (2025-09-17): https://pathoslabs.co/writing/influence-starts-before-you-open-your-mouth.html
+- Cold outreach is like asking for a date (2025-09-10): https://pathoslabs.co/writing/cold-outreach-is-like-asking-for-a-date-most-people-are-doin.html
+
+## Topics Covered
+Executive communication, public speaking anxiety, performance under pressure, influence and persuasion, leadership presence, conflict resolution, networking, cold outreach, decision-making communication, emotional regulation, social-evaluative threat, psychological safety.
 
 ## Contact
 - Email: hello@pathoslabs.co
-- Book a conversation: https://cal.com/pathos-labs/fit-match-30
+- LinkedIn: https://www.linkedin.com/company/pathos-labs

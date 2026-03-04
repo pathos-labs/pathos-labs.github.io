@@ -24,6 +24,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+
+  <meta property="og:site_name" content="Pathos Labs">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Writing — Pathos Labs",
+    "description": "Writing and research on executive communication, human performance, and closing the gap between capability and perception.",
+    "url": "https://pathoslabs.co/writing/",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://pathoslabs.co/#website",
+      "name": "Pathos Labs",
+      "url": "https://pathoslabs.co"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -448,6 +469,12 @@
   const deckParam = params.get('deck');
 
   /* If arriving via ?deck= redirect, resolve the full URL */
+  function trackGate(name) {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'event/' + name, title: name, event: true });
+    }
+  }
+
   if (deckParam) {
     /* deckParam is a slug like "psychological-safety-tactics" */
     pendingHref = 'https://research.pathoslabs.co/' + deckParam + '/';
@@ -460,6 +487,7 @@
     overlay.setAttribute('aria-hidden', 'false');
     overlay.classList.add('is-visible');
     requestAnimationFrame(() => input.focus());
+    trackGate('gate-open-deeplink');
   }
 
   document.querySelectorAll('[data-gated]').forEach(card => {
@@ -470,6 +498,7 @@
       overlay.setAttribute('aria-hidden', 'false');
       overlay.classList.add('is-visible');
       input.focus();
+      trackGate('gate-open-card');
     });
   });
 
@@ -496,11 +525,26 @@
       return;
     }
 
+    trackGate('gate-submit');
+
     const btn = form.querySelector('button[type="submit"]');
     error.classList.remove('is-visible');
     btn.disabled = true;
     input.disabled = true;
     btn.textContent = '\u2026';
+
+    /* Build Kit payload with campaign tracking fields */
+    var deckSlug = pendingHref ? pendingHref.split('/').filter(Boolean).pop() : 'browse';
+    var kitPayload = {
+      api_key: KIT_API_KEY,
+      email: input.value,
+      fields: {
+        source: 'research-gate',
+        page: window.location.pathname,
+        deck: deckSlug,
+        referrer: document.referrer || 'direct'
+      }
+    };
 
     try {
       const res = await fetch(
@@ -508,11 +552,12 @@
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json; charset=utf-8' },
-          body: JSON.stringify({ api_key: KIT_API_KEY, email: input.value }),
+          body: JSON.stringify(kitPayload),
         }
       );
       if (!res.ok) throw new Error('Request failed');
 
+      trackGate('gate-success-' + deckSlug);
       localStorage.setItem('pathos_access', '1');
       overlay.classList.add('fade-out');
       setTimeout(() => {
@@ -521,6 +566,7 @@
         if (pendingHref) window.location.href = pendingHref;
       }, 300);
     } catch {
+      trackGate('gate-error');
       error.classList.add('is-visible');
       btn.disabled = false;
       input.disabled = false;
