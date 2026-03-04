@@ -404,7 +404,7 @@ button { font-family: inherit; }
 
 .hero-scroll {
   position: absolute;
-  bottom: var(--space-32);
+  bottom: var(--space-48);
   left: var(--section-x);
   z-index: var(--z-hero);
   display: flex;

@@ -1,7 +1,7 @@
 <!--
   TWITTER/X BANNER — 1500×500
   Open in browser, screenshot at 1500×500, save as banner-twitter.png
-  Style: Minimal, dark, strapline + proof logos
+  Style: Minimal, dark, right-oriented, strapline + client names
 -->
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,7 @@
     width: 1500px; height: 500px;
     background: oklch(10% 0.008 260);
     display: flex; align-items: center;
+    justify-content: flex-end;
     overflow: hidden; position: relative;
     font-family: 'Outfit', sans-serif;
   }
@@ -26,12 +27,10 @@
   .content {
     position: relative; z-index: 1;
     padding: 0 120px;
-    width: 100%;
-    display: flex; align-items: center;
-    justify-content: space-between;
-  }
-  .left {
-    display: flex; flex-direction: column; gap: 16px;
+    display: flex; flex-direction: column;
+    align-items: flex-end;
+    gap: 24px;
+    text-align: right;
   }
   .wordmark {
     font-weight: 700; font-size: 15px;
@@ -43,32 +42,25 @@
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 42px;
-    line-height: 1.2;
+    font-size: 48px;
+    line-height: 1.15;
     color: oklch(94% 0.005 80);
-    max-width: 550px;
   }
-  .sub {
-    font-size: 14px; font-weight: 300;
-    color: oklch(48% 0.005 260);
-    letter-spacing: 0.5px;
+  .clients {
+    display: flex; gap: 24px; align-items: center;
+    margin-top: 8px;
   }
-  .proof {
-    display: flex; flex-direction: column;
-    align-items: flex-end; gap: 20px;
+  .client {
+    font-size: 12px; font-weight: 500;
+    color: oklch(45% 0.005 260);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
-  .proof-label {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: oklch(40% 0.005 260);
-  }
-  .proof-logos {
-    display: flex; gap: 32px; align-items: center;
-  }
-  .proof-logo {
-    font-size: 13px; font-weight: 500;
-    color: oklch(50% 0.005 260);
-    letter-spacing: 1px;
+  .client-sep {
+    width: 3px; height: 3px;
+    background: oklch(48% 0.145 32);
+    border-radius: 50%;
+    flex-shrink: 0;
   }
   .accent-line {
     position: absolute;
@@ -80,18 +72,18 @@
 </head>
 <body>
   <div class="content">
-    <div class="left">
-      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
-      <div class="strapline">Executive communication.<br>Rebuilt from the inside.</div>
-      <div class="sub">pathoslabs.co</div>
-    </div>
-    <div class="proof">
-      <div class="proof-label">Clients include</div>
-      <div class="proof-logos">
-        <span class="proof-logo">YuLife</span>
-        <span class="proof-logo">Relation</span>
-        <span class="proof-logo">Toolbox</span>
-      </div>
+    <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
+    <div class="strapline">Presence under pressure.</div>
+    <div class="clients">
+      <span class="client">Morgan Stanley</span>
+      <span class="client-sep"></span>
+      <span class="client">Church of England</span>
+      <span class="client-sep"></span>
+      <span class="client">YuLife</span>
+      <span class="client-sep"></span>
+      <span class="client">Relation Therapeutics</span>
+      <span class="client-sep"></span>
+      <span class="client">KYC360</span>
     </div>
   </div>
   <div class="accent-line"></div>

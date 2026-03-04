@@ -1,8 +1,8 @@
 <!--
-  LINKEDIN PERSONAL BANNER — 1584×396
-  Open in browser, screenshot at 1584×396, save as banner-linkedin.png
+  LINKEDIN COMPANY PAGE BANNER — 1128×191
+  Open in browser, screenshot at 1128×191, save as banner-company.png
   Style: Minimal, dark, right-oriented, strapline + client names
-  Note: LinkedIn profile photo overlaps bottom-left ~180px, so content stays right
+  Compact layout for the shorter company banner format
 -->
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    width: 1584px; height: 396px;
+    width: 1128px; height: 191px;
     background: oklch(10% 0.008 260);
     display: flex; align-items: center;
     justify-content: flex-end;
@@ -22,19 +22,23 @@
   body::before {
     content: ''; position: absolute; inset: 0;
     background:
-      repeating-linear-gradient(0deg, transparent, transparent 99px, oklch(94% 0 0 / 0.015) 99px, oklch(94% 0 0 / 0.015) 100px),
-      repeating-linear-gradient(90deg, transparent, transparent 99px, oklch(94% 0 0 / 0.015) 99px, oklch(94% 0 0 / 0.015) 100px);
+      repeating-linear-gradient(0deg, transparent, transparent 59px, oklch(94% 0 0 / 0.015) 59px, oklch(94% 0 0 / 0.015) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, oklch(94% 0 0 / 0.015) 59px, oklch(94% 0 0 / 0.015) 60px);
   }
   .content {
     position: relative; z-index: 1;
-    padding: 0 100px;
+    padding: 0 64px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .left {
     display: flex; flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
+    align-items: flex-end; gap: 6px;
     text-align: right;
   }
   .wordmark {
-    font-weight: 700; font-size: 14px;
+    font-weight: 700; font-size: 12px;
     letter-spacing: 3px; text-transform: uppercase;
     color: oklch(94% 0.005 80);
   }
@@ -43,22 +47,28 @@
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 42px;
+    font-size: 28px;
     line-height: 1.15;
     color: oklch(94% 0.005 80);
+    white-space: nowrap;
+  }
+  .divider {
+    width: 1px; height: 48px;
+    background: oklch(30% 0.005 260);
+    flex-shrink: 0;
   }
   .clients {
-    display: flex; gap: 20px; align-items: center;
-    margin-top: 4px;
+    display: flex; gap: 16px; align-items: center;
   }
   .client {
-    font-size: 11px; font-weight: 500;
+    font-size: 9px; font-weight: 500;
     color: oklch(45% 0.005 260);
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    white-space: nowrap;
   }
   .client-sep {
-    width: 3px; height: 3px;
+    width: 2px; height: 2px;
     background: oklch(48% 0.145 32);
     border-radius: 50%;
     flex-shrink: 0;
@@ -66,15 +76,18 @@
   .accent-line {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 3px;
+    height: 2px;
     background: oklch(48% 0.145 32);
   }
 </style>
 </head>
 <body>
   <div class="content">
-    <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
-    <div class="strapline">Presence under pressure.</div>
+    <div class="left">
+      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
+      <div class="strapline">Presence under pressure.</div>
+    </div>
+    <div class="divider"></div>
     <div class="clients">
       <span class="client">Morgan Stanley</span>
       <span class="client-sep"></span>
