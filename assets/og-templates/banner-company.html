@@ -1,7 +1,7 @@
 <!--
   LINKEDIN COMPANY PAGE BANNER — 1128×191
   Open in browser, screenshot at 1128×191, save as banner-company.png
-  LinkedIn company logo overlaps bottom-left corner — keep left ~140px clear
+  LinkedIn company logo overlaps bottom-left corner — keep left ~220px clear
   Content pushed right, large and legible
 -->
 <!DOCTYPE html>
@@ -18,6 +18,8 @@
     justify-content: flex-end;
     overflow: hidden; position: relative;
     font-family: 'Outfit', sans-serif;
+    /* Hard left dead zone — LinkedIn logo overlaps ~200px from left */
+    padding-left: 220px;
   }
   body::before {
     content: ''; position: absolute; inset: 0;
@@ -27,10 +29,11 @@
   }
   .content {
     position: relative; z-index: 1;
-    padding: 0 72px;
+    padding: 0 56px 0 0;
+    width: 100%;
     display: flex; flex-direction: column;
     align-items: flex-end;
-    gap: 12px;
+    gap: 10px;
     text-align: right;
   }
   .strapline {
@@ -44,15 +47,17 @@
   .clients-label {
     font-size: 11px; font-weight: 600;
     letter-spacing: 2.5px; text-transform: uppercase;
-    color: oklch(50% 0.005 260);
+    color: oklch(55% 0.005 260);
   }
   .clients {
-    display: flex; gap: 20px; align-items: center;
+    display: flex; gap: 16px; align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .client {
-    font-size: 13px; font-weight: 500;
+    font-size: 12px; font-weight: 500;
     color: oklch(65% 0.005 260);
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
     white-space: nowrap;
   }

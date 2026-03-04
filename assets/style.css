@@ -1497,9 +1497,10 @@ button { font-family: inherit; }
   transition: none;
 }
 .post-header {
-  padding: calc(var(--nav-h, 64px) + clamp(3rem, 6vw, 5rem)) var(--section-x) clamp(2rem, 4vw, 3rem);
+  padding: calc(var(--nav-h, 64px) + clamp(3rem, 6vw, 5rem)) 0 clamp(2rem, 4vw, 3rem);
   border-bottom: none;
-  max-width: 720px;
+  max-width: 680px;
+  margin: 0 auto;
 }
 .post-meta {
   display: flex;
@@ -1556,8 +1557,9 @@ button { font-family: inherit; }
   margin-top: clamp(2rem, 4vw, 3rem);
 }
 .post-body {
-  padding: clamp(2.5rem, 5vw, 4rem) var(--section-x);
-  max-width: 720px;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  max-width: 680px;
+  margin: 0 auto;
 }
 .post-body > p:first-child::first-letter {
   font-family: var(--font-serif);
