@@ -139,6 +139,62 @@
   color: var(--color-dark-text-muted);
 }
 
+/* ─── HERO EMAIL GATE ───────────────────────────── */
+.hero-gate {
+  max-width: 420px;
+}
+.hero-gate-form {
+  display: flex;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+.hero-gate-form input[type="email"] {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body);
+  padding: 0.8em 1em;
+  background: var(--color-dark-surface);
+  border: 1px solid var(--color-dark-border);
+  color: var(--color-dark-text);
+  outline: none;
+  transition: border-color var(--dur-fast);
+  min-width: 0;
+}
+.hero-gate-form input[type="email"]:focus {
+  border-color: var(--color-accent-on-dark);
+}
+.hero-gate-form input[type="email"]::placeholder {
+  color: var(--color-dark-text-muted);
+}
+.hero-gate-form .btn-primary {
+  white-space: nowrap;
+}
+.hero-gate-form .honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+.hero-gate-error {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-caption);
+  color: oklch(65% 0.18 25);
+  margin-bottom: var(--space-8);
+  display: none;
+}
+.hero-gate-privacy {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-caption);
+  color: var(--color-dark-text-muted);
+  line-height: var(--leading-body);
+  opacity: 0.7;
+}
+
 /* ─── PROGRESS BAR ───────────────────────────────── */
 .progress-wrap {
   position: fixed;
@@ -394,110 +450,155 @@
   line-height: var(--leading-body);
   color: var(--color-text-muted);
 }
-
-/* ─── EMAIL GATE ─────────────────────────────────── */
-.gate-section {
-  background: var(--color-dark-bg);
-  padding: var(--section-y) var(--section-x);
-  text-align: center;
+/* Recommendations within each construct card */
+.construct-card-recs {
+  margin-top: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-border-faint);
 }
-.gate-inner {
-  max-width: var(--max-narrow);
-  margin: 0 auto;
+.construct-card-recs-label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-medium);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-8);
 }
-.gate-section .eyebrow {
-  color: var(--color-accent-on-dark);
-  margin-bottom: var(--space-16);
-}
-.gate-section h2 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-style: italic;
-  font-size: var(--text-h2);
-  line-height: var(--leading-heading);
-  color: var(--color-dark-text);
-  margin-bottom: var(--space-24);
-}
-.gate-promises {
+.construct-card-recs ul {
   list-style: none;
-  text-align: left;
-  margin-bottom: var(--space-32);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
 }
-.gate-promises li {
+.construct-card-recs li {
   font-family: var(--font-sans);
   font-weight: 300;
   font-size: var(--text-body-sm);
   line-height: var(--leading-body);
-  color: var(--color-dark-text-muted);
-  padding: var(--space-8) 0;
-  border-bottom: 1px solid var(--color-dark-border-faint);
-  padding-left: var(--space-24);
+  color: var(--color-text-body);
+  padding-left: var(--space-16);
   position: relative;
 }
-.gate-promises li::before {
+.construct-card-recs li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
+  top: 0.65em;
+  width: 6px;
   height: 1px;
-  background: var(--color-accent-on-dark);
+  background: var(--color-accent);
 }
-.gate-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
+.construct-card-science {
+  margin-top: var(--space-12);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-caption);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+  font-style: italic;
 }
-.gate-form input[type="email"] {
+
+/* ─── PRIORITY SECTION ──────────────────────────── */
+.priority-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-faint);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-32);
+  margin-bottom: var(--space-64);
+  max-width: var(--max-text);
+  margin-left: auto;
+  margin-right: auto;
+}
+.priority-section h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--color-text);
+  margin-bottom: var(--space-16);
+}
+.priority-section p {
   font-family: var(--font-sans);
   font-weight: 300;
   font-size: var(--text-body);
-  padding: 0.8em 1em;
-  background: var(--color-dark-surface);
-  border: 1px solid var(--color-dark-border);
-  color: var(--color-dark-text);
-  outline: none;
-  transition: border-color var(--dur-fast);
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
 }
-.gate-form input[type="email"]:focus {
-  border-color: var(--color-accent-on-dark);
+.priority-section .priority-sequence {
+  margin-top: var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
 }
-.gate-form input[type="email"]::placeholder {
-  color: var(--color-dark-text-muted);
+.priority-step {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-12);
 }
-.gate-form .btn-primary {
-  width: 100%;
-  text-align: center;
+.priority-step-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-body);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  width: 24px;
 }
-.gate-form .honeypot {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: 0;
+.priority-step-text {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-body-sm);
+  color: var(--color-text-body);
 }
-.gate-success {
-  display: none;
+.priority-step-text.is-muted {
+  font-weight: 300;
+  color: var(--color-text-muted);
 }
-.gate-success.is-visible {
-  display: block;
+
+/* ─── RESEARCH BASIS ─────────────────────────────── */
+.research-basis {
+  max-width: var(--max-text);
+  margin: 0 auto var(--space-64);
 }
-.gate-success p {
+.research-basis h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+.research-basis p {
   font-family: var(--font-sans);
   font-weight: 300;
   font-size: var(--text-body-sm);
-  color: var(--color-dark-text-muted);
   line-height: var(--leading-body);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-16);
 }
-.gate-error {
+.research-instruments {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.research-instrument {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--color-border-faint);
+}
+.research-instrument-name {
   font-family: var(--font-sans);
   font-weight: 400;
+  font-size: var(--text-body-sm);
+  color: var(--color-text-body);
+}
+.research-instrument-source {
+  font-family: var(--font-sans);
+  font-weight: 300;
   font-size: var(--text-caption);
-  color: oklch(65% 0.18 25);
-  margin-top: var(--space-8);
-  display: none;
+  color: var(--color-text-muted);
 }
 
 /* ─── READ NEXT ──────────────────────────────────── */
@@ -505,7 +606,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border-faint);
   padding: var(--space-32);
-  margin-top: var(--space-48);
+  margin-bottom: var(--space-48);
   max-width: var(--max-text);
   margin-left: auto;
   margin-right: auto;
@@ -561,10 +662,9 @@
 
 /* ─── CTA SECTION ────────────────────────────────── */
 .assess-cta {
-  background: var(--color-bg);
+  background: var(--color-dark-bg);
   padding: var(--section-y) var(--section-x);
   text-align: center;
-  border-top: 1px solid var(--color-border-faint);
 }
 .assess-cta h2 {
   font-family: var(--font-serif);
@@ -572,7 +672,7 @@
   font-style: italic;
   font-size: var(--text-h2);
   line-height: var(--leading-heading);
-  color: var(--color-text);
+  color: var(--color-dark-text);
   margin-bottom: var(--space-16);
 }
 .assess-cta p {
@@ -580,7 +680,7 @@
   font-weight: 300;
   font-size: var(--text-body);
   line-height: var(--leading-body);
-  color: var(--color-text-muted);
+  color: var(--color-dark-text-muted);
   max-width: var(--max-text);
   margin: 0 auto var(--space-32);
 }
@@ -613,6 +713,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .hero-gate-form {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
@@ -621,6 +724,10 @@
   }
   .scale-labels {
     display: none;
+  }
+  .research-instrument {
+    flex-direction: column;
+    gap: var(--space-4);
   }
 }
 </style>
@@ -662,7 +769,7 @@
 <main id="main">
 
 <!-- ════════════════════════════════════════════════
-     SCREEN 1: INTRO / HERO
+     SCREEN 1: INTRO / HERO — with email gate
      ════════════════════════════════════════════════ -->
 <div id="screen-intro" class="screen is-active is-visible">
   <section class="assess-hero">
@@ -684,7 +791,16 @@
           <span class="assess-hero-meta-label">Constructs measured</span>
         </div>
       </div>
-      <button id="btn-start" class="btn-primary btn-primary--light">Begin the Assessment</button>
+      <div class="hero-gate">
+        <form class="hero-gate-form" id="hero-gate-form" aria-label="Enter email to begin assessment">
+          <label class="sr-only" for="gate-email">Email address</label>
+          <input type="email" id="gate-email" name="email" placeholder="Your email" required autocomplete="email" aria-label="Email address">
+          <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn-primary btn-primary--light">Begin</button>
+        </form>
+        <div class="hero-gate-error" id="hero-gate-error">Something went wrong. Please try again.</div>
+        <p class="hero-gate-privacy">Your results are delivered instantly. You'll also receive the Presence Under Pressure newsletter. Unsubscribe any time.</p>
+      </div>
     </div>
   </section>
 </div>
@@ -720,7 +836,7 @@
 </div>
 
 <!-- ════════════════════════════════════════════════
-     SCREEN 3: RESULTS (rendered by JS)
+     SCREEN 3: RESULTS — the full report
      ════════════════════════════════════════════════ -->
 <div id="screen-results" class="screen">
   <section class="results-screen">
@@ -739,37 +855,29 @@
         <div class="construct-list" id="construct-list"></div>
       </div>
 
+      <!-- Priority sequence -->
+      <div class="priority-section" id="priority-section">
+        <h2>Where to start.</h2>
+        <p id="priority-rationale"></p>
+        <div class="priority-sequence" id="priority-sequence"></div>
+      </div>
+
+      <!-- Research basis -->
+      <div class="research-basis">
+        <h2>The research behind your results.</h2>
+        <p>This assessment draws from validated psychometric instruments. No single question is copied verbatim &mdash; items are informed by the constructs these instruments measure, adapted for an executive communication context.</p>
+        <div class="research-instruments" id="research-instruments"></div>
+      </div>
+
+      <!-- Recommended reading -->
+      <div class="read-next" id="read-next">
+        <div class="read-next-label">Recommended Reading</div>
+        <div id="read-next-links"></div>
+      </div>
+
       <div class="share-row">
         <button class="share-btn" id="btn-copy-link">Copy Link</button>
         <a class="share-btn" id="btn-share-linkedin" href="#" target="_blank" rel="noopener">Share on LinkedIn</a>
-      </div>
-
-      <div class="read-next" id="read-next">
-        <div class="read-next-label">Recommended Reading</div>
-        <a id="read-next-link" href="#"></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── EMAIL GATE ──────────────────────────────── -->
-  <section class="gate-section" id="gate-section">
-    <div class="gate-inner">
-      <span class="eyebrow">Go Deeper</span>
-      <h2>Your full Gap Map report.</h2>
-      <ul class="gate-promises">
-        <li>Detailed breakdown of all 5 constructs with percentile context</li>
-        <li>Specific, research-backed recommendations for each elevated area</li>
-        <li>The psychometric instruments that informed your results</li>
-      </ul>
-      <form class="gate-form" id="gate-form" aria-label="Get your full report">
-        <label class="sr-only" for="gate-email">Email address</label>
-        <input type="email" id="gate-email" name="email" placeholder="Your email" required autocomplete="email" aria-label="Email address">
-        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button type="submit" class="btn-primary">Get Your Full Report</button>
-      </form>
-      <div class="gate-error" id="gate-error">Something went wrong. Please try again.</div>
-      <div class="gate-success" id="gate-success">
-        <p>Check your inbox. Your full Gap Map report is on its way.</p>
       </div>
     </div>
   </section>
@@ -778,7 +886,7 @@
   <section class="assess-cta">
     <h2>Ready to close the gap?</h2>
     <p>The assessment tells you where it lives. The work closes it. A 30-minute conversation to see if we're the right fit.</p>
-    <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="btn-primary">Start the Conversation</a>
+    <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="btn-primary btn-primary--light">Start the Conversation</a>
   </section>
 </div>
 
@@ -822,165 +930,110 @@
 
   /* ═══════════════════════════════════════════════════════════
      GAP MAP ASSESSMENT ENGINE
-     18 items, 5 constructs, 6 profiles, radar chart, Kit gate
+     18 items, 5 constructs, 6 profiles, radar chart,
+     email gate at start, rich report on completion
      ═══════════════════════════════════════════════════════════ */
 
   // ─── QUESTIONS ──────────────────────────────────────────
-  // Constructs 1, 2, 4: higher agreement = bigger gap (scores kept as-is)
-  // Constructs 3, 5: higher agreement = smaller gap (inverted in scoring)
   var QUESTIONS = [
-    // CONSTRUCT 1: Communication Under Pressure (4 items, reverse-scored — high = big gap)
+    // CONSTRUCT 1: Communication Under Pressure (4 items — high = big gap)
     {
-      id: 'c1q1',
-      construct: 1,
-      constructName: 'Communication Under Pressure',
+      id: 'c1q1', construct: 1, constructName: 'Communication Under Pressure',
       text: 'When you walk into a high-stakes meeting, you can feel your thinking narrow \u2014 ideas that were clear five minutes ago become hard to articulate.',
-      lowLabel: 'Never happens',
-      highLabel: 'Every time'
+      lowLabel: 'Never happens', highLabel: 'Every time'
     },
     {
-      id: 'c1q2',
-      construct: 1,
-      constructName: 'Communication Under Pressure',
+      id: 'c1q2', construct: 1, constructName: 'Communication Under Pressure',
       text: 'When someone pushes back on your position publicly, your first instinct is to soften or retreat rather than hold your ground.',
-      lowLabel: 'Not at all like me',
-      highLabel: 'Exactly like me'
+      lowLabel: 'Not at all like me', highLabel: 'Exactly like me'
     },
     {
-      id: 'c1q3',
-      construct: 1,
-      constructName: 'Communication Under Pressure',
+      id: 'c1q3', construct: 1, constructName: 'Communication Under Pressure',
       text: 'You find yourself avoiding conversations you know need to happen \u2014 a difficult feedback session, a pricing negotiation, a board-level disagreement.',
-      lowLabel: 'Rarely',
-      highLabel: 'Frequently'
+      lowLabel: 'Rarely', highLabel: 'Frequently'
     },
     {
-      id: 'c1q4',
-      construct: 1,
-      constructName: 'Communication Under Pressure',
+      id: 'c1q4', construct: 1, constructName: 'Communication Under Pressure',
       text: 'In tense moments, you notice yourself agreeing with things you don\u2019t actually believe, just to reduce the friction in the room.',
-      lowLabel: 'Never',
-      highLabel: 'Often'
+      lowLabel: 'Never', highLabel: 'Often'
     },
 
-    // CONSTRUCT 2: Anxiety-Driven Gap (3 items, reverse-scored — high = big gap)
+    // CONSTRUCT 2: Anxiety-Driven Gap (3 items — high = big gap)
     {
-      id: 'c2q1',
-      construct: 2,
-      constructName: 'Anxiety-Driven Gap',
+      id: 'c2q1', construct: 2, constructName: 'Anxiety-Driven Gap',
       text: 'Before an important presentation or call, you spend more time worrying about how you\u2019ll be perceived than preparing what you\u2019ll say.',
-      lowLabel: 'Not at all',
-      highLabel: 'Almost always'
+      lowLabel: 'Not at all', highLabel: 'Almost always'
     },
     {
-      id: 'c2q2',
-      construct: 2,
-      constructName: 'Anxiety-Driven Gap',
+      id: 'c2q2', construct: 2, constructName: 'Anxiety-Driven Gap',
       text: 'Around more senior people \u2014 investors, board members, industry leaders \u2014 you notice a version of yourself that\u2019s measurably less capable than the one your own team sees.',
-      lowLabel: 'No difference',
-      highLabel: 'Major difference'
+      lowLabel: 'No difference', highLabel: 'Major difference'
     },
     {
-      id: 'c2q3',
-      construct: 2,
-      constructName: 'Anxiety-Driven Gap',
+      id: 'c2q3', construct: 2, constructName: 'Anxiety-Driven Gap',
       text: 'After high-stakes interactions, you replay the conversation in your head, fixating on what you should have said differently.',
-      lowLabel: 'Rarely',
-      highLabel: 'Almost every time'
+      lowLabel: 'Rarely', highLabel: 'Almost every time'
     },
 
-    // CONSTRUCT 3: Skill-Based Gap (3 items, self-rated competence — LOW score = big gap, inverted later)
+    // CONSTRUCT 3: Skill-Based Gap (3 items — LOW score = big gap, inverted)
     {
-      id: 'c3q1',
-      construct: 3,
-      constructName: 'Skill-Based Gap',
+      id: 'c3q1', construct: 3, constructName: 'Skill-Based Gap',
       text: 'When you need to explain a complex idea \u2014 strategy, technical architecture, financial model \u2014 you can consistently structure it so the other person follows without effort.',
-      lowLabel: 'Struggle with this',
-      highLabel: 'Strong at this'
+      lowLabel: 'Struggle with this', highLabel: 'Strong at this'
     },
     {
-      id: 'c3q2',
-      construct: 3,
-      constructName: 'Skill-Based Gap',
-      text: 'You adjust how you communicate based on who\u2019s in the room \u2014 different register for engineers vs. investors vs. customers \u2014 without losing authenticity.',
-      lowLabel: 'Not naturally',
-      highLabel: 'Effortlessly'
+      id: 'c3q2', construct: 3, constructName: 'Skill-Based Gap',
+      text: 'When a conversation shifts unexpectedly \u2014 a question you didn\u2019t anticipate, a stakeholder who\u2019s skeptical \u2014 you adapt your message in real time without losing the thread.',
+      lowLabel: 'Usually thrown off', highLabel: 'Adapt easily'
     },
     {
-      id: 'c3q3',
-      construct: 3,
-      constructName: 'Skill-Based Gap',
-      text: 'In a meeting, you can tell within the first few minutes whether the room is with you or against you, and you adjust your approach accordingly.',
-      lowLabel: 'Rarely pick up on it',
-      highLabel: 'Almost always'
+      id: 'c3q3', construct: 3, constructName: 'Skill-Based Gap',
+      text: 'You can read a room mid-conversation \u2014 noticing when you\u2019ve lost attention, when someone disagrees but won\u2019t say it, when the energy shifts \u2014 and adjust accordingly.',
+      lowLabel: 'Often miss it', highLabel: 'Pick up on it reliably'
     },
 
-    // CONSTRUCT 4: Identity/Role Gap (4 items, reverse-scored — high = big gap)
+    // CONSTRUCT 4: Identity / Role Gap (4 items — high = big gap)
     {
-      id: 'c4q1',
-      construct: 4,
-      constructName: 'Identity / Role Gap',
-      text: 'When things go well \u2014 you land a deal, nail a presentation, get praised publicly \u2014 your first thought is that you got lucky or that they don\u2019t know the full picture.',
-      lowLabel: 'Never think this',
-      highLabel: 'Think this constantly'
+      id: 'c4q1', construct: 4, constructName: 'Identity / Role Gap',
+      text: 'Even after clear successes \u2014 a deal closed, a round raised, a team built \u2014 you find it hard to believe those outcomes are a reliable reflection of your ability.',
+      lowLabel: 'I own my wins', highLabel: 'Wins feel like luck'
     },
     {
-      id: 'c4q2',
-      construct: 4,
-      constructName: 'Identity / Role Gap',
-      text: 'There\u2019s a nagging sense that one day people will figure out you\u2019re not as capable as they currently believe.',
-      lowLabel: 'Not at all',
-      highLabel: 'Very much'
+      id: 'c4q2', construct: 4, constructName: 'Identity / Role Gap',
+      text: 'You hold back from claiming authority or expertise in your domain, even when you\u2019re clearly the most qualified person in the room.',
+      lowLabel: 'Not at all', highLabel: 'Regularly'
     },
     {
-      id: 'c4q3',
-      construct: 4,
-      constructName: 'Identity / Role Gap',
-      text: 'You\u2019ve moved into a bigger role \u2014 CEO, partner, head of \u2014 but internally you still feel like the person from two roles ago.',
-      lowLabel: 'No, I\u2019ve grown into it',
-      highLabel: 'Yes, frequently'
+      id: 'c4q3', construct: 4, constructName: 'Identity / Role Gap',
+      text: 'There\u2019s a gap between what your title or role demands and who you feel like on the inside \u2014 CEO on paper, uncertain on the inside.',
+      lowLabel: 'My role fits', highLabel: 'Constant gap'
     },
     {
-      id: 'c4q4',
-      construct: 4,
-      constructName: 'Identity / Role Gap',
-      text: 'There\u2019s a gap between the leader you know you should be and the one you actually feel like when the pressure is on.',
-      lowLabel: 'No gap',
-      highLabel: 'Significant gap'
+      id: 'c4q4', construct: 4, constructName: 'Identity / Role Gap',
+      text: 'You fear that if people saw the full, unfiltered version of how you think and operate, they\u2019d be less impressed than they currently are.',
+      lowLabel: 'Not a concern', highLabel: 'Genuine fear'
     },
 
-    // CONSTRUCT 5: Structural Gap (4 items, self-rated awareness — LOW score = big gap, inverted later)
+    // CONSTRUCT 5: Structural Gap (4 items — LOW = big gap, inverted)
     {
-      id: 'c5q1',
-      construct: 5,
-      constructName: 'Structural Gap',
-      text: 'You can identify the specific situations or triggers that cause your communication to break down \u2014 not just that it happens, but the pattern behind it.',
-      lowLabel: 'Not really',
-      highLabel: 'Very clearly'
+      id: 'c5q1', construct: 5, constructName: 'Structural Gap',
+      text: 'You can articulate clearly, to yourself and others, what your specific communication strengths and weaknesses are.',
+      lowLabel: 'Not really', highLabel: 'Very clearly'
     },
     {
-      id: 'c5q2',
-      construct: 5,
-      constructName: 'Structural Gap',
+      id: 'c5q2', construct: 5, constructName: 'Structural Gap',
       text: 'If someone who works with you closely described your communication strengths and weaknesses, their list would match yours.',
-      lowLabel: 'Probably not',
-      highLabel: 'Almost exactly'
+      lowLabel: 'Probably not', highLabel: 'Almost exactly'
     },
     {
-      id: 'c5q3',
-      construct: 5,
-      constructName: 'Structural Gap',
+      id: 'c5q3', construct: 5, constructName: 'Structural Gap',
       text: 'When you receive direct, critical feedback on how you communicate, your instinct is to lean into it rather than defend against it.',
-      lowLabel: 'I tend to resist',
-      highLabel: 'I actively seek it'
+      lowLabel: 'I tend to resist', highLabel: 'I actively seek it'
     },
     {
-      id: 'c5q4',
-      construct: 5,
-      constructName: 'Structural Gap',
+      id: 'c5q4', construct: 5, constructName: 'Structural Gap',
       text: 'You believe your communication patterns can fundamentally change \u2014 not just small improvements, but real structural shifts in how you land.',
-      lowLabel: 'Skeptical',
-      highLabel: 'Fully confident'
+      lowLabel: 'Skeptical', highLabel: 'Fully confident'
     }
   ];
 
@@ -988,52 +1041,74 @@
   var PROFILES = {
     'pressure-crumbler': {
       name: 'The Pressure Crumbler',
-      desc: 'You\u2019re capable \u2014 your team knows it, your track record proves it. But when the stakes rise, something shifts. The thinking that\u2019s sharp in preparation becomes foggy in delivery. This isn\u2019t a competence problem. It\u2019s a pressure-response pattern.',
-      coaching: 'The work here is neurological, not intellectual. You don\u2019t need more preparation \u2014 you need a different relationship with pressure. The goal is making your high-stakes performance match your low-stakes capability.',
-      readLink: '/writing/trying-harder-will-make-it-worse.html',
-      readTitle: 'Trying Harder Will Make It Worse'
+      desc: 'You\u2019re capable \u2014 your team knows it, your track record proves it. But when the stakes rise, something shifts. The thinking that\u2019s sharp in preparation becomes foggy in delivery. This isn\u2019t a competence problem. It\u2019s a pressure-response pattern that was wired in long before you had a boardroom to walk into.',
+      coaching: 'The work here is neurological, not intellectual. You don\u2019t need more preparation \u2014 you need a different relationship with pressure itself. Specifically, you need to retrain the threat-detection system that currently treats a skeptical investor the way it once treated a genuine physical danger. The goal is making your high-stakes performance match your low-stakes capability.',
+      priority: 'Start with construct 1 (Pressure). Your nervous system is the bottleneck. Until the freeze/flight/fawn response is retrained, improvements in other areas won\u2019t hold under load. Work on regulation first, then use the new capacity to address any secondary elevations.',
+      readLinks: [
+        { href: '/writing/trying-harder-will-make-it-worse.html', title: 'Trying Harder Will Make It Worse' },
+        { href: '/writing/10-research-backed-tools-to-calm-down.html', title: '10 Research-Backed Tools to Calm Down Before Speaking' }
+      ]
     },
     'anxious-expert': {
       name: 'The Anxious Expert',
-      desc: 'High competence, high anxiety. You know your material better than almost anyone in the room, but the worry about how you\u2019ll be perceived consumes bandwidth that should go to delivery. The gap isn\u2019t between you and the audience \u2014 it\u2019s between your capability and the anxiety sitting on top of it.',
-      coaching: 'This is the most common pattern in high-performers. The anxiety isn\u2019t a character flaw \u2014 it\u2019s a threat-detection system misfiring in a social context. The work targets the evaluation-sensitivity directly, not the communication.',
-      readLink: '/writing/even-100m-entrepreneurs-get-nervous-heres-why.html',
-      readTitle: 'Even $100M Entrepreneurs Get Nervous. Here\u2019s Why.'
+      desc: 'High competence, high anxiety. You know your material better than almost anyone in the room, but the worry about how you\u2019ll be perceived consumes bandwidth that should go to delivery. The gap isn\u2019t between you and the audience \u2014 it\u2019s between your capability and the anxiety sitting on top of it. This is the most common pattern in high-performers who were rewarded early for appearing competent and now can\u2019t tolerate any context where that competence might be questioned.',
+      coaching: 'This is the most common pattern in high-performers. The anxiety isn\u2019t a character flaw \u2014 it\u2019s a threat-detection system that learned to treat social evaluation as a survival threat. Lisa Feldman Barrett\u2019s research on constructed emotion shows that the story you tell yourself about your physical sensations largely generates the emotion itself. The work targets the evaluation-sensitivity directly, not the communication.',
+      priority: 'Start with construct 2 (Anxiety). Your skill level is likely fine \u2014 the anxiety is masking it. Cognitive restructuring of the evaluation-threat response comes first. Once the anxiety drops, you\u2019ll likely find the pressure response (construct 1) improves as a downstream effect.',
+      readLinks: [
+        { href: '/writing/even-100m-entrepreneurs-get-nervous-heres-why.html', title: 'Even $100M Entrepreneurs Get Nervous. Here\u2019s Why.' },
+        { href: '/writing/influence-isnt-cognitive-its-biological.html', title: 'Influence Isn\u2019t Cognitive. It\u2019s Biological.' }
+      ]
     },
     'confident-novice': {
       name: 'The Confident Novice',
-      desc: 'You don\u2019t freeze under pressure. You don\u2019t spiral with anxiety. But the signal still doesn\u2019t land the way it should \u2014 because there are genuine skill gaps in how you structure, adapt, and read the room. This is actually the most straightforward gap to close.',
-      coaching: 'Skill gaps are the most coachable category. Unlike anxiety or identity, they respond directly to deliberate practice. The work is structured: build the specific communication competencies that are missing, with rapid feedback loops.',
-      readLink: '/writing/how-to-have-great-conversations.html',
-      readTitle: 'How to Have Great Conversations'
+      desc: 'You don\u2019t freeze under pressure. You don\u2019t spiral with anxiety. But the signal still doesn\u2019t land the way it should \u2014 because there are genuine gaps in how you structure ideas, read audiences, and adapt in real time. This is actually the most straightforward gap to close, and the one that responds fastest to deliberate practice.',
+      coaching: 'Skill gaps are the most coachable category. Unlike anxiety or identity, they respond directly to structured practice with feedback. The work is targeted: we identify the specific communication competencies that are missing \u2014 message structure, audience adaptation, room-reading, narrative arc \u2014 and build them through live rehearsal against real upcoming stakes.',
+      priority: 'Start with construct 3 (Skill). This is the fastest path to visible improvement. Skill building creates a positive feedback loop: better structure leads to better reactions from audiences, which builds confidence, which makes the next high-stakes moment easier.',
+      readLinks: [
+        { href: '/writing/how-to-have-great-conversations.html', title: 'How to Have Great Conversations' },
+        { href: '/writing/dont-pitch-your-idea-until-youve-done-this-first.html', title: 'Don\u2019t Pitch Your Idea Until You\u2019ve Done This First' }
+      ]
     },
     'impostor': {
       name: 'The Impostor',
-      desc: 'Success doesn\u2019t update your self-model. You land the deal, close the round, lead the team \u2014 and attribute it to timing, luck, or other people\u2019s low standards. The gap isn\u2019t in your performance. It\u2019s in the story you tell yourself about your performance.',
-      coaching: 'Impostor syndrome isn\u2019t fixed by more wins. It\u2019s fixed by changing the attribution system \u2014 how you explain your own outcomes to yourself. The work here is identity-level: who are you allowed to be? What success are you permitted to own?',
-      readLink: '/writing/youre-drifting-and-you-dont-know-it.html',
-      readTitle: 'You\u2019re Drifting and You Don\u2019t Know It'
+      desc: 'Success doesn\u2019t update your self-model. You land the deal, close the round, lead the team \u2014 and attribute it to timing, luck, or other people\u2019s low standards. The gap isn\u2019t in your performance. It\u2019s in the story you tell yourself about your performance. Clance & Imes (1978) first documented this pattern; subsequent research shows it\u2019s most acute in high-achievers and intensifies with career advancement, not despite it.',
+      coaching: 'Impostor syndrome isn\u2019t fixed by more wins \u2014 that\u2019s been tried. It\u2019s fixed by changing the attribution system: how you explain your own outcomes to yourself. The work is identity-level: who are you allowed to be? What success are you permitted to own? This requires a different kind of coaching than skill-building or anxiety reduction. It\u2019s about rewriting the rules, not improving the performance.',
+      priority: 'Start with construct 4 (Identity). The impostor narrative is the keystone. It distorts your perception of every other construct \u2014 making pressure feel more threatening, anxiety feel more justified, and skill improvements feel less durable. Address the identity question first and the other constructs often improve without direct intervention.',
+      readLinks: [
+        { href: '/writing/youre-drifting-and-you-dont-know-it.html', title: 'You\u2019re Drifting and You Don\u2019t Know It' },
+        { href: '/writing/if-your-product-is-good-why-are-you-afraid.html', title: 'If Your Product Is Good, Why Are You Afraid?' }
+      ]
     },
     'blind-spot': {
       name: 'The Blind Spot',
-      desc: 'The gap exists but you can\u2019t see its shape. You may not have a clear picture of how you come across, what your communication patterns actually are, or what triggers your breakdowns. Without insight, the other gaps can\u2019t be addressed.',
-      coaching: 'Low structural awareness is the prerequisite problem. Before working on pressure, anxiety, or skill, you need accurate data about your own patterns. The work starts with calibration: building the self-monitoring capacity that makes all other coaching effective.',
-      readLink: '/writing/influence-starts-before-you-open-your-mouth.html',
-      readTitle: 'Influence Starts Before You Open Your Mouth'
+      desc: 'The gap exists but you can\u2019t see its shape. You may not have a clear picture of how you come across, what your communication patterns actually are, or what triggers your breakdowns. Without accurate self-awareness, interventions for the other constructs can\u2019t be properly targeted. This is the prerequisite problem.',
+      coaching: 'Low structural awareness is the foundation issue. Before working on pressure, anxiety, skill, or identity, you need accurate data about your own patterns. The work starts with calibration: recording, reviewing, and getting structured feedback on your communication in real stakes. Building the self-monitoring capacity that makes all other coaching effective.',
+      priority: 'Start with construct 5 (Structural Awareness). You can\u2019t fix what you can\u2019t see. The first phase is building accurate self-perception through structured observation, 360-degree feedback, and recorded practice. Once you can see your patterns clearly, the specific interventions for other constructs become obvious.',
+      readLinks: [
+        { href: '/writing/influence-starts-before-you-open-your-mouth.html', title: 'Influence Starts Before You Open Your Mouth' },
+        { href: '/writing/start-treating-people-like-theyre-an-ai.html', title: 'Start Treating People Like They\u2019re an AI' }
+      ]
     },
     'tangled': {
       name: 'The Tangled Gap',
-      desc: 'Multiple constructs are elevated \u2014 pressure, anxiety, and identity are feeding each other in a self-reinforcing loop. You feel like an impostor, so you get anxious, so you underperform under pressure, which confirms the impostor story. This is the most common pattern in high-achieving executives.',
-      coaching: 'The tangled gap requires sequenced intervention. You can\u2019t work on everything at once. The first move is identifying the keystone \u2014 the one construct that, if addressed, loosens the others. Usually it\u2019s identity, but the assessment data tells the real story.',
-      readLink: '/writing/10-research-backed-tools-to-calm-down.html',
-      readTitle: '10 Research-Backed Tools to Calm Down Before Speaking'
+      desc: 'Multiple constructs are elevated \u2014 pressure, anxiety, and identity are feeding each other in a self-reinforcing loop. You feel like an impostor, so you get anxious before high-stakes moments, so you underperform under pressure, which confirms the impostor story, which increases the anxiety next time. This is the most common pattern in high-achieving executives, and it\u2019s the hardest to untangle alone because the constructs mask each other.',
+      coaching: 'The tangled gap requires sequenced intervention. You can\u2019t work on everything at once \u2014 that\u2019s how most coaching fails for this pattern. The first move is identifying the keystone: the one construct that, if addressed, loosens the others. Usually it\u2019s identity (the impostor narrative drives the anxiety which triggers the pressure response), but the assessment data tells the real story.',
+      priority: 'Your pattern requires sequencing, not shotgun coaching. We identify the keystone construct \u2014 the one feeding the others \u2014 and address that first. For most tangled patterns, the sequence is: Identity first (rewrite the attribution system), then Anxiety (retrain the evaluation-threat), then Pressure (the response that\u2019s been driven by the first two). Each phase unlocks the next.',
+      readLinks: [
+        { href: '/writing/10-research-backed-tools-to-calm-down.html', title: '10 Research-Backed Tools to Calm Down Before Speaking' },
+        { href: '/writing/trying-harder-will-make-it-worse.html', title: 'Trying Harder Will Make It Worse' },
+        { href: '/writing/youre-drifting-and-you-dont-know-it.html', title: 'You\u2019re Drifting and You Don\u2019t Know It' }
+      ]
     },
     'low-gap': {
       name: 'Low-Gap Profile',
-      desc: 'No single construct scored above the threshold. Either your capability and perception are well-aligned, or you may have answered conservatively. If communication still feels like it\u2019s not landing the way it should, a conversation would surface what the assessment can\u2019t.',
-      coaching: 'A low-gap result doesn\u2019t mean there\u2019s no room to grow. It means the standard constructs aren\u2019t where the issue lives. The work here is diagnostic \u2014 a 30-minute conversation often reveals patterns that a self-report assessment misses.',
-      readLink: '/writing/if-i-could-only-tell-you-one-thing-about-communication.html',
-      readTitle: 'If I Could Only Tell You One Thing About Communication'
+      desc: 'No single construct scored above the 60% threshold. Either your capability and perception are well-aligned, or the specific constructs this assessment measures aren\u2019t where your particular gap lives. Some gaps are highly contextual \u2014 they only appear in specific rooms, with specific people, or around specific topics \u2014 and a self-report assessment may not surface them.',
+      coaching: 'A low-gap result doesn\u2019t mean there\u2019s no room to grow. It means the standard constructs aren\u2019t where the issue lives for you. The work here is diagnostic: a 30-minute conversation often reveals patterns that a self-report assessment misses, because the most impactful gaps are often the ones you\u2019ve built an entire career strategy around avoiding.',
+      priority: 'Your results suggest no single dominant construct. If communication still feels like it\u2019s not landing the way it should in certain contexts, the next step is a live diagnostic conversation. Self-report instruments have a ceiling \u2014 the patterns that matter most are often the ones hardest to self-identify.',
+      readLinks: [
+        { href: '/writing/if-i-could-only-tell-you-one-thing-about-communication.html', title: 'If I Could Only Tell You One Thing About Communication' },
+        { href: '/writing/how-to-have-great-conversations.html', title: 'How to Have Great Conversations' }
+      ]
     }
   };
 
@@ -1055,7 +1130,135 @@
     'Self-awareness of your own communication patterns, openness to feedback, and belief in your capacity to change.'
   ];
 
-  // Kit tags for each profile
+  // Interpretation text by score tier
+  var CONSTRUCT_INTERPRETATIONS = {
+    1: {
+      low: 'You maintain composure and clarity under pressure. Your communication doesn\u2019t degrade significantly when stakes rise.',
+      moderate: 'Pressure causes some narrowing of your communication. You may lose access to ideas that were clear in preparation, particularly when challenged publicly.',
+      high: 'Pressure is a primary driver of your gap. Your nervous system is treating social-evaluative situations as threats, triggering freeze/flight/fawn responses that override your cognitive capacity. This is neurological, not a character failing.'
+    },
+    2: {
+      low: 'Evaluation anxiety is not a significant factor. You don\u2019t lose meaningful bandwidth to worrying about perception.',
+      moderate: 'Social evaluation creates moderate interference. You may notice a version of yourself around senior people that\u2019s less capable than the version your own team sees.',
+      high: 'Anxiety about being evaluated is consuming bandwidth that should go to delivery. This pattern typically intensifies with career advancement \u2014 the more you have to lose, the louder the threat signal becomes.'
+    },
+    3: {
+      low: 'You have strong foundational communication skills \u2014 structuring ideas, reading rooms, adapting in real time.',
+      moderate: 'Some communication mechanics could be stronger. You may struggle to restructure your message when conversations shift unexpectedly or miss room-reading signals under load.',
+      high: 'There are genuine skill gaps in communication mechanics. The good news: this is the most coachable construct. Unlike anxiety or identity, skill gaps respond directly to structured practice with feedback.'
+    },
+    4: {
+      low: 'You have a healthy relationship with your own competence. Wins update your self-model accurately.',
+      moderate: 'Some pattern of under-claiming or attribution distortion. You may hold back from asserting expertise even when you\u2019re clearly the most qualified person in the room.',
+      high: 'This is a classic impostor pattern. Success doesn\u2019t update your self-model \u2014 wins are attributed to luck, timing, or low standards. Clance & Imes documented this in 1978; it\u2019s most acute in high-achievers and intensifies with advancement.'
+    },
+    5: {
+      low: 'You have accurate self-awareness of your communication patterns and are open to feedback.',
+      moderate: 'Your self-perception may have some blind spots. There may be a gap between how you think you come across and how others actually experience you.',
+      high: 'Limited visibility into your own communication patterns. This is the prerequisite problem \u2014 without accurate self-awareness, interventions for other constructs can\u2019t be properly targeted.'
+    }
+  };
+
+  // Research-backed recommendations per construct by tier
+  var CONSTRUCT_RECS = {
+    1: {
+      low: ['Continue using pre-performance routines that maintain state regulation.'],
+      moderate: [
+        'Practice the physiological sigh (double inhale through nose, long exhale through mouth) \u2014 Huberman Lab research shows it\u2019s the fastest known voluntary method for downregulating the stress response. Takes 45 seconds.',
+        'Before high-stakes moments, do 5 minutes of \"cognitive defusion\" \u2014 name the pressure response as it arrives (\"There\u2019s the narrowing\") rather than trying to suppress it. ACT research shows naming reduces the response by ~40%.',
+        'Build exposure ladders: systematically increase the stakes of your practice environments. The gap between preparation and performance closes through graduated exposure, not repetition at comfortable levels.'
+      ],
+      high: [
+        'Your nervous system needs retraining, not more preparation. The physiological sigh (double inhale, long exhale) is the fastest voluntary intervention \u2014 practice it 20+ times in low-stakes contexts so it becomes automatic before deploying it under pressure.',
+        'Record yourself in actual high-stakes situations (with permission). The gap between what you think is happening internally and what others see is almost always larger than you expect \u2014 often in your favour.',
+        'Do \"hot cognition\" practice: rehearse not just the content but the specific physiological state. Have someone interrupt, challenge, or go off-script during practice. The goal is building familiarity with the activation itself.',
+        'Consider somatic work (polyvagal-informed). The freeze response you\u2019re experiencing is subcortical \u2014 it can\u2019t be thought through, it has to be trained through the body. Levine\u2019s and Porges\u2019 work provides the framework.'
+      ]
+    },
+    2: {
+      low: ['Your evaluation-threat system is well-calibrated. No specific intervention needed.'],
+      moderate: [
+        'Practice \"perspective-taking reversal\": before a high-stakes interaction, spend 2 minutes writing down what the other person is worried about. Research by Epley et al. shows this shifts attention from self-evaluation to other-orientation, reducing anxiety.',
+        'Develop a pre-performance ritual that\u2019s physical, not cognitive. A 2-minute walk, specific hand movements, or even power posing (Carney et al., contested but useful as a ritual anchor). The ritual itself matters less than the consistency.',
+        'Track your predictions vs. outcomes. Keep a 30-day log: before each high-stakes moment, write your anxiety prediction (1-10). After, write what actually happened. Most people discover their anxiety predictions are systematically 3-4 points higher than reality.'
+      ],
+      high: [
+        'Your evaluation-threat system is misfiring. The anxiety is constructed emotion (Barrett, 2017) \u2014 your brain is interpreting physiological arousal as social threat when it\u2019s actually just activation. The work is in reappraising the sensation, not suppressing it.',
+        'Implement \"anxiety reappraisal\" (Brooks, 2014): before high-stakes moments, tell yourself \"I am excited\" rather than \"I am calm.\" Research shows reappraisal into a positive valence state is more effective than trying to calm down \u2014 the arousal stays, but the interpretation changes.',
+        'Systematic desensitization to evaluation contexts: create a hierarchy from mildly evaluative (team meeting) to intensely evaluative (board presentation) and work through each level with deliberate practice.',
+        'Post-event processing: immediately after high-stakes interactions, write three things that went well before allowing any critical review. This counters the negativity bias in post-event rumination that maintains the anxiety cycle.'
+      ]
+    },
+    3: {
+      low: ['Maintain current skill levels through continued deliberate practice in varied contexts.'],
+      moderate: [
+        'Practice the \"message triangle\": before any important communication, identify three points maximum. Research on cognitive load shows audiences retain at most three key ideas from any single interaction.',
+        'Develop room-reading as a deliberate practice. In your next 10 meetings, write down one observation about each person\u2019s engagement level at the midpoint. This builds the perceptual muscle that currently may be underdeveloped.',
+        'Study and practice \"bridging\" \u2014 the technique for redirecting a conversation back to your key message when it goes off track. Media training uses this extensively; it transfers directly to boardroom and investor contexts.'
+      ],
+      high: [
+        'Build a structured communication framework: Situation-Complication-Resolution (Minto Pyramid) for analytical audiences, Problem-Agitate-Solve for persuasive contexts. Practice both until they\u2019re automatic.',
+        'Record every important presentation or meeting (with permission) for 30 days. Review with a specific checklist: pace, filler words, argument structure, audience engagement checks, response to questions. Data before intervention.',
+        'Get a communication coach or join a structured feedback group (not Toastmasters \u2014 the feedback quality is too uneven). You need targeted, expert-level feedback on specific mechanics, not general encouragement.',
+        'Practice improvisation exercises: improv comedy training transfers directly to adaptive communication. The skill of \"yes, and\" is exactly the skill of real-time conversational adaptation.'
+      ]
+    },
+    4: {
+      low: ['Your attribution system is healthy. Continue owning your outcomes accurately.'],
+      moderate: [
+        'Start an \"evidence log\": at the end of each week, write down three outcomes that were directly caused by your decisions, skill, or effort. The goal is building a counter-narrative to the default minimisation pattern.',
+        'Practice \"claiming\" language in low-stakes contexts. Instead of \"we got lucky with the timing,\" practice saying \"I identified the opportunity and moved on it.\" The language shapes the attribution, not just the other way around.',
+        'Pay attention to how you describe your work to others. If you consistently use hedging language (\"I think,\" \"it kind of,\" \"we were fortunate that\"), notice it without judging it. Awareness is the first intervention.'
+      ],
+      high: [
+        'The impostor pattern is maintained by a specific attribution error: you attribute success externally (luck, timing, low standards) and failure internally (it\u2019s me, I\u2019m not enough). This asymmetry is the target.',
+        'Write your \"counter-CV\": a document listing every significant professional success and, for each one, the specific decisions, skills, and actions that directly caused it. Review weekly for 60 days. The goal is building an alternative story with evidence.',
+        'Identify the origin story. Impostor patterns usually trace to a specific context where \"being found out\" was a real risk \u2014 first-generation professional, career switcher, rapid advancement beyond your reference group. Naming the origin reduces its power over current situations.',
+        'Work with someone who can hold the mirror. Impostor syndrome is uniquely resistant to self-help because the pattern distorts the self-assessment mechanism itself. You need an external calibration source who will reflect your actual competence back to you consistently.'
+      ]
+    },
+    5: {
+      low: ['Your self-awareness and feedback orientation are assets. Use them to accelerate work on other constructs.'],
+      moderate: [
+        'Request specific, behavioural feedback from 3 trusted colleagues: \"What do I do when I\u2019m communicating well? What do I do when I\u2019m not?\" The gap between their observations and your self-assessment is the blind spot.',
+        'Video-record yourself in three different communication contexts (presentation, 1-on-1, group discussion) and review with the question: \"Would I hire this person?\" The distance created by video often reveals patterns invisible in the moment.',
+        'Practice metacognitive monitoring: during your next important meeting, check in with yourself at the 10-minute mark. How are you doing? What\u2019s your energy? Has the room shifted? Building this real-time monitoring is a trainable skill.'
+      ],
+      high: [
+        'You need data before you need coaching. Record yourself in 5 different high-stakes contexts over the next month. Watch each recording twice: once for content, once for delivery. Take notes on patterns you notice.',
+        'Commission a 360-degree feedback process focused specifically on communication: how you present, how you listen, how you handle disagreement, how you come across in different contexts. Generic 360s are too broad \u2014 you need communication-specific questions.',
+        'Start a \"communication journal\": after every significant interaction, write 3 sentences about what happened, what you intended, and what you think the other person experienced. Over 30 days, patterns will emerge that self-assessment alone can\u2019t surface.',
+        'Find a \"communication mirror\" \u2014 someone who will give you honest, specific feedback after they observe you in real situations. Not a friend (too nice), not a stranger (no context). A professional who has seen enough communicators to calibrate accurately.'
+      ]
+    }
+  };
+
+  // Research instruments that inform each construct
+  var CONSTRUCT_INSTRUMENTS = [
+    [],
+    [
+      { name: 'Personal Report of Communication Apprehension (PRCA-24)', source: 'McCroskey, 1982' },
+      { name: 'Fight-Flight-Freeze-Fawn Questionnaire', source: 'Maack et al., 2015 (adapted)' }
+    ],
+    [
+      { name: 'Brief Fear of Negative Evaluation Scale (BFNE-S)', source: 'Leary, 1983 / Carleton et al., 2006' },
+      { name: 'Social Interaction Anxiety Scale (SIAS)', source: 'Mattick & Clarke, 1998' }
+    ],
+    [
+      { name: 'Willingness to Communicate Scale (WTC)', source: 'McCroskey & Richmond, 1987' },
+      { name: 'Communicative Self-Report Scale (CSRS)', source: 'adapted from multiple sources' }
+    ],
+    [
+      { name: 'Clance Impostor Phenomenon Scale (CIPS-10)', source: 'Clance, 1985 (short form)' },
+      { name: 'Fear of Success Scale', source: 'Zuckerman & Allison, 1976' }
+    ],
+    [
+      { name: 'Self-Reflection and Insight Scale (SRIS-12)', source: 'Grant et al., 2002' },
+      { name: 'Constructive Thinking Inventory (CTI)', source: 'Epstein, 2001 (adapted)' }
+    ]
+  ];
+
+  // Kit tags
   var PROFILE_TAGS = {
     'pressure-crumbler': 17009509,
     'anxious-expert':    17009511,
@@ -1065,12 +1268,18 @@
     'tangled':           17009515,
     'low-gap':           17009516
   };
+  var TAG_BEGAN = 17014749;
+  var TAG_COMPLETED = 17014750;
+  var TAG_SOURCE = 17009523;
+  var KIT_API_KEY = 'GXwvYXvNYOsCjiliB4ILTA';
+  var KIT_FORM_ID = '9098413';
 
   // ─── STATE ──────────────────────────────────────────────
   var currentIndex = 0;
-  var answers = {};  // { 'c1q1': 3, ... }
+  var answers = {};
   var profileKey = '';
-  var scores = {};   // { 1: 75, 2: 40, ... }
+  var scores = {};
+  var userEmail = '';
 
   // ─── DOM REFS ───────────────────────────────────────────
   var screenIntro    = document.getElementById('screen-intro');
@@ -1078,7 +1287,8 @@
   var screenResults  = document.getElementById('screen-results');
   var progressWrap   = document.querySelector('.progress-wrap');
   var progressBar    = document.querySelector('.progress-bar');
-  var btnStart       = document.getElementById('btn-start');
+  var heroGateForm   = document.getElementById('hero-gate-form');
+  var heroGateError  = document.getElementById('hero-gate-error');
   var btnPrev        = document.getElementById('btn-prev');
   var btnNext        = document.getElementById('btn-next');
   var qNumber        = document.getElementById('q-number');
@@ -1091,10 +1301,7 @@
   var profileDescEl  = document.getElementById('profile-desc');
   var profileCoachEl = document.getElementById('profile-coaching');
   var constructList  = document.getElementById('construct-list');
-  var readNextLink   = document.getElementById('read-next-link');
-  var gateForm       = document.getElementById('gate-form');
-  var gateError      = document.getElementById('gate-error');
-  var gateSuccess    = document.getElementById('gate-success');
+  var nav            = document.querySelector('.nav');
 
   // ─── GOATCOUNTER HELPER ─────────────────────────────────
   function trackEvent(name) {
@@ -1103,19 +1310,49 @@
     }
   }
 
+  // ─── KIT API HELPERS ────────────────────────────────────
+  function kitSubscribe(email, tags, fields) {
+    var body = {
+      api_key: KIT_API_KEY,
+      email: email,
+      tags: tags,
+      fields: fields
+    };
+    return fetch('https://api.convertkit.com/v3/forms/' + KIT_FORM_ID + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Kit API error');
+      return res.json();
+    });
+  }
+
+  function kitTagSubscriber(email, tagId) {
+    return fetch('https://api.convertkit.com/v3/tags/' + tagId + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ api_key: KIT_API_KEY, email: email })
+    });
+  }
+
   // ─── SCREEN TRANSITIONS ─────────────────────────────────
   function showScreen(el) {
     [screenIntro, screenQ, screenResults].forEach(function (s) {
       s.classList.remove('is-active', 'is-visible');
     });
     el.classList.add('is-active');
-    // Slight delay for opacity transition
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         el.classList.add('is-visible');
       });
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Force nav to solid when leaving the dark hero
+    if (el !== screenIntro && nav) {
+      nav.classList.add('nav--scrolled');
+    }
   }
 
   // ─── RENDER QUESTION ───────────────────────────────────
@@ -1127,11 +1364,9 @@
     scaleLow.textContent = q.lowLabel;
     scaleHigh.textContent = q.highLabel;
 
-    // Update progress
     var pct = ((currentIndex) / QUESTIONS.length) * 100;
     progressBar.style.width = pct + '%';
 
-    // Restore selection if answered
     var saved = answers[q.id];
     scaleBtns.forEach(function (btn) {
       var val = parseInt(btn.getAttribute('data-value'));
@@ -1140,15 +1375,11 @@
       btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
       btn.setAttribute('tabindex', isSelected ? '0' : '-1');
     });
-    // If nothing selected, first button gets tabindex 0
     if (!saved) {
       scaleBtns[0].setAttribute('tabindex', '0');
     }
 
-    // Back button visibility
     btnPrev.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
-
-    // Next button state
     btnNext.disabled = !saved;
     btnNext.textContent = currentIndex === QUESTIONS.length - 1 ? 'See Results' : 'Next';
   }
@@ -1166,7 +1397,6 @@
       });
       btnNext.disabled = false;
 
-      // Auto-advance after short delay (feels snappy)
       if (currentIndex < QUESTIONS.length - 1) {
         setTimeout(function () {
           currentIndex++;
@@ -1176,7 +1406,7 @@
     });
   });
 
-  // Keyboard navigation for radio group
+  // Keyboard navigation
   document.querySelector('.scale-buttons').addEventListener('keydown', function (e) {
     var keys = ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'];
     if (keys.indexOf(e.key) === -1) return;
@@ -1192,25 +1422,64 @@
     }
   });
 
-  // ─── NAV BUTTONS ────────────────────────────────────────
-  btnStart.addEventListener('click', function () {
-    showScreen(screenQ);
-    progressWrap.classList.add('is-visible');
-    renderQuestion();
-    trackEvent('assessment-start');
+  // ─── HERO EMAIL GATE ─────────────────────────────────
+  heroGateForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('gate-email').value.trim();
+    var honeypot = heroGateForm.querySelector('.honeypot').value;
+
+    if (honeypot) {
+      // Bot — fake proceed
+      showScreen(screenQ);
+      progressWrap.classList.add('is-visible');
+      renderQuestion();
+      return;
+    }
+
+    if (!email) return;
+
+    var submitBtn = heroGateForm.querySelector('.btn-primary');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Starting...';
+    heroGateError.style.display = 'none';
+
+    kitSubscribe(email, [TAG_SOURCE, TAG_BEGAN], {
+      source: 'assessment',
+      page: '/assessment/',
+      referrer: document.referrer || 'direct'
+    })
+    .then(function () {
+      userEmail = email;
+      trackEvent('assessment-began');
+      showScreen(screenQ);
+      progressWrap.classList.add('is-visible');
+      renderQuestion();
+    })
+    .catch(function () {
+      heroGateError.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Begin';
+    });
   });
 
+  // ─── NAV BUTTONS ──────────────────────────────────────
   btnNext.addEventListener('click', function () {
     if (currentIndex < QUESTIONS.length - 1) {
       currentIndex++;
       renderQuestion();
     } else {
-      // Calculate and show results
       calculateScores();
       renderResults();
       showScreen(screenResults);
       progressWrap.classList.remove('is-visible');
       trackEvent('assessment-complete');
+
+      // Tag subscriber with completed + profile tags
+      if (userEmail) {
+        kitTagSubscriber(userEmail, TAG_COMPLETED);
+        var profileTagId = PROFILE_TAGS[profileKey];
+        if (profileTagId) kitTagSubscriber(userEmail, profileTagId);
+      }
     }
   });
 
@@ -1223,23 +1492,18 @@
 
   // ─── SCORING ENGINE ─────────────────────────────────────
   function calculateScores() {
-    // Group answers by construct
     var constructItems = { 1: [], 2: [], 3: [], 4: [], 5: [] };
     QUESTIONS.forEach(function (q) {
-      var val = answers[q.id] || 3; // default to middle if somehow unanswered
+      var val = answers[q.id] || 3;
       constructItems[q.construct].push(val);
     });
 
-    // Calculate raw percentage per construct
-    // For constructs 1, 2, 4: items scored directly (high answer = big gap)
-    // For constructs 3, 5: items are competence/awareness (high answer = small gap, invert)
     for (var c = 1; c <= 5; c++) {
       var items = constructItems[c];
       var maxPossible = items.length * 5;
       var sum = 0;
       for (var i = 0; i < items.length; i++) sum += items[i];
       var rawPct = ((sum - items.length) / (maxPossible - items.length)) * 100;
-      // Constructs 3 and 5: invert (high score on items = low gap)
       if (c === 3 || c === 5) {
         scores[c] = Math.round(100 - rawPct);
       } else {
@@ -1247,19 +1511,16 @@
       }
     }
 
-    // Determine profile
     var elevated = [];
     for (var c = 1; c <= 5; c++) {
       if (scores[c] > 60) elevated.push(c);
     }
 
-    // Check for tangled (1+2+4 all elevated)
     if (elevated.indexOf(1) !== -1 && elevated.indexOf(2) !== -1 && elevated.indexOf(4) !== -1) {
       profileKey = 'tangled';
     } else if (elevated.length === 0) {
       profileKey = 'low-gap';
     } else {
-      // Find highest single construct
       var highest = 0;
       var highestC = 1;
       for (var c = 1; c <= 5; c++) {
@@ -1272,7 +1533,6 @@
       profileKey = profileMap[highestC];
     }
 
-    // Encode results in hash for sharing
     var hash = encodeResults();
     if (history.replaceState) {
       history.replaceState(null, '', '#' + hash);
@@ -1281,7 +1541,6 @@
 
   // ─── ENCODE / DECODE RESULTS FOR URL ────────────────────
   function encodeResults() {
-    // Format: s=c1,c2,c3,c4,c5&p=profile-key
     return 's=' + scores[1] + ',' + scores[2] + ',' + scores[3] + ',' + scores[4] + ',' + scores[5] + '&p=' + profileKey;
   }
 
@@ -1310,7 +1569,14 @@
     }
   }
 
-  // ─── RENDER RESULTS ─────────────────────────────────────
+  // ─── SCORE TIER ────────────────────────────────────────
+  function scoreTier(pct) {
+    if (pct <= 30) return 'low';
+    if (pct <= 60) return 'moderate';
+    return 'high';
+  }
+
+  // ─── RENDER RESULTS (FULL REPORT) ─────────────────────
   function renderResults() {
     var profile = PROFILES[profileKey];
 
@@ -1319,23 +1585,49 @@
     profileDescEl.textContent = profile.desc;
     profileCoachEl.textContent = profile.coaching;
 
-    // Read next
-    readNextLink.href = profile.readLink;
-    readNextLink.textContent = profile.readTitle;
-
-    // Construct cards
+    // Construct cards with recommendations
     constructList.innerHTML = '';
     for (var c = 1; c <= 5; c++) {
       var pct = scores[c];
+      var tier = scoreTier(pct);
+      var isElevated = pct > 60;
       var card = document.createElement('div');
-      card.className = 'construct-card' + (pct > 60 ? ' is-elevated' : '');
+      card.className = 'construct-card' + (isElevated ? ' is-elevated' : '');
+
+      var interpretation = CONSTRUCT_INTERPRETATIONS[c][tier];
+      var recs = CONSTRUCT_RECS[c][tier];
+
+      var recsHtml = '';
+      if (recs && recs.length > 0) {
+        recsHtml = '<div class="construct-card-recs"><div class="construct-card-recs-label">' +
+          (isElevated ? 'Recommended Actions' : 'Maintaining') +
+          '</div><ul>';
+        for (var r = 0; r < recs.length; r++) {
+          recsHtml += '<li>' + recs[r] + '</li>';
+        }
+        recsHtml += '</ul></div>';
+      }
+
+      var instruments = CONSTRUCT_INSTRUMENTS[c];
+      var scienceHtml = '';
+      if (instruments && instruments.length > 0) {
+        var sources = [];
+        for (var s = 0; s < instruments.length; s++) {
+          sources.push(instruments[s].name + ' (' + instruments[s].source + ')');
+        }
+        scienceHtml = '<div class="construct-card-science">Informed by: ' + sources.join('; ') + '</div>';
+      }
+
       card.innerHTML =
         '<div class="construct-card-header">' +
           '<span class="construct-card-name">' + CONSTRUCT_NAMES[c] + '</span>' +
           '<span class="construct-card-score">' + pct + '%</span>' +
         '</div>' +
         '<div class="construct-card-bar"><div class="construct-card-fill" style="width: 0%"></div></div>' +
-        '<p class="construct-card-desc">' + CONSTRUCT_DESCS[c] + '</p>';
+        '<p class="construct-card-desc">' + interpretation + '</p>' +
+        recsHtml +
+        scienceHtml;
+
       constructList.appendChild(card);
 
       // Animate bar fill
@@ -1344,6 +1636,56 @@
           el.querySelector('.construct-card-fill').style.width = target + '%';
         }, 100);
       })(card, pct);
+    }
+
+    // Priority section
+    document.getElementById('priority-rationale').textContent = profile.priority;
+
+    var prioritySeq = document.getElementById('priority-sequence');
+    prioritySeq.innerHTML = '';
+    // Build ordered list of constructs by score (highest first)
+    var sorted = [];
+    for (var c = 1; c <= 5; c++) {
+      sorted.push({ c: c, score: scores[c] });
+    }
+    sorted.sort(function (a, b) { return b.score - a.score; });
+    for (var i = 0; i < sorted.length; i++) {
+      var step = document.createElement('div');
+      step.className = 'priority-step';
+      var isMuted = sorted[i].score <= 30;
+      step.innerHTML =
+        '<span class="priority-step-num">' + (i + 1) + '.</span>' +
+        '<span class="priority-step-text' + (isMuted ? ' is-muted' : '') + '">' +
+          CONSTRUCT_NAMES[sorted[i].c] + ' \u2014 ' + sorted[i].score + '%' +
+        '</span>';
+      prioritySeq.appendChild(step);
+    }
+
+    // Research instruments
+    var instrumentsEl = document.getElementById('research-instruments');
+    instrumentsEl.innerHTML = '';
+    for (var c = 1; c <= 5; c++) {
+      var insts = CONSTRUCT_INSTRUMENTS[c];
+      for (var s = 0; s < insts.length; s++) {
+        var row = document.createElement('div');
+        row.className = 'research-instrument';
+        row.innerHTML =
+          '<span class="research-instrument-name">' + insts[s].name + '</span>' +
+          '<span class="research-instrument-source">' + insts[s].source + '</span>';
+        instrumentsEl.appendChild(row);
+      }
+    }
+
+    // Recommended reading (multiple links)
+    var readLinksEl = document.getElementById('read-next-links');
+    readLinksEl.innerHTML = '';
+    for (var i = 0; i < profile.readLinks.length; i++) {
+      var link = document.createElement('a');
+      link.href = profile.readLinks[i].href;
+      link.textContent = profile.readLinks[i].title;
+      link.style.display = 'block';
+      if (i > 0) link.style.marginTop = 'var(--space-8)';
+      readLinksEl.appendChild(link);
     }
 
     // Draw radar
@@ -1384,9 +1726,8 @@
     var labels = ['Pressure', 'Anxiety', 'Skill Gap', 'Identity', 'Blind Spot'];
     var n = 5;
     var angleStep = (2 * Math.PI) / n;
-    var startAngle = -Math.PI / 2; // Start from top
+    var startAngle = -Math.PI / 2;
 
-    // Get computed colors
     var style = getComputedStyle(document.documentElement);
     var colorBorder = style.getPropertyValue('--ds-warm-border').trim() || '#ddd';
     var colorAccent = style.getPropertyValue('--ds-sienna').trim() || '#8b4d3b';
@@ -1394,10 +1735,9 @@
     var colorText = style.getPropertyValue('--ds-text-body').trim() || '#444';
     var colorMuted = style.getPropertyValue('--ds-text-muted').trim() || '#888';
 
-    // Clear
     ctx.clearRect(0, 0, displaySize, displaySize);
 
-    // Draw grid rings (20%, 40%, 60%, 80%, 100%)
+    // Grid rings
     for (var ring = 1; ring <= 5; ring++) {
       var r = (ring / 5) * maxR;
       ctx.beginPath();
@@ -1414,7 +1754,7 @@
       ctx.stroke();
     }
 
-    // Draw axis lines
+    // Axis lines
     for (var i = 0; i < n; i++) {
       var angle = startAngle + i * angleStep;
       ctx.beginPath();
@@ -1425,7 +1765,7 @@
       ctx.stroke();
     }
 
-    // Draw data polygon
+    // Data polygon
     ctx.beginPath();
     for (var i = 0; i < n; i++) {
       var angle = startAngle + i * angleStep;
@@ -1442,7 +1782,7 @@
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // Draw data points
+    // Data points
     for (var i = 0; i < n; i++) {
       var angle = startAngle + i * angleStep;
       var val = scores[i + 1] / 100;
@@ -1454,7 +1794,7 @@
       ctx.fill();
     }
 
-    // Draw labels
+    // Labels
     ctx.font = '500 12px Outfit, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -1465,7 +1805,6 @@
       var x = cx + labelR * Math.cos(angle);
       var y = cy + labelR * Math.sin(angle);
 
-      // Adjust alignment for left/right labels
       if (Math.cos(angle) > 0.3) ctx.textAlign = 'left';
       else if (Math.cos(angle) < -0.3) ctx.textAlign = 'right';
       else ctx.textAlign = 'center';
@@ -1473,7 +1812,6 @@
       ctx.fillStyle = colorMuted;
       ctx.fillText(labels[i], x, y);
 
-      // Score value
       ctx.font = 'italic 14px "Instrument Serif", Georgia, serif';
       ctx.fillStyle = colorText;
       ctx.fillText(scores[i + 1] + '%', x, y + 16);
@@ -1498,65 +1836,6 @@
     ctx.setLineDash([]);
   }
 
-  // ─── EMAIL GATE (KIT API) ──────────────────────────────
-  gateForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    trackEvent('assessment-gate-submit');
-
-    var email = document.getElementById('gate-email').value.trim();
-    var honeypot = gateForm.querySelector('.honeypot').value;
-
-    if (honeypot) {
-      // Bot — fake success
-      gateForm.style.display = 'none';
-      gateSuccess.classList.add('is-visible');
-      return;
-    }
-
-    if (!email) return;
-
-    var submitBtn = gateForm.querySelector('.btn-primary');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    gateError.style.display = 'none';
-
-    // Determine tag IDs: profile tag + source tag
-    var tagId = PROFILE_TAGS[profileKey];
-    var tags = [17009523]; // source-assessment
-    if (tagId) tags.push(tagId);
-
-    var body = {
-      api_key: 'GXwvYXvNYOsCjiliB4ILTA',
-      email: email,
-      tags: tags,
-      fields: {
-        source: 'assessment',
-        page: '/assessment/',
-        referrer: document.referrer || 'direct'
-      }
-    };
-
-    fetch('https://api.convertkit.com/v3/forms/9098413/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    })
-    .then(function (res) {
-      if (!res.ok) throw new Error('API error');
-      return res.json();
-    })
-    .then(function () {
-      gateForm.style.display = 'none';
-      gateSuccess.classList.add('is-visible');
-      trackEvent('assessment-gate-success');
-    })
-    .catch(function () {
-      gateError.style.display = 'block';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Get Your Full Report';
-    });
-  });
-
   // ─── HASH-BASED RESULT RESTORATION ─────────────────────
   function checkHash() {
     var hash = window.location.hash.substring(1);
@@ -1566,7 +1845,6 @@
     }
   }
 
-  // Init
   checkHash();
 
 })();

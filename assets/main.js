@@ -13,7 +13,7 @@
   /* ─── NAV: TRANSPARENT → SOLID ON SCROLL ─────────── */
   var nav = document.querySelector('.nav');
   if (nav && nav.classList.contains('nav--transparent')) {
-    var hero = document.querySelector('.hero') || document.querySelector('.page-hero') || document.querySelector('.newsletter-hero');
+    var hero = document.querySelector('.hero') || document.querySelector('.page-hero') || document.querySelector('.newsletter-hero') || document.querySelector('.assess-hero');
     if (hero) {
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
