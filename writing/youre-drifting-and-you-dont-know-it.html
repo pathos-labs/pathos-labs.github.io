@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/favicon-180.png">
+  <!-- ✏️ Replace You&#x27;re drifting and you don&#x27;t know it, The more I dig into AI, the more I find so many wonderful metaphors for thinking about human thinking. One of these is something called context drift., youre-drifting-and-you-dont-know-it, DATE, TYPE (Blog/Article) -->
+  <title>You&#x27;re drifting and you don&#x27;t know it — Pathos Labs</title>
+  <meta name="description" content="The more I dig into AI, the more I find so many wonderful metaphors for thinking about human thinking. One of these is something called context drift.">
+  <link rel="canonical" href="https://pathoslabs.co/writing/youre-drifting-and-you-dont-know-it.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://pathoslabs.co/writing/youre-drifting-and-you-dont-know-it.html">
+  <meta property="og:title" content="You&#x27;re drifting and you don&#x27;t know it — Pathos Labs">
+  <meta property="og:description" content="The more I dig into AI, the more I find so many wonderful metaphors for thinking about human thinking. One of these is something called context drift.">
+  <meta property="og:image" content="https://pathoslabs.co/assets/images/og-writing.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="You&#x27;re drifting and you don&#x27;t know it — Pathos Labs">
+  <meta name="twitter:description" content="The more I dig into AI, the more I find so many wonderful metaphors for thinking about human thinking. One of these is something called context drift.">
+  <meta name="twitter:image" content="https://pathoslabs.co/assets/images/og-writing.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "You&#x27;re drifting and you don&#x27;t know it",
+    "description": "The more I dig into AI, the more I find so many wonderful metaphors for thinking about human thinking. One of these is something called context drift.",
+    "datePublished": "2026-02-27",
+    "author": {
+      "@type": "Person",
+      "name": "Sam Millunchick",
+      "url": "https://pathoslabs.co/about/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Pathos Labs",
+      "url": "https://pathoslabs.co"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">Skip to content</a>
+
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></a>
+  <ul class="nav-links">
+    <li><a href="/about/">About</a></li>
+    <li><a href="/writing/">Writing</a></li>
+    <li><a href="/newsletter/">Newsletter</a></li>
+    <li><a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="nav-cta">Start the Conversation</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-panel" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
+  <a href="/#gap">The Gap</a>
+  <a href="/#work">The Work</a>
+  <a href="/about/">About</a>
+  <a href="/writing/">Writing</a>
+  <a href="/newsletter/">Newsletter</a>
+  <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="nav-cta">Start the Conversation</a>
+</div>
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<main id="main">
+
+<!-- ─── READING PROGRESS ──────────────────────────────── -->
+<div class="post-progress" aria-hidden="true"></div>
+
+<!-- ─── POST HEADER ────────────────────────────────── -->
+<article class="post">
+  <header class="post-header">
+    <div class="post-meta">
+      <a href="/writing/" class="post-back">&larr; All Writing</a>
+    </div>
+    <h1 class="post-title">You&#x27;re drifting and you don&#x27;t know it</h1>
+    <div class="post-byline">
+      <span>Sam Millunchick</span>
+      <span class="post-date">February 27, 2026</span>
+    </div>
+    <div class="post-header-rule"></div>
+  </header>
+
+  <!-- ─── POST BODY ──────────────────────────────────── -->
+  <div class="post-body">
+    <p>The more I dig into AI, the more I find so many wonderful metaphors for thinking about human thinking. One of these is something called context drift.</p>
+
+    <p>For those who aren't familiar, each LLM has something called a context window, which is a certain number of tokens (a token is a certain way that the data is split up and rendered as it's passed into the LLM). In any given session, the AI can only handle a certain amount of tokens, i.e. a certain amount of context for that conversation. I guess you might think of this as akin to working memory or short-term memory in a human being. What can we keep in mind and keep relevant to us whilst we are performing a task?</p>
+
+    <p>So obviously this presents a problem for longer sessions with an LLM. It used to be that you would run to the end of this context window and then you would have to start a new conversation. This is probably how many people have experienced talking to ChatGPT or Claude over very long conversations. At some point the model will tell you that the conversation's become too long and you need to start anew. With the advent of the more premium models like Sonnet and Opus, and with the advent of coding agents that can run autonomously for hours, the question has arisen—how do you carry context over from one token window to the next, such that the model is able to continuously execute on a task over multiple iterations of a context window.</p>
+
+    <p>There are various solutions to these problems and they're not really relevant to go into here, but suffice it to say that with the advent of these solutions has arisen a new problem and that is something called &ldquo;context drift&rdquo;. This is where by the third or fourth context window that you're on with this agent, you'll find that it starts to drift—again, depending on your compaction strategy and the way that you preserve the memories through the different context windows, it'll either drift a little bit or a lot, but drift it will—from the original intent of the conversation or task that you started with.</p>
+
+    <p>This is because the way that you preserve memory from one context window to the other one is summarisation. And the choice is always what to summarize and what to leave out, what details are important and what details aren't important, what can survive a synthesis and what cannot. And ultimately, over these two, three, four context window summarisations and compactions, you end up getting something akin to Chinese whispers where the summary ends up becoming a summary of a summary of a summary of a summary and the original context gets lost.</p>
+
+    <p>Fascinatingly, human memory works a lot like this too.</p>
+
+    <p>We obviously don't encode our experiences and our knowledge with 100% fidelity to the source. To begin with, the knowledge is filtered through our pre-existing personality, knowledge, and ability to understand. You might think of this as akin to the quality of the model that you're using—some people use a cheap or free model and they get output that's commensurate with that level. Just so, some people's minds and brains are not trained well in the arts of thought or learning or knowledge growth. To begin with, therefore, the context that they're fed is not fully understood, is not fully rendered, is not fully translated into a high fidelity model in their minds.</p>
+
+    <p>And even when you're dealing with a very high-powered model—and this is true with AI, and it's true with human beings—you have certain preconceived patterns of thought or knowledge—schemas we might call them—that whatever it is that our learning gets passed through, which also acts to warp and distort the original knowledge. The knowledge might not fit 100% to those schemas, but because that's the way that the mind works, it tries to relate to new things by old things that it understands. The input to begin with might not be a 100% accurate representation of the source material.</p>
+
+    <!-- Newsletter callout -->
+    <aside class="post-callout">
+      <div class="post-callout-eyebrow">Newsletter</div>
+      <div class="post-callout-heading">Something Worth Reading</div>
+      <p class="post-callout-text">A weekly letter on communication, human performance, and the internal blockers that keep capable people stuck.</p>
+      <form class="newsletter-form" aria-label="Newsletter signup">
+        <label class="sr-only" for="email-callout">Email address</label>
+        <input type="email" id="email-callout" name="email" placeholder="Your email" required autocomplete="email">
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+    </aside>
+
+    <p>And then of course you get to the idea that memory, whilst theoretically infinite in storage, is very lossy in retrieval. And the difficulty is—again, both with the models and with the humans—that that lossiness is not fully recognized or understood, and many times is even completely unconsciously ignored.</p>
+
+    <p>So, with humans, just like with the AI, you get context drift. Either you'll misunderstand the thing that you were trying to do, or you'll lose sight of the original goal, or you'll get distracted by a shiny object, or you'll develop an unconscious affinity for part of the knowledge or the project that you're working on and leave other parts of the project out. And unfortunately in school, we are not taught patterns of thought. We are not taught systems of accurate and rigorous thinking over time, of summarisation, of memory, of retrieval.</p>
+
+    <p>And so you end up getting in AI what we call &ldquo;hallucinations&rdquo; where the model, and human beings do this too, will confidently state something as fact or as true and it will be completely false. It won't even have any bearing on reality, but because they've lost the thread and don't know that they've lost the thread, it's said with a degree of confidence that most people just take as a given.</p>
+
+    <p>And then the question becomes, and this is literally the million or even billion dollar question, how to structure memory in a way that prevents context drift? How to encode information in a way that's as high fidelity as possible, how to keep the models and ourselves on track towards the original intended goal?</p>
+
+    <p>And there's one thing to me that comes out of this whole thing which is, funnily enough, strikingly human. These agents do better with shorter sessions, with fewer compactions and fewer summarisations. There's less context-drift when there's not as much distance between the execution and the original intent. Ephemeral containers and conditions may be a feature, not a bug. Anthropic's own guidance (the company behind Claude.ai) suggests fresh context and filesystem discovery outperforms session resumption.</p>
+
+    <p>And so with humans. We're not built to work uninterrupted on one task for many hours. We need breaks, we need refreshment, we need reminding, we need to come back to our north star, to remember again and call back into memory what it was that we were trying to achieve in the first place.</p>
+
+    <p>How ironic that the age of AI may help us to become more human.</p>
+
+    <p>(If this one hit home and you want to talk about where context drift might be showing up in your own work, reply to this email.)</p>
+  </div>
+</article>
+
+<!-- ─── NEWSLETTER ─────────────────────────────────── -->
+<section class="section-newsletter reveal">
+  <div class="newsletter-inner">
+    <span class="eyebrow">Newsletter</span>
+    <h2 class="newsletter-heading">Something Worth Reading</h2>
+    <p class="newsletter-subtext">
+      A weekly letter on communication, human performance, and the internal blockers that keep capable people stuck.
+    </p>
+    <form class="newsletter-form" aria-label="Newsletter signup">
+      <label class="sr-only" for="email-post">Email address</label>
+      <input type="email" id="email-post" name="email" placeholder="Your email" required autocomplete="email">
+      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-left">
+    <span class="footer-wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    <p class="footer-tagline">Executive communication. Rebuilt from the inside.</p>
+    <p class="footer-copy">&copy; 2026 Pathos Labs. Intake by referral or application.</p>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:hello@pathoslabs.co">hello@pathoslabs.co</a>
+    <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener">Start the Conversation</a>
+    <a href="/about/">About</a>
+    <a href="/writing/">Writing</a>
+    <a href="/newsletter/">Newsletter</a>
+  </div>
+</footer>
+</main>
+
+<script src="../assets/main.js"></script>
+</body>
+</html>
