@@ -1,0 +1,99 @@
+<!--
+  TWITTER/X BANNER — 1500×500
+  Open in browser, screenshot at 1500×500, save as banner-twitter.png
+  Style: Minimal, dark, strapline + proof logos
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1500px; height: 500px;
+    background: oklch(10% 0.008 260);
+    display: flex; align-items: center;
+    overflow: hidden; position: relative;
+    font-family: 'Outfit', sans-serif;
+  }
+  body::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 99px, oklch(94% 0 0 / 0.015) 99px, oklch(94% 0 0 / 0.015) 100px),
+      repeating-linear-gradient(90deg, transparent, transparent 99px, oklch(94% 0 0 / 0.015) 99px, oklch(94% 0 0 / 0.015) 100px);
+  }
+  .content {
+    position: relative; z-index: 1;
+    padding: 0 120px;
+    width: 100%;
+    display: flex; align-items: center;
+    justify-content: space-between;
+  }
+  .left {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .wordmark {
+    font-weight: 700; font-size: 15px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: oklch(94% 0.005 80);
+  }
+  .wordmark .dot { color: oklch(60% 0.135 35); }
+  .wordmark .labs { font-weight: 400; }
+  .strapline {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 42px;
+    line-height: 1.2;
+    color: oklch(94% 0.005 80);
+    max-width: 550px;
+  }
+  .sub {
+    font-size: 14px; font-weight: 300;
+    color: oklch(48% 0.005 260);
+    letter-spacing: 0.5px;
+  }
+  .proof {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 20px;
+  }
+  .proof-label {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: oklch(40% 0.005 260);
+  }
+  .proof-logos {
+    display: flex; gap: 32px; align-items: center;
+  }
+  .proof-logo {
+    font-size: 13px; font-weight: 500;
+    color: oklch(50% 0.005 260);
+    letter-spacing: 1px;
+  }
+  .accent-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: oklch(48% 0.145 32);
+  }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="left">
+      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
+      <div class="strapline">Executive communication.<br>Rebuilt from the inside.</div>
+      <div class="sub">pathoslabs.co</div>
+    </div>
+    <div class="proof">
+      <div class="proof-label">Clients include</div>
+      <div class="proof-logos">
+        <span class="proof-logo">YuLife</span>
+        <span class="proof-logo">Relation</span>
+        <span class="proof-logo">Toolbox</span>
+      </div>
+    </div>
+  </div>
+  <div class="accent-line"></div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 32" fill="none">
+  <!-- P.L short mark — light text on dark background -->
+  <text x="0" y="24" font-family="'Outfit', 'Helvetica Neue', sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#f0ede8">P</text>
+  <text x="18" y="24" font-family="'Outfit', 'Helvetica Neue', sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#c47a5e">.</text>
+  <text x="28" y="24" font-family="'Outfit', 'Helvetica Neue', sans-serif" font-size="16" font-weight="400" letter-spacing="3" fill="#f0ede8">L</text>
+</svg>

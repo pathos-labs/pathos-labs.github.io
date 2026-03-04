@@ -1,0 +1,299 @@
+<!--
+  PATHOS LABS — KIT (CONVERTKIT) EMAIL TEMPLATE
+  Paste this into Kit > Settings > Email Templates > Custom HTML
+
+  Liquid variables:
+    {{ message_content }}  — newsletter body
+    {{ subscriber.first_name }}  — personalization
+    {{ unsubscribe_url }}  — required
+    {{ address }}  — required physical address
+
+  Design: Warm off-white background, Instrument Serif headlines,
+  Outfit body text, warm sienna accent, no border-radius.
+
+  ─── STYLED ELEMENTS (use in Kit editor) ─────────────────
+
+  HEADINGS:     Use H1 for title, H2 for sections, H3 for labels
+  BLOCKQUOTES:  Kit's blockquote button → styled with sienna border + serif italic
+  BUTTONS:      Kit's button → sienna background, uppercase, no radius
+  LISTS:        Standard ul/ol — styled automatically
+  DIVIDERS:     Kit's divider → subtle warm rule
+  IMAGES:       Full-width, auto-sized
+
+  CALLOUT BOX (paste as HTML block in Kit editor):
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin: 24px 0;">
+      <tr>
+        <td style="border-left: 3px solid #8b4d3b; background-color: #f0ede8; padding: 20px 24px;">
+          <p style="font-family: 'Outfit', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #8b4d3b; margin: 0 0 8px 0;">LABEL</p>
+          <p style="font-family: 'Outfit', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #3d3833; font-weight: 300; margin: 0;">Your callout text here.</p>
+        </td>
+      </tr>
+    </table>
+
+  PULL QUOTE (paste as HTML block in Kit editor):
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin: 32px 0;">
+      <tr>
+        <td style="border-top: 1px solid #e5e0db; border-bottom: 1px solid #e5e0db; padding: 24px 16px; text-align: center;">
+          <p style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 20px; line-height: 1.5; color: #231f1b; margin: 0;">Your pull quote here.</p>
+        </td>
+      </tr>
+    </table>
+
+  CTA BUTTON (paste as HTML block for custom placement):
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 24px 0;">
+      <tr>
+        <td>
+          <a href="URL" style="display: inline-block; background-color: #8b4d3b; color: #f7f5f2; font-family: 'Outfit', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; padding: 14px 32px;">BUTTON TEXT</a>
+        </td>
+      </tr>
+    </table>
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pathos Labs</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; }
+
+    /* Web fonts — fallback gracefully */
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap');
+
+    /* ─── CONTENT ELEMENT STYLES ──────────────────────── */
+    /* Kit renders {{ message_content }} with these classes */
+
+    /* Headings */
+    .email-body h1 {
+      font-family: 'Instrument Serif', Georgia, serif !important;
+      font-size: 28px !important;
+      font-weight: 400 !important;
+      line-height: 1.25 !important;
+      color: #231f1b !important;
+      margin: 0 0 20px 0 !important;
+      padding: 0 !important;
+    }
+    .email-body h2 {
+      font-family: 'Instrument Serif', Georgia, serif !important;
+      font-size: 22px !important;
+      font-weight: 400 !important;
+      line-height: 1.3 !important;
+      color: #231f1b !important;
+      margin: 32px 0 12px 0 !important;
+      padding: 0 !important;
+    }
+    .email-body h3 {
+      font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      letter-spacing: 1.5px !important;
+      text-transform: uppercase !important;
+      color: #3d3833 !important;
+      margin: 28px 0 8px 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Paragraphs */
+    .email-body p {
+      font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+      font-size: 16px !important;
+      line-height: 1.7 !important;
+      color: #3d3833 !important;
+      font-weight: 300 !important;
+      margin: 0 0 16px 0 !important;
+    }
+
+    /* Links */
+    .email-body a {
+      color: #8b4d3b !important;
+      text-decoration: underline !important;
+      text-underline-offset: 2px !important;
+    }
+
+    /* Blockquotes — Kit uses .blockquotes and .blockquotes-line */
+    .blockquotes {
+      border-left: 3px solid #8b4d3b !important;
+      border-right: none !important;
+      border-top: none !important;
+      border-bottom: none !important;
+      margin: 24px 0 !important;
+      padding: 12px 24px !important;
+      background-color: #f0ede8 !important;
+    }
+    .blockquotes-line {
+      font-family: 'Instrument Serif', Georgia, serif !important;
+      font-style: italic !important;
+      font-size: 18px !important;
+      line-height: 1.6 !important;
+      color: #3d3833 !important;
+    }
+
+    /* Buttons — Kit uses .email-button */
+    .email-button {
+      border: none !important;
+      background-color: #8b4d3b !important;
+      color: #f7f5f2 !important;
+      padding: 14px 32px !important;
+      display: inline-block !important;
+      margin: 16px 0 !important;
+      font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      letter-spacing: 1.5px !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      border-radius: 0 !important;
+    }
+
+    /* Lists */
+    .email-body ul, .email-body ol {
+      font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+      font-size: 16px !important;
+      line-height: 1.7 !important;
+      color: #3d3833 !important;
+      font-weight: 300 !important;
+      margin: 8px 0 16px 0 !important;
+      padding-left: 24px !important;
+    }
+    .email-body li {
+      margin-bottom: 8px !important;
+    }
+
+    /* Horizontal rule */
+    .email-body hr {
+      border: none !important;
+      border-top: 1px solid #e5e0db !important;
+      margin: 32px 0 !important;
+    }
+
+    /* Images in content */
+    .email-body img {
+      max-width: 100% !important;
+      height: auto !important;
+      margin: 16px 0 !important;
+    }
+
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .email-bg { background-color: #1a1a1a !important; }
+      .email-body { background-color: #1a1a1a !important; color: #e8e5e0 !important; }
+      .email-body h1, .email-body h2 { color: #f0ede8 !important; }
+      .email-body h3 { color: #e8e5e0 !important; }
+      .email-body p, .email-body li { color: #e8e5e0 !important; }
+      .email-body a { color: #c47a5e !important; }
+      .blockquotes { background-color: #2a2520 !important; border-left-color: #c47a5e !important; }
+      .blockquotes-line { color: #e8e5e0 !important; }
+      .email-button { background-color: #c47a5e !important; color: #1a1a1a !important; }
+      .email-body hr { border-top-color: #2a2a2a !important; }
+      .email-text { color: #e8e5e0 !important; }
+      .email-muted { color: #8a8580 !important; }
+      .email-border { border-color: #2a2a2a !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f7f5f2;">
+
+<!-- Preheader (hidden) -->
+<div style="display: none; max-height: 0; overflow: hidden; mso-hide: all;">
+  New writing from Pathos Labs &mdash; on how capable people get stuck, and what it takes to get unstuck.
+</div>
+
+<!-- Wrapper -->
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" class="email-bg" style="background-color: #f7f5f2;">
+  <tr>
+    <td align="center" style="padding: 40px 20px;">
+
+      <!-- Container -->
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px;">
+
+        <!-- Header -->
+        <tr>
+          <td style="padding: 0 0 32px 0;">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td style="font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #231f1b;">
+                  PATHOS<span style="color: #8b4d3b;">.</span><span style="font-weight: 400;">LABS</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+          <td class="email-border" style="border-top: 1px solid #e5e0db; padding: 0;"></td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td class="email-body" style="padding: 40px 0; font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.7; color: #3d3833; font-weight: 300;">
+
+            {{ message_content }}
+
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+          <td class="email-border" style="border-top: 1px solid #e5e0db; padding: 0;"></td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="padding: 32px 0 0 0;">
+
+            <!-- CTA -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 28px;">
+              <tr>
+                <td style="font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;">
+                  <a href="https://pathoslabs.co" style="color: #8b4d3b; text-decoration: none;">pathoslabs.co</a>
+                  &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+                  <a href="https://cal.com/pathos-labs/fit-match-30" style="color: #8b4d3b; text-decoration: none;">Book a Conversation</a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Tagline -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 20px;">
+              <tr>
+                <td style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 14px; color: #8a8580;">
+                  Executive communication. Rebuilt from the inside.
+                </td>
+              </tr>
+            </table>
+
+            <!-- Legal -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td class="email-muted" style="font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; line-height: 1.6; color: #a09890; font-weight: 300;">
+                  You received this because you subscribed to the Pathos Labs newsletter.<br>
+                  <a href="{{ unsubscribe_url }}" style="color: #a09890; text-decoration: underline;">Unsubscribe</a><br><br>
+                  {{ address }}
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

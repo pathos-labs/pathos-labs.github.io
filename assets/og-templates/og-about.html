@@ -1,0 +1,65 @@
+<!--
+  OG IMAGE — About
+  Open in browser, screenshot at 1200×630, save as og-about.png
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px;
+    background: oklch(10% 0.008 260);
+    display: flex; align-items: center;
+    overflow: hidden; position: relative;
+  }
+  body::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px),
+      repeating-linear-gradient(90deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px);
+  }
+  .content { position: relative; z-index: 1; padding: 80px 90px; }
+  .eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500; font-size: 14px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: oklch(60% 0.135 35);
+    margin-bottom: 36px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: oklch(60% 0.135 35); }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400; font-size: 96px;
+    line-height: 1.05; color: oklch(94% 0.005 80);
+  }
+  h1 em { font-style: italic; color: oklch(60% 0.135 35); }
+  .sub {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300; font-size: 20px;
+    color: oklch(60% 0.005 260);
+    margin-top: 28px; max-width: 560px; line-height: 1.5;
+  }
+  .wordmark {
+    position: absolute; bottom: 60px; right: 80px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 14px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: oklch(60% 0.005 260);
+  }
+  .wordmark .dot { color: oklch(60% 0.135 35); }
+  .wordmark .labs { font-weight: 400; }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="eyebrow">About</div>
+    <h1>The<br><em>Background.</em></h1>
+    <p class="sub">IDF combat medic. Ordained rabbi. Somewhere around a hundred funerals. Then executive advisory.</p>
+  </div>
+  <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
+</body>
+</html>
