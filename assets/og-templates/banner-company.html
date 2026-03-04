@@ -1,8 +1,8 @@
 <!--
   LINKEDIN COMPANY PAGE BANNER — 1128×191
   Open in browser, screenshot at 1128×191, save as banner-company.png
-  Style: Minimal, dark, right-oriented, strapline + client names
-  Compact layout for the shorter company banner format
+  LinkedIn company logo overlaps bottom-left corner — keep left ~140px clear
+  Content pushed right, large and legible
 -->
 <!DOCTYPE html>
 <html>
@@ -27,48 +27,32 @@
   }
   .content {
     position: relative; z-index: 1;
-    padding: 0 64px;
-    display: flex;
-    align-items: center;
-    gap: 48px;
-  }
-  .left {
+    padding: 0 72px;
     display: flex; flex-direction: column;
-    align-items: flex-end; gap: 6px;
+    align-items: flex-end;
+    gap: 12px;
     text-align: right;
   }
-  .wordmark {
-    font-weight: 700; font-size: 12px;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: oklch(94% 0.005 80);
-  }
-  .wordmark .dot { color: oklch(60% 0.135 35); }
-  .wordmark .labs { font-weight: 400; }
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 28px;
-    line-height: 1.15;
+    font-size: 42px;
+    line-height: 1.1;
     color: oklch(94% 0.005 80);
     white-space: nowrap;
   }
-  .divider {
-    width: 1px; height: 48px;
-    background: oklch(30% 0.005 260);
-    flex-shrink: 0;
-  }
   .clients {
-    display: flex; gap: 16px; align-items: center;
+    display: flex; gap: 20px; align-items: center;
   }
   .client {
-    font-size: 9px; font-weight: 500;
-    color: oklch(45% 0.005 260);
+    font-size: 13px; font-weight: 500;
+    color: oklch(65% 0.005 260);
     letter-spacing: 1.5px;
     text-transform: uppercase;
     white-space: nowrap;
   }
   .client-sep {
-    width: 2px; height: 2px;
+    width: 3px; height: 3px;
     background: oklch(48% 0.145 32);
     border-radius: 50%;
     flex-shrink: 0;
@@ -83,11 +67,7 @@
 </head>
 <body>
   <div class="content">
-    <div class="left">
-      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
-      <div class="strapline">Presence under pressure.</div>
-    </div>
-    <div class="divider"></div>
+    <div class="strapline">Presence under pressure.</div>
     <div class="clients">
       <span class="client">Morgan Stanley</span>
       <span class="client-sep"></span>
