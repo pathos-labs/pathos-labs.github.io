@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 32" fill="none">
-  <!-- P.L short mark — sienna monochrome -->
-  <text x="0" y="24" font-family="'Outfit', 'Helvetica Neue', sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#8b4d3b">P</text>
-  <text x="18" y="24" font-family="'Outfit', 'Helvetica Neue', sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#8b4d3b">.</text>
-  <text x="28" y="24" font-family="'Outfit', 'Helvetica Neue', sans-serif" font-size="16" font-weight="400" letter-spacing="3" fill="#8b4d3b">L</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128.0 80.0" width="128" height="80">
+  <rect width="128.0" height="80.0" fill="#f7f5f2"/>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&amp;display=swap');</style>
+  <text x="24" y="53.4" font-family="Outfit, sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#8b4d3b">P</text>
+  <text x="57.0" y="53.4" font-family="Outfit, sans-serif" font-weight="700" font-size="48" letter-spacing="3" fill="#8b4d3b">.</text>
+  <text x="74.0" y="53.4" font-family="Outfit, sans-serif" font-weight="400" font-size="48" letter-spacing="3" fill="#8b4d3b">L</text>
 </svg>
