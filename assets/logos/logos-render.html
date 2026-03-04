@@ -1,0 +1,138 @@
+<!--
+  LOGO RENDER SHEET
+  Open in browser. Each logo is in its own box at the right size.
+  Screenshot each one individually, or use browser dev tools to capture each .logo-box element.
+
+  Tip: In Chrome DevTools, right-click a .logo-box → Capture node screenshot
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    padding: 40px;
+    background: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  h2 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  .row { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  .logo-box {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 24px;
+  }
+
+  .wordmark {
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .wordmark .dot { /* colored per variant */ }
+  .wordmark .labs { font-weight: 400; }
+
+  /* ─── SIZE VARIANTS ───────────────── */
+  .sz-lg .wordmark { font-size: 20px; }
+  .sz-md .wordmark { font-size: 14px; }
+  .sz-sm .wordmark { font-size: 10px; }
+
+  /* ─── COLOR VARIANTS ──────────────── */
+  /* Dark on light */
+  .var-dark { background: #f7f5f2; }
+  .var-dark .wordmark { color: #231f1b; }
+  .var-dark .dot { color: #8b4d3b; }
+
+  /* Light on dark */
+  .var-light { background: #161318; }
+  .var-light .wordmark { color: #f0ede8; }
+  .var-light .dot { color: #c47a5e; }
+
+  /* Sienna mono */
+  .var-sienna { background: #f7f5f2; }
+  .var-sienna .wordmark { color: #8b4d3b; }
+  .var-sienna .dot { color: #8b4d3b; }
+
+  /* White on transparent (for overlays) */
+  .var-white { background: transparent; }
+  .var-white .wordmark { color: #ffffff; }
+  .var-white .dot { color: #c47a5e; }
+</style>
+</head>
+<body>
+
+<div>
+  <h2>Full Wordmark — PATHOS.LABS</h2>
+  <div class="row">
+    <div class="logo-box var-dark sz-lg">
+      <span class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    </div>
+    <div class="logo-box var-light sz-lg">
+      <span class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    </div>
+    <div class="logo-box var-sienna sz-lg">
+      <span class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2>Full Wordmark — Medium</h2>
+  <div class="row">
+    <div class="logo-box var-dark sz-md">
+      <span class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    </div>
+    <div class="logo-box var-light sz-md">
+      <span class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    </div>
+    <div class="logo-box var-sienna sz-md">
+      <span class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2>Short Mark — P.L</h2>
+  <div class="row">
+    <div class="logo-box var-dark sz-lg">
+      <span class="wordmark">P<span class="dot">.</span><span class="labs">L</span></span>
+    </div>
+    <div class="logo-box var-light sz-lg">
+      <span class="wordmark">P<span class="dot">.</span><span class="labs">L</span></span>
+    </div>
+    <div class="logo-box var-sienna sz-lg">
+      <span class="wordmark">P<span class="dot">.</span><span class="labs">L</span></span>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2>Short Mark — Small</h2>
+  <div class="row">
+    <div class="logo-box var-dark sz-sm">
+      <span class="wordmark">P<span class="dot">.</span><span class="labs">L</span></span>
+    </div>
+    <div class="logo-box var-light sz-sm">
+      <span class="wordmark">P<span class="dot">.</span><span class="labs">L</span></span>
+    </div>
+    <div class="logo-box var-sienna sz-sm">
+      <span class="wordmark">P<span class="dot">.</span><span class="labs">L</span></span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
