@@ -393,6 +393,45 @@
 
 <script src="../assets/main.js"></script>
 <script>
+/* ─── URL PARAMS: ?filter= and ?deck= ─────────── */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const filterParam = params.get('filter');
+  const deckParam = params.get('deck');
+
+  /* Activate filter from URL (?filter=research, ?filter=newsletter) */
+  if (filterParam) {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const sections = document.querySelectorAll('.writing-section[data-section-type]');
+    filterBtns.forEach(b => {
+      b.classList.toggle('is-active', b.getAttribute('data-filter') === filterParam);
+    });
+    sections.forEach(s => {
+      if (s.getAttribute('data-section-type') === filterParam) {
+        s.removeAttribute('data-hidden');
+      } else {
+        s.setAttribute('data-hidden', 'true');
+      }
+    });
+  }
+
+  /* If ?deck= is present, activate research filter and auto-open gate */
+  if (deckParam) {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const sections = document.querySelectorAll('.writing-section[data-section-type]');
+    filterBtns.forEach(b => {
+      b.classList.toggle('is-active', b.getAttribute('data-filter') === 'research');
+    });
+    sections.forEach(s => {
+      if (s.getAttribute('data-section-type') === 'research') {
+        s.removeAttribute('data-hidden');
+      } else {
+        s.setAttribute('data-hidden', 'true');
+      }
+    });
+  }
+})();
+
 /* ─── RESEARCH GATE ─────────────────────────────── */
 (function () {
   const KIT_FORM_ID = '9098413';
@@ -404,6 +443,24 @@
   const error   = document.getElementById('gate-error');
   const closeBtn = overlay.querySelector('.gate-close');
   let pendingHref = null;
+
+  const params = new URLSearchParams(window.location.search);
+  const deckParam = params.get('deck');
+
+  /* If arriving via ?deck= redirect, resolve the full URL */
+  if (deckParam) {
+    /* deckParam is a slug like "psychological-safety-tactics" */
+    pendingHref = 'https://research.pathoslabs.co/' + deckParam + '/';
+    /* If already subscribed, redirect immediately */
+    if (localStorage.getItem('pathos_access')) {
+      window.location.href = pendingHref;
+      return;
+    }
+    /* Otherwise, auto-open the gate */
+    overlay.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('is-visible');
+    requestAnimationFrame(() => input.focus());
+  }
 
   document.querySelectorAll('[data-gated]').forEach(card => {
     card.addEventListener('click', e => {
