@@ -12,7 +12,7 @@
   body {
     width: 1584px; height: 396px;
     background: oklch(10% 0.008 260);
-    display: flex; align-items: flex-end;
+    display: flex; align-items: center;
     justify-content: flex-end;
     overflow: hidden; position: relative;
     font-family: 'Outfit', sans-serif;
@@ -25,10 +25,11 @@
   }
   .content {
     position: relative; z-index: 1;
-    padding: 0 80px 40px 0;
+    padding: 0 80px;
     display: flex; flex-direction: column;
     align-items: flex-end;
-    gap: 20px;
+    justify-content: space-between;
+    height: 280px;
     text-align: right;
   }
   .wordmark {
@@ -44,6 +45,14 @@
     font-size: 64px;
     line-height: 1.1;
     color: oklch(94% 0.005 80);
+  }
+  .top {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 12px;
+  }
+  .bottom {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 8px;
   }
   .clients-label {
     font-size: 11px; font-weight: 600;
@@ -76,10 +85,13 @@
 </head>
 <body>
   <div class="content">
-    <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
-    <div class="strapline">Presence under pressure.</div>
-    <div class="clients-label">Trusted by leaders at</div>
-    <div class="clients">
+    <div class="top">
+      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
+      <div class="strapline">Presence under pressure.</div>
+    </div>
+    <div class="bottom">
+      <div class="clients-label">Trusted by leaders at</div>
+      <div class="clients">
       <span class="client">Morgan Stanley</span>
       <span class="client-sep"></span>
       <span class="client">Church of England</span>
@@ -91,6 +103,7 @@
       <span class="client">Relation Therapeutics</span>
       <span class="client-sep"></span>
       <span class="client">KYC360</span>
+      </div>
     </div>
   </div>
   <div class="accent-line"></div>
