@@ -16,10 +16,8 @@
     display: flex; align-items: center;
     overflow: hidden; position: relative;
   }
-  /* Grid lines */
   body::before {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background:
       repeating-linear-gradient(0deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px),
       repeating-linear-gradient(90deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px);
@@ -31,19 +29,19 @@
   }
   .eyebrow {
     font-family: 'Outfit', sans-serif;
-    font-weight: 500; font-size: 14px;
+    font-weight: 500; font-size: 22px;
     letter-spacing: 4px; text-transform: uppercase;
     color: oklch(60% 0.135 35);
-    margin-bottom: 36px;
+    margin-bottom: 32px;
     display: flex; align-items: center; gap: 12px;
   }
   .eyebrow::before {
-    content: ''; width: 28px; height: 1px;
+    content: ''; width: 28px; height: 2px;
     background: oklch(60% 0.135 35);
   }
   h1 {
     font-family: 'Instrument Serif', serif;
-    font-weight: 400; font-size: 108px;
+    font-weight: 400; font-size: 132px;
     line-height: 0.92; color: oklch(94% 0.005 80);
   }
   h1 em {
@@ -52,15 +50,15 @@
   }
   .sub {
     font-family: 'Outfit', sans-serif;
-    font-weight: 300; font-size: 22px;
+    font-weight: 300; font-size: 36px;
     color: oklch(60% 0.005 260);
-    margin-top: 32px; max-width: 600px;
-    line-height: 1.5;
+    margin-top: 32px; max-width: 700px;
+    line-height: 1.4;
   }
   .wordmark {
     position: absolute; bottom: 60px; right: 80px;
     font-family: 'Outfit', sans-serif;
-    font-weight: 700; font-size: 14px;
+    font-weight: 700; font-size: 18px;
     letter-spacing: 3px; text-transform: uppercase;
     color: oklch(60% 0.005 260);
   }
@@ -72,7 +70,7 @@
   <div class="content">
     <div class="eyebrow">Executive Advisory</div>
     <h1>Capable.<br><em>Underleveraged.</em></h1>
-    <p class="sub">The gap is never ability. It's perception, communication, or structure. We close it.</p>
+    <p class="sub">We close the gap between ability and perception.</p>
   </div>
   <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
 </body>

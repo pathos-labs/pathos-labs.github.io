@@ -12,8 +12,8 @@
   body {
     width: 1200px; height: 630px;
     background: oklch(10% 0.008 260);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; position: relative; text-align: center;
+    display: flex; align-items: center;
+    overflow: hidden; position: relative;
   }
   body::before {
     content: ''; position: absolute; inset: 0;
@@ -21,33 +21,32 @@
       repeating-linear-gradient(0deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px),
       repeating-linear-gradient(90deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px);
   }
-  .content {
-    position: relative; z-index: 1;
-    width: 800px; max-width: 800px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
+  .content { position: relative; z-index: 1; padding: 80px 90px; }
+  .eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500; font-size: 22px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: oklch(60% 0.135 35);
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
   }
+  .eyebrow::before { content: ''; width: 28px; height: 2px; background: oklch(60% 0.135 35); }
   h1 {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-weight: 400; font-size: 82px;
-    line-height: 1.1; color: oklch(94% 0.005 80);
-    margin-bottom: 24px;
-    text-align: center; width: 100%;
+    font-weight: 400; font-size: 120px;
+    line-height: 1.0; color: oklch(94% 0.005 80);
   }
   .sub {
     font-family: 'Outfit', sans-serif;
-    font-weight: 300; font-size: 21px;
+    font-weight: 300; font-size: 36px;
     color: oklch(60% 0.005 260);
-    line-height: 1.5;
-    text-align: center; width: 100%;
-    max-width: 600px;
+    margin-top: 28px; max-width: 700px; line-height: 1.4;
   }
   .wordmark {
-    position: absolute; bottom: 60px; left: 50%;
-    transform: translateX(-50%);
+    position: absolute; bottom: 60px; right: 80px;
     font-family: 'Outfit', sans-serif;
-    font-weight: 700; font-size: 14px;
+    font-weight: 700; font-size: 18px;
     letter-spacing: 3px; text-transform: uppercase;
     color: oklch(60% 0.005 260);
   }
@@ -57,8 +56,9 @@
 </head>
 <body>
   <div class="content">
+    <div class="eyebrow">Weekly Newsletter</div>
     <h1>Presence Under<br>Pressure.</h1>
-    <p class="sub">A weekly letter on communication, human performance, and what it actually takes to get unstuck.</p>
+    <p class="sub">Communication, performance, and the internal blockers that keep capable people stuck.</p>
   </div>
   <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
 </body>
