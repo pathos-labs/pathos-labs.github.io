@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="../assets/favicon-180.png">
+  <title>The Gap Map — Pathos Labs</title>
+  <meta name="description" content="A 3-minute diagnostic that identifies where the gap lives between your capability and how others perceive you. Research-backed, five constructs, immediate results.">
+  <link rel="canonical" href="https://pathoslabs.co/assessment/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pathoslabs.co/assessment/">
+  <meta property="og:title" content="The Gap Map — Where Does Your Gap Live?">
+  <meta property="og:description" content="A 3-minute diagnostic that identifies where the gap lives between your capability and how others perceive you.">
+  <meta property="og:image" content="https://pathoslabs.co/assets/images/og-home.png">
+  <meta property="og:site_name" content="Pathos Labs">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Gap Map — Where Does Your Gap Live?">
+  <meta name="twitter:description" content="A 3-minute diagnostic that identifies where the gap lives between your capability and how others perceive you.">
+  <meta name="twitter:image" content="https://pathoslabs.co/assets/images/og-home.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "The Gap Map",
+    "description": "A research-backed diagnostic that identifies where the gap lives between capability and perception.",
+    "url": "https://pathoslabs.co/assessment/",
+    "applicationCategory": "Self-Assessment Tool",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://pathoslabs.co/#organization",
+      "name": "Pathos Labs"
+    }
+  }
+  </script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   GAP MAP ASSESSMENT — INLINE STYLES
+   Extends the base design system for the assessment SPA.
+   All values reference Layer 1 aliases from tokens.css.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── SCREENS ────────────────────────────────────── */
+.screen {
+  display: none;
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease);
+}
+.screen.is-active {
+  display: block;
+}
+.screen.is-visible {
+  opacity: 1;
+}
+
+/* ─── HERO (ASSESSMENT INTRO) ────────────────────── */
+.assess-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--nav-h) + var(--space-64)) var(--section-x) var(--space-96);
+  background: var(--color-dark-bg);
+  overflow: hidden;
+}
+.assess-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 79px, oklch(94% 0 0 / 0.015) 79px, oklch(94% 0 0 / 0.015) 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 79px, oklch(94% 0 0 / 0.015) 79px, oklch(94% 0 0 / 0.015) 80px);
+  pointer-events: none;
+}
+.assess-hero-content {
+  position: relative;
+  z-index: var(--z-content);
+  max-width: 680px;
+}
+.assess-hero .eyebrow {
+  color: var(--color-accent-on-dark);
+  margin-bottom: var(--space-24);
+}
+.assess-hero h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--text-h1);
+  line-height: var(--leading-heading);
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-24);
+}
+.assess-hero h1 em {
+  font-style: italic;
+  color: var(--color-accent-on-dark);
+}
+.assess-hero-sub {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-lead);
+  line-height: var(--leading-body);
+  color: var(--color-dark-text-muted);
+  max-width: 540px;
+  margin-bottom: var(--space-48);
+}
+.assess-hero-meta {
+  display: flex;
+  gap: var(--space-32);
+  margin-bottom: var(--space-48);
+}
+.assess-hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.assess-hero-meta-val {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--color-dark-text);
+}
+.assess-hero-meta-label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-medium);
+  text-transform: uppercase;
+  color: var(--color-dark-text-muted);
+}
+
+/* ─── PROGRESS BAR ───────────────────────────────── */
+.progress-wrap {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  z-index: calc(var(--z-nav) - 1);
+  height: 3px;
+  background: var(--color-border-faint);
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease);
+}
+.progress-wrap.is-visible { opacity: 1; }
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--color-accent);
+  transition: width var(--dur-med) var(--ease-out);
+}
+
+/* ─── QUESTION SCREEN ────────────────────────────── */
+.question-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: calc(var(--nav-h) + var(--space-64)) var(--section-x) var(--space-96);
+  background: var(--color-bg);
+}
+.question-inner {
+  max-width: 620px;
+  width: 100%;
+}
+.question-number {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-16);
+}
+.question-construct {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-medium);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-24);
+}
+.question-text {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-48);
+}
+
+/* ─── SCALE BUTTONS ──────────────────────────────── */
+.scale-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+}
+.scale-label {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-medium);
+}
+.scale-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-8);
+}
+.scale-btn {
+  position: relative;
+  padding: var(--space-16) var(--space-8);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  color: var(--color-text-body);
+  text-align: center;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scale-btn:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
+.scale-btn:active {
+  transform: translateY(1px);
+}
+.scale-btn.is-selected {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-bg);
+}
+.scale-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ─── QUESTION NAV ───────────────────────────────── */
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-48);
+}
+.question-nav .btn-ghost {
+  padding: 0.7em 1.8em;
+  font-size: var(--text-caption);
+}
+.question-nav .btn-primary {
+  padding: 0.7em 1.8em;
+  font-size: var(--text-caption);
+}
+
+/* ─── RESULTS SCREEN ─────────────────────────────── */
+.results-screen {
+  background: var(--color-bg);
+  padding: calc(var(--nav-h) + var(--space-64)) var(--section-x) var(--space-96);
+}
+.results-inner {
+  max-width: var(--max-content);
+  margin: 0 auto;
+}
+.results-header {
+  text-align: center;
+  margin-bottom: var(--space-64);
+}
+.results-header .eyebrow {
+  color: var(--color-accent);
+  margin-bottom: var(--space-16);
+}
+.results-header h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-16);
+}
+.results-header h1 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+.results-profile-desc {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-lead);
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
+  max-width: var(--max-text);
+  margin: 0 auto var(--space-24);
+}
+.results-coaching {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+  max-width: var(--max-text);
+  margin: 0 auto;
+}
+
+/* ─── RADAR + CONSTRUCTS GRID ────────────────────── */
+.results-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+  align-items: start;
+  margin-bottom: var(--space-96);
+}
+.radar-wrap {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--space-32));
+}
+.radar-canvas {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Construct breakdown cards */
+.construct-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+.construct-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-faint);
+  padding: var(--space-24);
+  border-left: 3px solid var(--color-border);
+}
+.construct-card.is-elevated {
+  border-left-color: var(--color-accent);
+}
+.construct-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-12);
+}
+.construct-card-name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-body);
+  color: var(--color-text);
+  letter-spacing: var(--tracking-tight);
+}
+.construct-card-score {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  color: var(--color-accent);
+}
+.construct-card-bar {
+  height: 4px;
+  background: var(--color-border-faint);
+  margin-bottom: var(--space-12);
+  overflow: hidden;
+}
+.construct-card-fill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.8s var(--ease-out);
+}
+.construct-card-desc {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}
+
+/* ─── EMAIL GATE ─────────────────────────────────── */
+.gate-section {
+  background: var(--color-dark-bg);
+  padding: var(--section-y) var(--section-x);
+  text-align: center;
+}
+.gate-inner {
+  max-width: var(--max-narrow);
+  margin: 0 auto;
+}
+.gate-section .eyebrow {
+  color: var(--color-accent-on-dark);
+  margin-bottom: var(--space-16);
+}
+.gate-section h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+  color: var(--color-dark-text);
+  margin-bottom: var(--space-24);
+}
+.gate-promises {
+  list-style: none;
+  text-align: left;
+  margin-bottom: var(--space-32);
+}
+.gate-promises li {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-body);
+  color: var(--color-dark-text-muted);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--color-dark-border-faint);
+  padding-left: var(--space-24);
+  position: relative;
+}
+.gate-promises li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 1px;
+  background: var(--color-accent-on-dark);
+}
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+.gate-form input[type="email"] {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body);
+  padding: 0.8em 1em;
+  background: var(--color-dark-surface);
+  border: 1px solid var(--color-dark-border);
+  color: var(--color-dark-text);
+  outline: none;
+  transition: border-color var(--dur-fast);
+}
+.gate-form input[type="email"]:focus {
+  border-color: var(--color-accent-on-dark);
+}
+.gate-form input[type="email"]::placeholder {
+  color: var(--color-dark-text-muted);
+}
+.gate-form .btn-primary {
+  width: 100%;
+  text-align: center;
+}
+.gate-form .honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+.gate-success {
+  display: none;
+}
+.gate-success.is-visible {
+  display: block;
+}
+.gate-success p {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body-sm);
+  color: var(--color-dark-text-muted);
+  line-height: var(--leading-body);
+}
+.gate-error {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-caption);
+  color: oklch(65% 0.18 25);
+  margin-top: var(--space-8);
+  display: none;
+}
+
+/* ─── READ NEXT ──────────────────────────────────── */
+.read-next {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-faint);
+  padding: var(--space-32);
+  margin-top: var(--space-48);
+  max-width: var(--max-text);
+  margin-left: auto;
+  margin-right: auto;
+}
+.read-next-label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-8);
+}
+.read-next a {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--dur-fast);
+}
+.read-next a:hover {
+  border-color: var(--color-accent);
+}
+
+/* ─── SHARE ROW ──────────────────────────────────── */
+.share-row {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-16);
+  margin-top: var(--space-32);
+  margin-bottom: var(--space-48);
+}
+.share-btn {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-medium);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: none;
+  border: 1px solid var(--color-border);
+  padding: 0.6em 1.4em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--dur-fast), color var(--dur-fast);
+}
+.share-btn:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+/* ─── CTA SECTION ────────────────────────────────── */
+.assess-cta {
+  background: var(--color-bg);
+  padding: var(--section-y) var(--section-x);
+  text-align: center;
+  border-top: 1px solid var(--color-border-faint);
+}
+.assess-cta h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-h2);
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-16);
+}
+.assess-cta p {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+  max-width: var(--max-text);
+  margin: 0 auto var(--space-32);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .results-body {
+    grid-template-columns: 1fr;
+  }
+  .radar-wrap {
+    position: static;
+  }
+  .radar-canvas {
+    max-width: 320px;
+    margin-bottom: var(--space-32);
+  }
+  .assess-hero-meta {
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+  .scale-buttons {
+    gap: var(--space-4);
+  }
+  .scale-btn {
+    padding: var(--space-12) var(--space-4);
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    min-height: 48px;
+  }
+  .share-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-text {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
+  .scale-labels {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">Skip to content</a>
+
+<!-- ─── NAV ─────────────────────────────────────── -->
+<nav class="nav nav--transparent" role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></a>
+  <ul class="nav-links">
+    <li><a href="/about/">About</a></li>
+    <li><a href="/writing/">Writing</a></li>
+    <li><a href="/assessment/">Assessment</a></li>
+    <li><a href="/newsletter/">Newsletter</a></li>
+    <li><a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="nav-cta">Start the Conversation</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-panel" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
+  <a href="/#gap">The Gap</a>
+  <a href="/#work">The Work</a>
+  <a href="/about/">About</a>
+  <a href="/writing/">Writing</a>
+  <a href="/assessment/">Assessment</a>
+  <a href="/newsletter/">Newsletter</a>
+  <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="nav-cta">Start the Conversation</a>
+</div>
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<!-- ─── PROGRESS BAR ────────────────────────────── -->
+<div class="progress-wrap" aria-hidden="true">
+  <div class="progress-bar"></div>
+</div>
+
+<main id="main">
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 1: INTRO / HERO
+     ════════════════════════════════════════════════ -->
+<div id="screen-intro" class="screen is-active is-visible">
+  <section class="assess-hero">
+    <div class="assess-hero-content">
+      <span class="eyebrow">Diagnostic Assessment</span>
+      <h1>Where does your <em>gap</em> live?</h1>
+      <p class="assess-hero-sub">You know more than you communicate. This 18-question diagnostic identifies exactly where the signal breaks down &mdash; whether it's pressure, anxiety, skill, identity, or blind spots.</p>
+      <div class="assess-hero-meta">
+        <div class="assess-hero-meta-item">
+          <span class="assess-hero-meta-val">3 min</span>
+          <span class="assess-hero-meta-label">To complete</span>
+        </div>
+        <div class="assess-hero-meta-item">
+          <span class="assess-hero-meta-val">18</span>
+          <span class="assess-hero-meta-label">Questions</span>
+        </div>
+        <div class="assess-hero-meta-item">
+          <span class="assess-hero-meta-val">5</span>
+          <span class="assess-hero-meta-label">Constructs measured</span>
+        </div>
+      </div>
+      <button id="btn-start" class="btn-primary btn-primary--light">Begin the Assessment</button>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 2: QUESTIONS (rendered by JS)
+     ════════════════════════════════════════════════ -->
+<div id="screen-questions" class="screen">
+  <section class="question-screen">
+    <div class="question-inner">
+      <div class="question-number" id="q-number"></div>
+      <div class="question-construct" id="q-construct"></div>
+      <h2 class="question-text" id="q-text"></h2>
+      <div class="scale-wrap">
+        <div class="scale-labels">
+          <span class="scale-label" id="scale-low">Not at all</span>
+          <span class="scale-label" id="scale-high">Very much</span>
+        </div>
+        <div class="scale-buttons" role="radiogroup" aria-label="Rate this statement">
+          <button class="scale-btn" data-value="1" role="radio" aria-checked="false" tabindex="0">1</button>
+          <button class="scale-btn" data-value="2" role="radio" aria-checked="false" tabindex="-1">2</button>
+          <button class="scale-btn" data-value="3" role="radio" aria-checked="false" tabindex="-1">3</button>
+          <button class="scale-btn" data-value="4" role="radio" aria-checked="false" tabindex="-1">4</button>
+          <button class="scale-btn" data-value="5" role="radio" aria-checked="false" tabindex="-1">5</button>
+        </div>
+      </div>
+      <div class="question-nav">
+        <button id="btn-prev" class="btn-ghost" style="visibility: hidden;">Back</button>
+        <button id="btn-next" class="btn-primary" disabled>Next</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SCREEN 3: RESULTS (rendered by JS)
+     ════════════════════════════════════════════════ -->
+<div id="screen-results" class="screen">
+  <section class="results-screen">
+    <div class="results-inner">
+      <div class="results-header">
+        <span class="eyebrow">Your Gap Map</span>
+        <h1 id="profile-name"></h1>
+        <p class="results-profile-desc" id="profile-desc"></p>
+        <p class="results-coaching" id="profile-coaching"></p>
+      </div>
+
+      <div class="results-body">
+        <div class="radar-wrap">
+          <canvas class="radar-canvas" id="radar" width="440" height="440"></canvas>
+        </div>
+        <div class="construct-list" id="construct-list"></div>
+      </div>
+
+      <div class="share-row">
+        <button class="share-btn" id="btn-copy-link">Copy Link</button>
+        <a class="share-btn" id="btn-share-linkedin" href="#" target="_blank" rel="noopener">Share on LinkedIn</a>
+      </div>
+
+      <div class="read-next" id="read-next">
+        <div class="read-next-label">Recommended Reading</div>
+        <a id="read-next-link" href="#"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── EMAIL GATE ──────────────────────────────── -->
+  <section class="gate-section" id="gate-section">
+    <div class="gate-inner">
+      <span class="eyebrow">Go Deeper</span>
+      <h2>Your full Gap Map report.</h2>
+      <ul class="gate-promises">
+        <li>Detailed breakdown of all 5 constructs with percentile context</li>
+        <li>Specific, research-backed recommendations for each elevated area</li>
+        <li>The psychometric instruments that informed your results</li>
+      </ul>
+      <form class="gate-form" id="gate-form" aria-label="Get your full report">
+        <label class="sr-only" for="gate-email">Email address</label>
+        <input type="email" id="gate-email" name="email" placeholder="Your email" required autocomplete="email" aria-label="Email address">
+        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn-primary">Get Your Full Report</button>
+      </form>
+      <div class="gate-error" id="gate-error">Something went wrong. Please try again.</div>
+      <div class="gate-success" id="gate-success">
+        <p>Check your inbox. Your full Gap Map report is on its way.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─────────────────────────────────────── -->
+  <section class="assess-cta">
+    <h2>Ready to close the gap?</h2>
+    <p>The assessment tells you where it lives. The work closes it. A 30-minute conversation to see if we're the right fit.</p>
+    <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="btn-primary">Start the Conversation</a>
+  </section>
+</div>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-left">
+    <span class="footer-wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></span>
+    <p class="footer-tagline">Executive communication. Rebuilt from the inside.</p>
+    <p class="footer-copy">&copy; 2026 Pathos Labs. Intake by referral or application.</p>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:hello@pathoslabs.co">hello@pathoslabs.co</a>
+    <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener">Start the Conversation</a>
+    <a href="/about/">About</a>
+    <a href="/writing/">Writing</a>
+    <a href="/assessment/">Assessment</a>
+    <a href="/newsletter/">Newsletter</a>
+  </div>
+</footer>
+</main>
+
+<!-- ─── NEWSLETTER MODAL ──────────────────────────── -->
+<div class="modal-backdrop" aria-hidden="true"></div>
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+  <button class="modal-close" aria-label="Close">&times;</button>
+  <h2 id="modal-heading">Presence Under Pressure.</h2>
+  <p>A weekly letter on communication, human performance, and the internal blockers that keep capable people from landing the way they should. No filler. Just the thinking.</p>
+  <form class="newsletter-form" aria-label="Newsletter signup">
+    <label class="sr-only" for="email-modal">Email address</label>
+    <input type="email" id="email-modal" name="email" placeholder="Your email" required autocomplete="email">
+    <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" class="btn-primary">Subscribe</button>
+  </form>
+</div>
+
+<script src="../assets/main.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ═══════════════════════════════════════════════════════════
+     GAP MAP ASSESSMENT ENGINE
+     18 items, 5 constructs, 6 profiles, radar chart, Kit gate
+     ═══════════════════════════════════════════════════════════ */
+
+  // ─── QUESTIONS ──────────────────────────────────────────
+  // Constructs 1, 2, 4: higher agreement = bigger gap (scores kept as-is)
+  // Constructs 3, 5: higher agreement = smaller gap (inverted in scoring)
+  var QUESTIONS = [
+    // CONSTRUCT 1: Communication Under Pressure (4 items, reverse-scored — high = big gap)
+    {
+      id: 'c1q1',
+      construct: 1,
+      constructName: 'Communication Under Pressure',
+      text: 'When you walk into a high-stakes meeting, you can feel your thinking narrow \u2014 ideas that were clear five minutes ago become hard to articulate.',
+      lowLabel: 'Never happens',
+      highLabel: 'Every time'
+    },
+    {
+      id: 'c1q2',
+      construct: 1,
+      constructName: 'Communication Under Pressure',
+      text: 'When someone pushes back on your position publicly, your first instinct is to soften or retreat rather than hold your ground.',
+      lowLabel: 'Not at all like me',
+      highLabel: 'Exactly like me'
+    },
+    {
+      id: 'c1q3',
+      construct: 1,
+      constructName: 'Communication Under Pressure',
+      text: 'You find yourself avoiding conversations you know need to happen \u2014 a difficult feedback session, a pricing negotiation, a board-level disagreement.',
+      lowLabel: 'Rarely',
+      highLabel: 'Frequently'
+    },
+    {
+      id: 'c1q4',
+      construct: 1,
+      constructName: 'Communication Under Pressure',
+      text: 'In tense moments, you notice yourself agreeing with things you don\u2019t actually believe, just to reduce the friction in the room.',
+      lowLabel: 'Never',
+      highLabel: 'Often'
+    },
+
+    // CONSTRUCT 2: Anxiety-Driven Gap (3 items, reverse-scored — high = big gap)
+    {
+      id: 'c2q1',
+      construct: 2,
+      constructName: 'Anxiety-Driven Gap',
+      text: 'Before an important presentation or call, you spend more time worrying about how you\u2019ll be perceived than preparing what you\u2019ll say.',
+      lowLabel: 'Not at all',
+      highLabel: 'Almost always'
+    },
+    {
+      id: 'c2q2',
+      construct: 2,
+      constructName: 'Anxiety-Driven Gap',
+      text: 'Around more senior people \u2014 investors, board members, industry leaders \u2014 you notice a version of yourself that\u2019s measurably less capable than the one your own team sees.',
+      lowLabel: 'No difference',
+      highLabel: 'Major difference'
+    },
+    {
+      id: 'c2q3',
+      construct: 2,
+      constructName: 'Anxiety-Driven Gap',
+      text: 'After high-stakes interactions, you replay the conversation in your head, fixating on what you should have said differently.',
+      lowLabel: 'Rarely',
+      highLabel: 'Almost every time'
+    },
+
+    // CONSTRUCT 3: Skill-Based Gap (3 items, self-rated competence — LOW score = big gap, inverted later)
+    {
+      id: 'c3q1',
+      construct: 3,
+      constructName: 'Skill-Based Gap',
+      text: 'When you need to explain a complex idea \u2014 strategy, technical architecture, financial model \u2014 you can consistently structure it so the other person follows without effort.',
+      lowLabel: 'Struggle with this',
+      highLabel: 'Strong at this'
+    },
+    {
+      id: 'c3q2',
+      construct: 3,
+      constructName: 'Skill-Based Gap',
+      text: 'You adjust how you communicate based on who\u2019s in the room \u2014 different register for engineers vs. investors vs. customers \u2014 without losing authenticity.',
+      lowLabel: 'Not naturally',
+      highLabel: 'Effortlessly'
+    },
+    {
+      id: 'c3q3',
+      construct: 3,
+      constructName: 'Skill-Based Gap',
+      text: 'In a meeting, you can tell within the first few minutes whether the room is with you or against you, and you adjust your approach accordingly.',
+      lowLabel: 'Rarely pick up on it',
+      highLabel: 'Almost always'
+    },
+
+    // CONSTRUCT 4: Identity/Role Gap (4 items, reverse-scored — high = big gap)
+    {
+      id: 'c4q1',
+      construct: 4,
+      constructName: 'Identity / Role Gap',
+      text: 'When things go well \u2014 you land a deal, nail a presentation, get praised publicly \u2014 your first thought is that you got lucky or that they don\u2019t know the full picture.',
+      lowLabel: 'Never think this',
+      highLabel: 'Think this constantly'
+    },
+    {
+      id: 'c4q2',
+      construct: 4,
+      constructName: 'Identity / Role Gap',
+      text: 'There\u2019s a nagging sense that one day people will figure out you\u2019re not as capable as they currently believe.',
+      lowLabel: 'Not at all',
+      highLabel: 'Very much'
+    },
+    {
+      id: 'c4q3',
+      construct: 4,
+      constructName: 'Identity / Role Gap',
+      text: 'You\u2019ve moved into a bigger role \u2014 CEO, partner, head of \u2014 but internally you still feel like the person from two roles ago.',
+      lowLabel: 'No, I\u2019ve grown into it',
+      highLabel: 'Yes, frequently'
+    },
+    {
+      id: 'c4q4',
+      construct: 4,
+      constructName: 'Identity / Role Gap',
+      text: 'There\u2019s a gap between the leader you know you should be and the one you actually feel like when the pressure is on.',
+      lowLabel: 'No gap',
+      highLabel: 'Significant gap'
+    },
+
+    // CONSTRUCT 5: Structural Gap (4 items, self-rated awareness — LOW score = big gap, inverted later)
+    {
+      id: 'c5q1',
+      construct: 5,
+      constructName: 'Structural Gap',
+      text: 'You can identify the specific situations or triggers that cause your communication to break down \u2014 not just that it happens, but the pattern behind it.',
+      lowLabel: 'Not really',
+      highLabel: 'Very clearly'
+    },
+    {
+      id: 'c5q2',
+      construct: 5,
+      constructName: 'Structural Gap',
+      text: 'If someone who works with you closely described your communication strengths and weaknesses, their list would match yours.',
+      lowLabel: 'Probably not',
+      highLabel: 'Almost exactly'
+    },
+    {
+      id: 'c5q3',
+      construct: 5,
+      constructName: 'Structural Gap',
+      text: 'When you receive direct, critical feedback on how you communicate, your instinct is to lean into it rather than defend against it.',
+      lowLabel: 'I tend to resist',
+      highLabel: 'I actively seek it'
+    },
+    {
+      id: 'c5q4',
+      construct: 5,
+      constructName: 'Structural Gap',
+      text: 'You believe your communication patterns can fundamentally change \u2014 not just small improvements, but real structural shifts in how you land.',
+      lowLabel: 'Skeptical',
+      highLabel: 'Fully confident'
+    }
+  ];
+
+  // ─── PROFILES ───────────────────────────────────────────
+  var PROFILES = {
+    'pressure-crumbler': {
+      name: 'The Pressure Crumbler',
+      desc: 'You\u2019re capable \u2014 your team knows it, your track record proves it. But when the stakes rise, something shifts. The thinking that\u2019s sharp in preparation becomes foggy in delivery. This isn\u2019t a competence problem. It\u2019s a pressure-response pattern.',
+      coaching: 'The work here is neurological, not intellectual. You don\u2019t need more preparation \u2014 you need a different relationship with pressure. The goal is making your high-stakes performance match your low-stakes capability.',
+      readLink: '/writing/trying-harder-will-make-it-worse.html',
+      readTitle: 'Trying Harder Will Make It Worse'
+    },
+    'anxious-expert': {
+      name: 'The Anxious Expert',
+      desc: 'High competence, high anxiety. You know your material better than almost anyone in the room, but the worry about how you\u2019ll be perceived consumes bandwidth that should go to delivery. The gap isn\u2019t between you and the audience \u2014 it\u2019s between your capability and the anxiety sitting on top of it.',
+      coaching: 'This is the most common pattern in high-performers. The anxiety isn\u2019t a character flaw \u2014 it\u2019s a threat-detection system misfiring in a social context. The work targets the evaluation-sensitivity directly, not the communication.',
+      readLink: '/writing/even-100m-entrepreneurs-get-nervous-heres-why.html',
+      readTitle: 'Even $100M Entrepreneurs Get Nervous. Here\u2019s Why.'
+    },
+    'confident-novice': {
+      name: 'The Confident Novice',
+      desc: 'You don\u2019t freeze under pressure. You don\u2019t spiral with anxiety. But the signal still doesn\u2019t land the way it should \u2014 because there are genuine skill gaps in how you structure, adapt, and read the room. This is actually the most straightforward gap to close.',
+      coaching: 'Skill gaps are the most coachable category. Unlike anxiety or identity, they respond directly to deliberate practice. The work is structured: build the specific communication competencies that are missing, with rapid feedback loops.',
+      readLink: '/writing/how-to-have-great-conversations.html',
+      readTitle: 'How to Have Great Conversations'
+    },
+    'impostor': {
+      name: 'The Impostor',
+      desc: 'Success doesn\u2019t update your self-model. You land the deal, close the round, lead the team \u2014 and attribute it to timing, luck, or other people\u2019s low standards. The gap isn\u2019t in your performance. It\u2019s in the story you tell yourself about your performance.',
+      coaching: 'Impostor syndrome isn\u2019t fixed by more wins. It\u2019s fixed by changing the attribution system \u2014 how you explain your own outcomes to yourself. The work here is identity-level: who are you allowed to be? What success are you permitted to own?',
+      readLink: '/writing/youre-drifting-and-you-dont-know-it.html',
+      readTitle: 'You\u2019re Drifting and You Don\u2019t Know It'
+    },
+    'blind-spot': {
+      name: 'The Blind Spot',
+      desc: 'The gap exists but you can\u2019t see its shape. You may not have a clear picture of how you come across, what your communication patterns actually are, or what triggers your breakdowns. Without insight, the other gaps can\u2019t be addressed.',
+      coaching: 'Low structural awareness is the prerequisite problem. Before working on pressure, anxiety, or skill, you need accurate data about your own patterns. The work starts with calibration: building the self-monitoring capacity that makes all other coaching effective.',
+      readLink: '/writing/influence-starts-before-you-open-your-mouth.html',
+      readTitle: 'Influence Starts Before You Open Your Mouth'
+    },
+    'tangled': {
+      name: 'The Tangled Gap',
+      desc: 'Multiple constructs are elevated \u2014 pressure, anxiety, and identity are feeding each other in a self-reinforcing loop. You feel like an impostor, so you get anxious, so you underperform under pressure, which confirms the impostor story. This is the most common pattern in high-achieving executives.',
+      coaching: 'The tangled gap requires sequenced intervention. You can\u2019t work on everything at once. The first move is identifying the keystone \u2014 the one construct that, if addressed, loosens the others. Usually it\u2019s identity, but the assessment data tells the real story.',
+      readLink: '/writing/10-research-backed-tools-to-calm-down.html',
+      readTitle: '10 Research-Backed Tools to Calm Down Before Speaking'
+    },
+    'low-gap': {
+      name: 'Low-Gap Profile',
+      desc: 'No single construct scored above the threshold. Either your capability and perception are well-aligned, or you may have answered conservatively. If communication still feels like it\u2019s not landing the way it should, a conversation would surface what the assessment can\u2019t.',
+      coaching: 'A low-gap result doesn\u2019t mean there\u2019s no room to grow. It means the standard constructs aren\u2019t where the issue lives. The work here is diagnostic \u2014 a 30-minute conversation often reveals patterns that a self-report assessment misses.',
+      readLink: '/writing/if-i-could-only-tell-you-one-thing-about-communication.html',
+      readTitle: 'If I Could Only Tell You One Thing About Communication'
+    }
+  };
+
+  var CONSTRUCT_NAMES = [
+    '',
+    'Communication Under Pressure',
+    'Anxiety-Driven Gap',
+    'Skill-Based Gap',
+    'Identity / Role Gap',
+    'Structural Gap'
+  ];
+
+  var CONSTRUCT_DESCS = [
+    '',
+    'How your communication degrades when stakes are high \u2014 freeze, flight, or fawn responses under social-evaluative threat.',
+    'The gap between what you can do in safe conditions and what you deliver when you feel judged or evaluated.',
+    'Genuine skill gaps in structuring ideas, adapting to audiences, and reading the room \u2014 independent of anxiety.',
+    'Attributing success to luck, feeling fraudulent, or struggling to inhabit a role your track record has earned.',
+    'Self-awareness of your own communication patterns, openness to feedback, and belief in your capacity to change.'
+  ];
+
+  // Kit tags for each profile
+  var PROFILE_TAGS = {
+    'pressure-crumbler': 17009509,
+    'anxious-expert':    17009511,
+    'confident-novice':  17009512,
+    'impostor':          17009513,
+    'blind-spot':        17009514,
+    'tangled':           17009515,
+    'low-gap':           17009516
+  };
+
+  // ─── STATE ──────────────────────────────────────────────
+  var currentIndex = 0;
+  var answers = {};  // { 'c1q1': 3, ... }
+  var profileKey = '';
+  var scores = {};   // { 1: 75, 2: 40, ... }
+
+  // ─── DOM REFS ───────────────────────────────────────────
+  var screenIntro    = document.getElementById('screen-intro');
+  var screenQ        = document.getElementById('screen-questions');
+  var screenResults  = document.getElementById('screen-results');
+  var progressWrap   = document.querySelector('.progress-wrap');
+  var progressBar    = document.querySelector('.progress-bar');
+  var btnStart       = document.getElementById('btn-start');
+  var btnPrev        = document.getElementById('btn-prev');
+  var btnNext        = document.getElementById('btn-next');
+  var qNumber        = document.getElementById('q-number');
+  var qConstruct     = document.getElementById('q-construct');
+  var qText          = document.getElementById('q-text');
+  var scaleLow       = document.getElementById('scale-low');
+  var scaleHigh      = document.getElementById('scale-high');
+  var scaleBtns      = document.querySelectorAll('.scale-btn');
+  var profileNameEl  = document.getElementById('profile-name');
+  var profileDescEl  = document.getElementById('profile-desc');
+  var profileCoachEl = document.getElementById('profile-coaching');
+  var constructList  = document.getElementById('construct-list');
+  var readNextLink   = document.getElementById('read-next-link');
+  var gateForm       = document.getElementById('gate-form');
+  var gateError      = document.getElementById('gate-error');
+  var gateSuccess    = document.getElementById('gate-success');
+
+  // ─── GOATCOUNTER HELPER ─────────────────────────────────
+  function trackEvent(name) {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: '/assessment/' + name, event: true });
+    }
+  }
+
+  // ─── SCREEN TRANSITIONS ─────────────────────────────────
+  function showScreen(el) {
+    [screenIntro, screenQ, screenResults].forEach(function (s) {
+      s.classList.remove('is-active', 'is-visible');
+    });
+    el.classList.add('is-active');
+    // Slight delay for opacity transition
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        el.classList.add('is-visible');
+      });
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ─── RENDER QUESTION ───────────────────────────────────
+  function renderQuestion() {
+    var q = QUESTIONS[currentIndex];
+    qNumber.textContent = 'Question ' + (currentIndex + 1) + ' of ' + QUESTIONS.length;
+    qConstruct.textContent = q.constructName;
+    qText.textContent = q.text;
+    scaleLow.textContent = q.lowLabel;
+    scaleHigh.textContent = q.highLabel;
+
+    // Update progress
+    var pct = ((currentIndex) / QUESTIONS.length) * 100;
+    progressBar.style.width = pct + '%';
+
+    // Restore selection if answered
+    var saved = answers[q.id];
+    scaleBtns.forEach(function (btn) {
+      var val = parseInt(btn.getAttribute('data-value'));
+      var isSelected = saved === val;
+      btn.classList.toggle('is-selected', isSelected);
+      btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+      btn.setAttribute('tabindex', isSelected ? '0' : '-1');
+    });
+    // If nothing selected, first button gets tabindex 0
+    if (!saved) {
+      scaleBtns[0].setAttribute('tabindex', '0');
+    }
+
+    // Back button visibility
+    btnPrev.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+
+    // Next button state
+    btnNext.disabled = !saved;
+    btnNext.textContent = currentIndex === QUESTIONS.length - 1 ? 'See Results' : 'Next';
+  }
+
+  // ─── SCALE BUTTON HANDLERS ─────────────────────────────
+  scaleBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var val = parseInt(this.getAttribute('data-value'));
+      answers[QUESTIONS[currentIndex].id] = val;
+      scaleBtns.forEach(function (b) {
+        var isThis = parseInt(b.getAttribute('data-value')) === val;
+        b.classList.toggle('is-selected', isThis);
+        b.setAttribute('aria-checked', isThis ? 'true' : 'false');
+        b.setAttribute('tabindex', isThis ? '0' : '-1');
+      });
+      btnNext.disabled = false;
+
+      // Auto-advance after short delay (feels snappy)
+      if (currentIndex < QUESTIONS.length - 1) {
+        setTimeout(function () {
+          currentIndex++;
+          renderQuestion();
+        }, 280);
+      }
+    });
+  });
+
+  // Keyboard navigation for radio group
+  document.querySelector('.scale-buttons').addEventListener('keydown', function (e) {
+    var keys = ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'];
+    if (keys.indexOf(e.key) === -1) return;
+    e.preventDefault();
+    var current = document.activeElement;
+    var idx = Array.prototype.indexOf.call(scaleBtns, current);
+    if (idx === -1) return;
+    var dir = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+    var next = idx + dir;
+    if (next >= 0 && next < scaleBtns.length) {
+      scaleBtns[next].focus();
+      scaleBtns[next].click();
+    }
+  });
+
+  // ─── NAV BUTTONS ────────────────────────────────────────
+  btnStart.addEventListener('click', function () {
+    showScreen(screenQ);
+    progressWrap.classList.add('is-visible');
+    renderQuestion();
+    trackEvent('assessment-start');
+  });
+
+  btnNext.addEventListener('click', function () {
+    if (currentIndex < QUESTIONS.length - 1) {
+      currentIndex++;
+      renderQuestion();
+    } else {
+      // Calculate and show results
+      calculateScores();
+      renderResults();
+      showScreen(screenResults);
+      progressWrap.classList.remove('is-visible');
+      trackEvent('assessment-complete');
+    }
+  });
+
+  btnPrev.addEventListener('click', function () {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderQuestion();
+    }
+  });
+
+  // ─── SCORING ENGINE ─────────────────────────────────────
+  function calculateScores() {
+    // Group answers by construct
+    var constructItems = { 1: [], 2: [], 3: [], 4: [], 5: [] };
+    QUESTIONS.forEach(function (q) {
+      var val = answers[q.id] || 3; // default to middle if somehow unanswered
+      constructItems[q.construct].push(val);
+    });
+
+    // Calculate raw percentage per construct
+    // For constructs 1, 2, 4: items scored directly (high answer = big gap)
+    // For constructs 3, 5: items are competence/awareness (high answer = small gap, invert)
+    for (var c = 1; c <= 5; c++) {
+      var items = constructItems[c];
+      var maxPossible = items.length * 5;
+      var sum = 0;
+      for (var i = 0; i < items.length; i++) sum += items[i];
+      var rawPct = ((sum - items.length) / (maxPossible - items.length)) * 100;
+      // Constructs 3 and 5: invert (high score on items = low gap)
+      if (c === 3 || c === 5) {
+        scores[c] = Math.round(100 - rawPct);
+      } else {
+        scores[c] = Math.round(rawPct);
+      }
+    }
+
+    // Determine profile
+    var elevated = [];
+    for (var c = 1; c <= 5; c++) {
+      if (scores[c] > 60) elevated.push(c);
+    }
+
+    // Check for tangled (1+2+4 all elevated)
+    if (elevated.indexOf(1) !== -1 && elevated.indexOf(2) !== -1 && elevated.indexOf(4) !== -1) {
+      profileKey = 'tangled';
+    } else if (elevated.length === 0) {
+      profileKey = 'low-gap';
+    } else {
+      // Find highest single construct
+      var highest = 0;
+      var highestC = 1;
+      for (var c = 1; c <= 5; c++) {
+        if (scores[c] > highest) {
+          highest = scores[c];
+          highestC = c;
+        }
+      }
+      var profileMap = { 1: 'pressure-crumbler', 2: 'anxious-expert', 3: 'confident-novice', 4: 'impostor', 5: 'blind-spot' };
+      profileKey = profileMap[highestC];
+    }
+
+    // Encode results in hash for sharing
+    var hash = encodeResults();
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + hash);
+    }
+  }
+
+  // ─── ENCODE / DECODE RESULTS FOR URL ────────────────────
+  function encodeResults() {
+    // Format: s=c1,c2,c3,c4,c5&p=profile-key
+    return 's=' + scores[1] + ',' + scores[2] + ',' + scores[3] + ',' + scores[4] + ',' + scores[5] + '&p=' + profileKey;
+  }
+
+  function decodeResults(hash) {
+    if (!hash || hash.length < 5) return false;
+    try {
+      var parts = hash.split('&');
+      var scoreStr = '';
+      var profStr = '';
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].indexOf('s=') === 0) scoreStr = parts[i].substring(2);
+        if (parts[i].indexOf('p=') === 0) profStr = parts[i].substring(2);
+      }
+      if (!scoreStr || !profStr) return false;
+      var vals = scoreStr.split(',');
+      if (vals.length !== 5) return false;
+      for (var c = 1; c <= 5; c++) {
+        scores[c] = parseInt(vals[c - 1]);
+        if (isNaN(scores[c]) || scores[c] < 0 || scores[c] > 100) return false;
+      }
+      if (!PROFILES[profStr]) return false;
+      profileKey = profStr;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // ─── RENDER RESULTS ─────────────────────────────────────
+  function renderResults() {
+    var profile = PROFILES[profileKey];
+
+    // Header
+    profileNameEl.innerHTML = profile.name.replace(/(The )(.+)/, 'The <em>$2</em>');
+    profileDescEl.textContent = profile.desc;
+    profileCoachEl.textContent = profile.coaching;
+
+    // Read next
+    readNextLink.href = profile.readLink;
+    readNextLink.textContent = profile.readTitle;
+
+    // Construct cards
+    constructList.innerHTML = '';
+    for (var c = 1; c <= 5; c++) {
+      var pct = scores[c];
+      var card = document.createElement('div');
+      card.className = 'construct-card' + (pct > 60 ? ' is-elevated' : '');
+      card.innerHTML =
+        '<div class="construct-card-header">' +
+          '<span class="construct-card-name">' + CONSTRUCT_NAMES[c] + '</span>' +
+          '<span class="construct-card-score">' + pct + '%</span>' +
+        '</div>' +
+        '<div class="construct-card-bar"><div class="construct-card-fill" style="width: 0%"></div></div>' +
+        '<p class="construct-card-desc">' + CONSTRUCT_DESCS[c] + '</p>';
+      constructList.appendChild(card);
+
+      // Animate bar fill
+      (function (el, target) {
+        setTimeout(function () {
+          el.querySelector('.construct-card-fill').style.width = target + '%';
+        }, 100);
+      })(card, pct);
+    }
+
+    // Draw radar
+    setTimeout(function () { drawRadar(); }, 200);
+
+    // Share links
+    var shareUrl = window.location.origin + window.location.pathname + '#' + encodeResults();
+    var shareText = 'I just took the Gap Map assessment from Pathos Labs. My profile: ' + profile.name + '.';
+
+    document.getElementById('btn-copy-link').addEventListener('click', function () {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl).then(function () {
+          this.textContent = 'Copied';
+          var self = this;
+          setTimeout(function () { self.textContent = 'Copy Link'; }, 2000);
+        }.bind(this));
+      }
+    });
+
+    document.getElementById('btn-share-linkedin').href =
+      'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
+  }
+
+  // ─── RADAR CHART (CANVAS) ──────────────────────────────
+  function drawRadar() {
+    var canvas = document.getElementById('radar');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var displaySize = canvas.clientWidth;
+    canvas.width = displaySize * dpr;
+    canvas.height = displaySize * dpr;
+    ctx.scale(dpr, dpr);
+
+    var cx = displaySize / 2;
+    var cy = displaySize / 2;
+    var maxR = displaySize * 0.38;
+    var labels = ['Pressure', 'Anxiety', 'Skill Gap', 'Identity', 'Blind Spot'];
+    var n = 5;
+    var angleStep = (2 * Math.PI) / n;
+    var startAngle = -Math.PI / 2; // Start from top
+
+    // Get computed colors
+    var style = getComputedStyle(document.documentElement);
+    var colorBorder = style.getPropertyValue('--ds-warm-border').trim() || '#ddd';
+    var colorAccent = style.getPropertyValue('--ds-sienna').trim() || '#8b4d3b';
+    var colorAccentBg = 'oklch(48% 0.145 32 / 0.12)';
+    var colorText = style.getPropertyValue('--ds-text-body').trim() || '#444';
+    var colorMuted = style.getPropertyValue('--ds-text-muted').trim() || '#888';
+
+    // Clear
+    ctx.clearRect(0, 0, displaySize, displaySize);
+
+    // Draw grid rings (20%, 40%, 60%, 80%, 100%)
+    for (var ring = 1; ring <= 5; ring++) {
+      var r = (ring / 5) * maxR;
+      ctx.beginPath();
+      for (var i = 0; i <= n; i++) {
+        var angle = startAngle + i * angleStep;
+        var x = cx + r * Math.cos(angle);
+        var y = cy + r * Math.sin(angle);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = ring === 3 ? colorBorder : 'oklch(90% 0.004 80)';
+      ctx.lineWidth = ring === 3 ? 1.5 : 0.8;
+      ctx.stroke();
+    }
+
+    // Draw axis lines
+    for (var i = 0; i < n; i++) {
+      var angle = startAngle + i * angleStep;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + maxR * Math.cos(angle), cy + maxR * Math.sin(angle));
+      ctx.strokeStyle = 'oklch(90% 0.004 80)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    }
+
+    // Draw data polygon
+    ctx.beginPath();
+    for (var i = 0; i < n; i++) {
+      var angle = startAngle + i * angleStep;
+      var val = scores[i + 1] / 100;
+      var x = cx + maxR * val * Math.cos(angle);
+      var y = cy + maxR * val * Math.sin(angle);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = colorAccentBg;
+    ctx.fill();
+    ctx.strokeStyle = colorAccent;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Draw data points
+    for (var i = 0; i < n; i++) {
+      var angle = startAngle + i * angleStep;
+      var val = scores[i + 1] / 100;
+      var x = cx + maxR * val * Math.cos(angle);
+      var y = cy + maxR * val * Math.sin(angle);
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, 2 * Math.PI);
+      ctx.fillStyle = colorAccent;
+      ctx.fill();
+    }
+
+    // Draw labels
+    ctx.font = '500 12px Outfit, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    for (var i = 0; i < n; i++) {
+      var angle = startAngle + i * angleStep;
+      var labelR = maxR + 28;
+      var x = cx + labelR * Math.cos(angle);
+      var y = cy + labelR * Math.sin(angle);
+
+      // Adjust alignment for left/right labels
+      if (Math.cos(angle) > 0.3) ctx.textAlign = 'left';
+      else if (Math.cos(angle) < -0.3) ctx.textAlign = 'right';
+      else ctx.textAlign = 'center';
+
+      ctx.fillStyle = colorMuted;
+      ctx.fillText(labels[i], x, y);
+
+      // Score value
+      ctx.font = 'italic 14px "Instrument Serif", Georgia, serif';
+      ctx.fillStyle = colorText;
+      ctx.fillText(scores[i + 1] + '%', x, y + 16);
+      ctx.font = '500 12px Outfit, sans-serif';
+    }
+
+    // 60% threshold ring (dashed)
+    var threshR = 0.6 * maxR;
+    ctx.beginPath();
+    ctx.setLineDash([4, 4]);
+    for (var i = 0; i <= n; i++) {
+      var angle = startAngle + i * angleStep;
+      var x = cx + threshR * Math.cos(angle);
+      var y = cy + threshR * Math.sin(angle);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'oklch(48% 0.145 32 / 0.3)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // ─── EMAIL GATE (KIT API) ──────────────────────────────
+  gateForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    trackEvent('assessment-gate-submit');
+
+    var email = document.getElementById('gate-email').value.trim();
+    var honeypot = gateForm.querySelector('.honeypot').value;
+
+    if (honeypot) {
+      // Bot — fake success
+      gateForm.style.display = 'none';
+      gateSuccess.classList.add('is-visible');
+      return;
+    }
+
+    if (!email) return;
+
+    var submitBtn = gateForm.querySelector('.btn-primary');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    gateError.style.display = 'none';
+
+    // Determine tag IDs: profile tag + source tag
+    var tagId = PROFILE_TAGS[profileKey];
+    var tags = [17009523]; // source-assessment
+    if (tagId) tags.push(tagId);
+
+    var body = {
+      api_key: 'GXwvYXvNYOsCjiliB4ILTA',
+      email: email,
+      tags: tags,
+      fields: {
+        source: 'assessment',
+        page: '/assessment/',
+        referrer: document.referrer || 'direct'
+      }
+    };
+
+    fetch('https://api.convertkit.com/v3/forms/9098413/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    .then(function (res) {
+      if (!res.ok) throw new Error('API error');
+      return res.json();
+    })
+    .then(function () {
+      gateForm.style.display = 'none';
+      gateSuccess.classList.add('is-visible');
+      trackEvent('assessment-gate-success');
+    })
+    .catch(function () {
+      gateError.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Get Your Full Report';
+    });
+  });
+
+  // ─── HASH-BASED RESULT RESTORATION ─────────────────────
+  function checkHash() {
+    var hash = window.location.hash.substring(1);
+    if (hash && decodeResults(hash)) {
+      renderResults();
+      showScreen(screenResults);
+    }
+  }
+
+  // Init
+  checkHash();
+
+})();
+</script>
+
+<!-- GoatCounter -->
+<script data-goatcounter="https://pathos-labs.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
