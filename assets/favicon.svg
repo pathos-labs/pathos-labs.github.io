@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#231f1b"/>
+  <text x="5" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" letter-spacing="1" fill="#f0ede8">P</text>
+  <text x="15" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" fill="#c47a5e">.</text>
+  <text x="20" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="400" fill="#f0ede8">L</text>
+</svg>
