@@ -11,7 +11,7 @@ The problem is never ability. Not once, in any of the work we've done, has the p
 
 We diagnose where the gap opens, build new defaults through live rehearsal against real stakes, and stay in it until the change holds under pressure without prompting. That's the work. It's precise, it's fast, and the relationship matters — because this kind of change doesn't happen without trust.
 
-Clients include Morgan Stanley, Church of England, YuLife, Relation Therapeutics, and KYC360.
+Clients include Morgan Stanley, Church of England, Invesco, YuLife, Relation Therapeutics, and KYC360.
 
 Intake by referral or application.
 
