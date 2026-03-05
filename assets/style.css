@@ -124,6 +124,7 @@ button { font-family: inherit; }
   display: flex;
   align-items: baseline;
   gap: 0;
+  transition: color var(--dur-med) var(--ease);
 }
 .nav-wordmark .dot { color: var(--color-accent); }
 .nav-wordmark .labs { font-weight: 400; }
@@ -142,7 +143,7 @@ button { font-family: inherit; }
   text-transform: uppercase;
   color: var(--color-text-muted);
   text-decoration: none;
-  transition: color var(--dur-fast);
+  transition: color var(--dur-med) var(--ease);
 }
 .nav-links a:hover { color: var(--color-text); }
 
@@ -151,7 +152,9 @@ button { font-family: inherit; }
   color: var(--color-accent);
   border: 1px solid var(--color-accent);
   padding: 0.45em 1.3em;
-  transition: background var(--dur-fast), color var(--dur-fast);
+  transition: background var(--dur-med) var(--ease),
+              color var(--dur-med) var(--ease),
+              border-color var(--dur-med) var(--ease);
 }
 .nav-cta:hover {
   background: var(--color-accent-bg);
@@ -173,7 +176,9 @@ button { font-family: inherit; }
   background: var(--color-text);
   position: absolute;
   left: 9px;
-  transition: transform var(--dur-fast) var(--ease), opacity var(--dur-fast);
+  transition: transform var(--dur-fast) var(--ease),
+              opacity var(--dur-fast),
+              background var(--dur-med) var(--ease);
 }
 .nav-hamburger span:nth-child(1) { top: 13px; }
 .nav-hamburger span:nth-child(2) { top: 19px; }
@@ -675,19 +680,11 @@ button { font-family: inherit; }
 /* ─── SECTION: TESTIMONIALS (dark) ───────────────── */
 .section-testimony {
   background: var(--color-dark-bg);
-  padding: clamp(4rem, 7vw, 6rem) var(--section-x);
+  padding: clamp(3rem, 5vw, 4rem) var(--section-x);
   position: relative;
   overflow: hidden;
 }
-.section-testimony::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 79px, var(--color-grid-line-subtle) 79px, var(--color-grid-line-subtle) 80px),
-    repeating-linear-gradient(90deg, transparent, transparent 79px, var(--color-grid-line-subtle) 79px, var(--color-grid-line-subtle) 80px);
-  pointer-events: none;
-}
+/* No grid texture on testimonials — quotes stand alone in darkness */
 .testimony-inner {
   position: relative;
   z-index: var(--z-content);
@@ -696,7 +693,7 @@ button { font-family: inherit; }
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
-  align-items: start;
+  align-items: center;
 }
 .testimony-featured {
   padding-right: clamp(1.5rem, 3vw, 3rem);
@@ -753,9 +750,9 @@ button { font-family: inherit; }
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
-  line-height: 1.45;
-  color: var(--color-dark-text-muted);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.5;
+  color: oklch(72% 0.005 80);
   margin-bottom: 0.5rem;
 }
 .testimony-compact footer {
@@ -774,11 +771,12 @@ button { font-family: inherit; }
 
 /* ─── SECTION: FINAL CTA (dark) ──────────────────── */
 .section-cta {
-  background: var(--color-dark-bg);
+  background: var(--color-dark-surface);
   padding: clamp(5rem, 8vw, 7rem) var(--section-x);
   text-align: center;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid var(--color-accent);
 }
 .section-cta::before {
   content: '';
@@ -829,7 +827,8 @@ button { font-family: inherit; }
 }
 .writing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: clamp(1rem, 2vw, 1.5rem);
   max-width: 1100px;
   margin: 0 auto;
@@ -842,7 +841,15 @@ button { font-family: inherit; }
   padding: clamp(1.25rem, 2vw, 1.75rem);
   border: 1px solid var(--color-border-faint);
   text-decoration: none;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--dur-med) var(--ease);
+}
+.featured-card:first-child {
+  grid-row: 1 / -1;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-left: 2px solid var(--color-accent);
+}
+.featured-card:first-child .featured-card-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
 }
 .featured-card:hover {
   border-color: var(--color-accent);

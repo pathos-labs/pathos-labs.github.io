@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════════════════════════
    PATHOS LABS — SHARED JS
    Nav (transparent→solid), mobile menu, scroll reveals,
-   newsletter forms + modal, testimonial carousel,
-   writing filters, GoatCounter, smooth scroll.
+   newsletter forms + modal, writing filters,
+   GoatCounter, smooth scroll.
    ═══════════════════════════════════════════════════════════ */
 
 (function () {
@@ -245,7 +245,7 @@
 
     window.addEventListener('scroll', function onScroll() {
       var pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-      if (pct > 0.6) {
+      if (pct > 0.8) {
         triggerModal();
         window.removeEventListener('scroll', onScroll);
         clearTimeout(timer);
@@ -272,42 +272,6 @@
         e.preventDefault(); first.focus();
       }
     });
-  }
-
-  /* ─── TESTIMONIAL CAROUSEL ───────────────────────── */
-  var slides = document.querySelectorAll('.testimony-slide');
-  var dots = document.querySelectorAll('.testimony-dot');
-
-  if (slides.length > 1) {
-    var currentSlide = 0;
-    var autoAdvance;
-
-    function goToSlide(i) {
-      slides.forEach(function (s) { s.classList.remove('is-active'); });
-      dots.forEach(function (d) { d.classList.remove('is-active'); d.setAttribute('aria-selected', 'false'); });
-      currentSlide = i;
-      slides[currentSlide].classList.add('is-active');
-      if (dots[currentSlide]) {
-        dots[currentSlide].classList.add('is-active');
-        dots[currentSlide].setAttribute('aria-selected', 'true');
-      }
-    }
-
-    function nextSlide() {
-      goToSlide((currentSlide + 1) % slides.length);
-    }
-
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        goToSlide(i);
-        clearInterval(autoAdvance);
-        if (!prefersReducedMotion) autoAdvance = setInterval(nextSlide, 8000);
-      });
-    });
-
-    if (!prefersReducedMotion) {
-      autoAdvance = setInterval(nextSlide, 8000);
-    }
   }
 
   /* ─── WRITING FILTERS ───────────────────────────── */
