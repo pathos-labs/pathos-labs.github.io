@@ -819,6 +819,7 @@ button { font-family: inherit; }
 .section-writing {
   background: var(--color-bg);
   padding: var(--section-y) var(--section-x);
+  text-align: center;
 }
 .section-writing h2 {
   font-family: var(--font-serif);
@@ -834,6 +835,8 @@ button { font-family: inherit; }
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(1rem, 2vw, 1.5rem);
   max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
 }
 .featured-card {
   display: flex;

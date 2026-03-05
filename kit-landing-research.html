@@ -23,6 +23,17 @@
   <title>Research Worth Reading — Pathos Labs</title>
   <meta name="description" content="Evidence-based insights on executive communication, human performance, and the science of influence. Free, email-gated. By Pathos Labs.">
 
+  <link rel="icon" type="image/svg+xml" href="https://pathoslabs.co/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://pathoslabs.co/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="https://pathoslabs.co/assets/favicon-180.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pathoslabs.co/writing/">
+  <meta property="og:title" content="Research Worth Reading — Pathos Labs">
+  <meta property="og:description" content="Evidence-based insights on executive communication, human performance, and the science of influence.">
+  <meta property="og:image" content="https://pathoslabs.co/assets/images/og-writing.png">
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,6 +264,13 @@
       transition: border-color 0.18s ease !important;
       -webkit-appearance: none !important;
       appearance: none !important;
+    }
+
+    .form-wrapper input[type="email"]:focus-visible,
+    .form-wrapper input[type="text"]:focus-visible,
+    .form-wrapper .formkit-input:focus-visible {
+      outline: 2px solid var(--color-accent) !important;
+      outline-offset: 2px !important;
     }
 
     .form-wrapper input[type="email"]::placeholder,

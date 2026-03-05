@@ -66,7 +66,7 @@ Worth the 5 minutes. Most people who read it tell me it reframed something they'
 
 Sam
 
-P.S. If you missed Email 1 and haven't checked out [the archive](https://pathoslabs.co/writing/), there are 23 pieces there — all free, no gate.
+P.S. If you missed Email 1 and haven't checked out [the archive](https://pathoslabs.co/writing/), there are over 20 pieces there — all free, no gate.
 
 ---
 

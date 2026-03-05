@@ -24,6 +24,17 @@
   <title>Presence Under Pressure — Newsletter by Pathos Labs</title>
   <meta name="description" content="A weekly letter on communication, human performance, and the internal blockers that keep capable people stuck — by Sam Millunchick.">
 
+  <link rel="icon" type="image/svg+xml" href="https://pathoslabs.co/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://pathoslabs.co/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="https://pathoslabs.co/assets/favicon-180.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pathoslabs.co/newsletter/">
+  <meta property="og:title" content="Presence Under Pressure — Newsletter by Pathos Labs">
+  <meta property="og:description" content="A weekly letter on communication, human performance, and the internal blockers that keep capable people stuck.">
+  <meta property="og:image" content="https://pathoslabs.co/assets/images/og-newsletter.png">
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,6 +218,13 @@
       transition: border-color 0.18s ease !important;
       -webkit-appearance: none !important;
       appearance: none !important;
+    }
+
+    .form-wrapper input[type="email"]:focus-visible,
+    .form-wrapper input[type="text"]:focus-visible,
+    .form-wrapper .formkit-input:focus-visible {
+      outline: 2px solid var(--color-accent) !important;
+      outline-offset: 2px !important;
     }
 
     .form-wrapper input[type="email"]::placeholder,

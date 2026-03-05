@@ -5,8 +5,9 @@
 Open each HTML file in a browser and screenshot. Or use a headless browser:
 
 ```bash
-# Using Chrome headless (adjust path for your OS)
-google-chrome --headless --screenshot=pathos-labs-dark.png --window-size=280,40 --default-background-color=0 logos-render.html
+# Using Chrome/Chromium headless (binary name varies by OS)
+# Linux: google-chrome-stable, chromium — macOS: /Applications/Google\ Chrome.app/...
+chromium --headless --screenshot=pathos-labs-dark.png --window-size=280,40 --default-background-color=0 logos-render.html
 ```
 
 ## Variants
