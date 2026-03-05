@@ -1,0 +1,560 @@
+/* ═══════════════════════════════════════════════════════════
+   PATHOS LABS — GAP MAP PLAYBOOK
+   Print-optimized stylesheet for html2pdf.js generation
+   Design: Precision + Humanity — Instrument Serif + Outfit
+   ═══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('../../assets/tokens.css');
+
+
+/* ─── PAGE SETUP ────────────────────────────────────────── */
+
+@page {
+  size: A4;
+  margin: 20mm 18mm;
+}
+
+
+/* ─── BASE RESET & TYPOGRAPHY ───────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;                       /* fixed for PDF — clamp() unreliable in print */
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  line-height: var(--leading-heading);
+  font-weight: 400;                      /* Instrument Serif has one weight */
+}
+
+p {
+  margin-bottom: var(--space-16);
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+ul, ol {
+  padding-left: var(--space-24);
+  margin-bottom: var(--space-16);
+}
+
+li {
+  margin-bottom: var(--space-8);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ─── COVER PAGE ────────────────────────────────────────── */
+
+.playbook-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: var(--space-48) var(--space-32);
+  page-break-after: always;
+}
+
+.playbook-cover__brand {
+  margin-bottom: var(--space-48);
+}
+
+.playbook-cover__brand img {
+  height: 28px;
+  width: auto;
+}
+
+.playbook-cover__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-12);
+}
+
+.playbook-cover__title {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.playbook-cover__name {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-48);
+}
+
+.playbook-cover__radar {
+  margin-bottom: var(--space-32);
+}
+
+.playbook-cover__radar img,
+.playbook-cover__radar canvas {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
+
+.playbook-cover__scores {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-16);
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: var(--space-32);
+}
+
+.playbook-cover__score-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-medium);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.playbook-cover__score-value {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.playbook-cover__profile {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.playbook-cover__date {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+
+/* ─── SECTION CONTAINERS ────────────────────────────────── */
+
+.playbook-section {
+  margin-bottom: var(--space-48);
+  page-break-inside: avoid;
+}
+
+.playbook-section--long {
+  page-break-inside: auto;             /* allow breaks in longer sections */
+}
+
+.playbook-section__title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-24);
+}
+
+
+/* ─── PATTERN SECTION (long-form prose) ─────────────────── */
+
+.playbook-pattern {
+  page-break-inside: auto;
+}
+
+.playbook-pattern p {
+  font-size: 15px;
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
+  margin-bottom: var(--space-16);
+}
+
+.playbook-pattern p:last-child {
+  margin-bottom: 0;
+}
+
+.playbook-pattern strong {
+  color: var(--color-text);
+}
+
+
+/* ─── SCORES SECTION ────────────────────────────────────── */
+
+.playbook-scores {
+  page-break-inside: auto;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  margin-bottom: var(--space-4);
+}
+
+.score-label {
+  min-width: 160px;
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-body);
+}
+
+.score-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--color-border-faint);
+  position: relative;
+  overflow: hidden;
+}
+
+.score-bar__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.score-value {
+  min-width: 40px;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.score-tier {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  padding-left: 172px;                  /* 160px label + 12px gap */
+  margin-bottom: var(--space-16);
+}
+
+.score-instrument {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-top: var(--space-8);
+}
+
+
+/* ─── PRACTICE PLAN SECTION ─────────────────────────────── */
+
+.playbook-plan {
+  page-break-inside: auto;
+}
+
+.week {
+  margin-bottom: var(--space-32);
+}
+
+.week__title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-medium);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-16);
+}
+
+.exercise {
+  margin-bottom: var(--space-24);
+  page-break-inside: avoid;
+}
+
+.exercise__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.exercise__title {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.exercise__time {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  margin-left: var(--space-16);
+}
+
+.exercise__body {
+  font-size: 14px;
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
+  margin-bottom: var(--space-8);
+}
+
+.exercise__body ol,
+.exercise__body ul {
+  padding-left: var(--space-24);
+  margin-bottom: var(--space-8);
+}
+
+.exercise__body li {
+  margin-bottom: var(--space-4);
+  font-size: 14px;
+}
+
+.exercise__why {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+}
+
+.exercise__success {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-body);
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-12);
+}
+
+
+/* ─── TOOLKIT SECTION ───────────────────────────────────── */
+
+.playbook-toolkit {
+  page-break-inside: auto;
+}
+
+.toolkit-card {
+  border: 1px solid var(--color-border);
+  padding: var(--space-24);
+  margin-bottom: var(--space-24);
+  page-break-inside: avoid;
+}
+
+.toolkit-card__title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: var(--leading-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-12);
+}
+
+.toolkit-card__body {
+  font-size: 14px;
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
+}
+
+.toolkit-card__body ol,
+.toolkit-card__body ul {
+  padding-left: var(--space-24);
+  margin-top: var(--space-8);
+}
+
+.toolkit-card__body li {
+  margin-bottom: var(--space-4);
+  font-size: 14px;
+}
+
+
+/* ─── RESEARCH / CITATIONS SECTION ──────────────────────── */
+
+.playbook-research {
+  page-break-inside: auto;
+}
+
+.citation-group {
+  margin-bottom: var(--space-24);
+}
+
+.citation-group__title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.citation {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-body);
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-16);
+  text-indent: calc(-1 * var(--space-16));  /* hanging indent */
+}
+
+.citation a {
+  color: var(--color-accent);
+  word-break: break-all;
+}
+
+
+/* ─── CTA SECTION ───────────────────────────────────────── */
+
+.playbook-cta {
+  text-align: center;
+  padding: var(--space-48) var(--space-32);
+  page-break-inside: avoid;
+}
+
+.playbook-cta__text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: var(--leading-body);
+  color: var(--color-text-body);
+  max-width: 480px;
+  margin: 0 auto var(--space-16);
+}
+
+.playbook-cta__link {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.playbook-cta__link:hover {
+  text-decoration: underline;
+}
+
+
+/* ─── PAGE BREAK UTILITIES ──────────────────────────────── */
+
+.page-break-before {
+  page-break-before: always;
+}
+
+.page-break-after {
+  page-break-after: always;
+}
+
+.page-break-inside-avoid {
+  page-break-inside: avoid;
+}
+
+
+/* ─── PRINT OVERRIDES ───────────────────────────────────── */
+
+@media print {
+
+  /* Force backgrounds to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  /* Hide screen-only elements */
+  .screen-only,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Ensure score bars render in print */
+  .score-bar {
+    background: var(--color-border-faint) !important;
+  }
+
+  .score-bar__fill {
+    background: var(--color-accent) !important;
+  }
+
+  /* Ensure accent borders print */
+  .exercise__success {
+    border-left-color: var(--color-accent) !important;
+  }
+
+  /* Links — show URL in print for credibility */
+  .playbook-research .citation a[href]::after {
+    content: " [" attr(href) "]";
+    font-size: 10px;
+    color: var(--color-text-muted);
+    word-break: break-all;
+  }
+
+  /* Prevent orphans/widows in prose */
+  .playbook-pattern p,
+  .exercise__body,
+  .toolkit-card__body {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Keep headings with their content */
+  h1, h2, h3, h4,
+  .playbook-section__title,
+  .week__title,
+  .exercise__header {
+    page-break-after: avoid;
+  }
+
+  /* Never break inside these */
+  .exercise,
+  .toolkit-card,
+  .playbook-cta,
+  .score-row {
+    page-break-inside: avoid;
+  }
+
+  /* Cover page fills first page */
+  .playbook-cover {
+    min-height: 100vh;
+    page-break-after: always;
+  }
+}

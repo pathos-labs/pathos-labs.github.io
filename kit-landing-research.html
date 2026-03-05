@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!--
+  PATHOS LABS — KIT CUSTOM LANDING PAGE
+  Research Gate: Email-gated research decks
+
+  Usage: Paste into Kit > Landing Pages > Custom HTML
+  Kit injects: {{ form }} — the subscribe form with email input + submit button
+
+  Design tokens match pathoslabs.co exactly:
+    Background:  #f7f5f2  (--ds-warm-white)
+    Text:        #231f1b  (--ds-text-primary)
+    Body text:   #3d3833  (--ds-text-body)
+    Muted:       #7a7470  (--ds-text-muted)
+    Accent:      #8b4d3b  (--ds-sienna)
+    Border:      #e0dbd6  (--ds-warm-border)
+    Fonts:       Instrument Serif + Outfit
+    Rules:       No border-radius anywhere. Ever.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Worth Reading — Pathos Labs</title>
+  <meta name="description" content="Evidence-based insights on executive communication, human performance, and the science of influence. Free, email-gated. By Pathos Labs.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --color-bg:          #f7f5f2;
+      --color-surface:     #f0ede8;
+      --color-surface-2:   #e8e4de;
+      --color-text:        #231f1b;
+      --color-text-body:   #3d3833;
+      --color-text-muted:  #7a7470;
+      --color-accent:      #8b4d3b;
+      --color-accent-dark: #6e3c2e;
+      --color-border:      #e0dbd6;
+      --color-border-faint:#ebe7e2;
+
+      --font-serif:        'Instrument Serif', Georgia, serif;
+      --font-sans:         'Outfit', 'Helvetica Neue', sans-serif;
+    }
+
+    /* ─── DARK MODE ──────────────────────────────────────── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg:          #141210;
+        --color-surface:     #1c1a17;
+        --color-surface-2:   #242018;
+        --color-text:        #f0ede8;
+        --color-text-body:   #d6d1ca;
+        --color-text-muted:  #8a8580;
+        --color-accent:      #c47a5e;
+        --color-accent-dark: #d4886c;
+        --color-border:      #2a2520;
+        --color-border-faint:#221e1a;
+      }
+    }
+
+    /* ─── BASE ───────────────────────────────────────────── */
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-body);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ─── PAGE SHELL ─────────────────────────────────────── */
+    .page-wrapper {
+      width: 100%;
+      max-width: 560px;
+      padding: 64px 28px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    /* ─── WORDMARK ───────────────────────────────────────── */
+    .wordmark {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-text);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 64px;
+    }
+
+    .wordmark .dot {
+      color: var(--color-accent);
+    }
+
+    .wordmark .labs {
+      font-weight: 400;
+    }
+
+    /* ─── RULE ───────────────────────────────────────────── */
+    .rule {
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-border);
+      margin-bottom: 48px;
+    }
+
+    /* ─── EYEBROW ────────────────────────────────────────── */
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    /* ─── HEADLINE ───────────────────────────────────────── */
+    .headline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(2.6rem, 7vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--color-text);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    /* ─── SUBTEXT ────────────────────────────────────────── */
+    .subtext {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--color-text-body);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+
+    /* ─── WHAT YOU GET ───────────────────────────────────── */
+    .deck-list {
+      width: 100%;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--color-border-faint);
+    }
+
+    .deck-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--color-border-faint);
+    }
+
+    .deck-marker {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      padding-top: 3px;
+      flex-shrink: 0;
+      width: 52px;
+    }
+
+    .deck-title {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .deck-desc {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin-top: 2px;
+    }
+
+    /* ─── KIT FORM INJECTION ─────────────────────────────── */
+    /*
+      Kit injects {{ form }} here.
+      Selectors below style whatever Kit renders.
+      !important overrides Kit's own stylesheet.
+    */
+
+    .form-wrapper {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    /* Kit form element */
+    .form-wrapper form,
+    .form-wrapper .formkit-form {
+      width: 100% !important;
+    }
+
+    /* Kit form fields container */
+    .form-wrapper .formkit-fields,
+    .form-wrapper .seva-fields {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+
+    /* Kit input fields */
+    .form-wrapper input[type="email"],
+    .form-wrapper input[type="text"],
+    .form-wrapper .formkit-input {
+      width: 100% !important;
+      background-color: var(--color-surface) !important;
+      border: 1px solid var(--color-border) !important;
+      border-radius: 0 !important;
+      color: var(--color-text) !important;
+      font-family: var(--font-sans) !important;
+      font-size: 15px !important;
+      font-weight: 300 !important;
+      line-height: 1 !important;
+      padding: 14px 16px !important;
+      outline: none !important;
+      transition: border-color 0.18s ease !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+    }
+
+    .form-wrapper input[type="email"]::placeholder,
+    .form-wrapper input[type="text"]::placeholder,
+    .form-wrapper .formkit-input::placeholder {
+      color: var(--color-text-muted) !important;
+      opacity: 1 !important;
+    }
+
+    .form-wrapper input[type="email"]:focus,
+    .form-wrapper input[type="text"]:focus,
+    .form-wrapper .formkit-input:focus {
+      border-color: var(--color-accent) !important;
+    }
+
+    /* Kit submit button */
+    .form-wrapper button[type="submit"],
+    .form-wrapper input[type="submit"],
+    .form-wrapper .formkit-submit,
+    .form-wrapper .seva-submit {
+      width: 100% !important;
+      background-color: var(--color-accent) !important;
+      border: none !important;
+      border-radius: 0 !important;
+      color: #f7f5f2 !important;
+      cursor: pointer !important;
+      font-family: var(--font-sans) !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      letter-spacing: 2px !important;
+      line-height: 1 !important;
+      padding: 16px 32px !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      transition: background-color 0.18s ease !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+    }
+
+    .form-wrapper button[type="submit"]:hover,
+    .form-wrapper input[type="submit"]:hover,
+    .form-wrapper .formkit-submit:hover,
+    .form-wrapper .seva-submit:hover {
+      background-color: var(--color-accent-dark) !important;
+    }
+
+    /* Kit success / error messages */
+    .form-wrapper .formkit-alert,
+    .form-wrapper [data-element="errors"] {
+      font-family: var(--font-sans) !important;
+      font-size: 13px !important;
+      font-weight: 400 !important;
+      color: var(--color-text-body) !important;
+      margin-top: 8px !important;
+    }
+
+    /* Kit privacy / GDPR text */
+    .form-wrapper .formkit-guarantee,
+    .form-wrapper [data-element="guarantee"] {
+      font-family: var(--font-sans) !important;
+      font-size: 12px !important;
+      color: var(--color-text-muted) !important;
+      margin-top: 12px !important;
+      line-height: 1.5 !important;
+    }
+
+    /* ─── FINE PRINT ─────────────────────────────────────── */
+    .fine-print {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin-top: 16px;
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background-color: var(--color-border-faint);
+      margin: 48px 0 40px;
+    }
+
+    /* ─── ABOUT LINE ─────────────────────────────────────── */
+    .about-line {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+    }
+
+    .about-line a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.18s ease;
+    }
+
+    .about-line a:hover {
+      border-bottom-color: var(--color-accent);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .page-footer {
+      width: 100%;
+      border-top: 1px solid var(--color-border);
+      padding: 32px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    .footer-link {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .footer-link:hover {
+      color: var(--color-accent);
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .page-wrapper {
+        padding: 48px 20px 64px;
+      }
+
+      .wordmark {
+        margin-bottom: 48px;
+      }
+
+      .deck-marker {
+        width: 44px;
+      }
+
+      .page-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 20px;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<main class="page-wrapper">
+
+  <!-- Wordmark -->
+  <a href="https://pathoslabs.co" class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></a>
+
+  <div class="rule"></div>
+
+  <!-- Eyebrow -->
+  <span class="eyebrow">Research</span>
+
+  <!-- Headline -->
+  <h1 class="headline">Research worth<br>reading.</h1>
+
+  <!-- Subtext -->
+  <p class="subtext">
+    Evidence-based insights on executive communication, human performance, and the science of influence. Free, email-gated.
+  </p>
+
+  <!-- What you get -->
+  <div class="deck-list">
+    <div class="deck-item">
+      <span class="deck-marker">Vol. 1</span>
+      <div>
+        <div class="deck-title">Psychological Safety — The Leadership Multiplier</div>
+        <div class="deck-desc">What the research actually says. What to do Monday morning.</div>
+      </div>
+    </div>
+    <div class="deck-item">
+      <span class="deck-marker">More</span>
+      <div>
+        <div class="deck-title">Additional decks added regularly</div>
+        <div class="deck-desc">Communication under pressure, executive presence, influence architecture.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kit form injection -->
+  <div class="form-wrapper">
+    {{ form }}
+  </div>
+
+  <p class="fine-print">You'll also receive the Presence Under Pressure newsletter. Unsubscribe any time.</p>
+
+  <div class="divider"></div>
+
+  <!-- About line -->
+  <p class="about-line">
+    Research by <a href="https://pathoslabs.co">Pathos Labs</a> &mdash; executive communication advisory for founders and senior leaders.
+  </p>
+
+</main>
+
+<footer class="page-footer">
+  <span class="footer-tagline">Executive communication. Rebuilt from the inside.</span>
+  <a href="https://pathoslabs.co" class="footer-link">pathoslabs.co</a>
+</footer>
+
+</body>
+</html>

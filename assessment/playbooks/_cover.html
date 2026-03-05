@@ -1,0 +1,47 @@
+<div class="playbook-cover">
+  <div class="playbook-cover__brand">
+    <svg class="playbook-cover__logo" width="140" height="20" viewBox="0 0 140 20" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="16" font-family="'Instrument Serif', Georgia, serif" font-size="18" font-weight="400" fill="oklch(14% 0.010 260)">Pathos Labs</text>
+    </svg>
+  </div>
+
+  <div class="playbook-cover__body">
+    <p class="playbook-cover__eyebrow">THE GAP MAP</p>
+    <h1 class="playbook-cover__title">Your Playbook</h1>
+    <p class="playbook-cover__name">Prepared for {{USER_NAME}}</p>
+
+    <div class="playbook-cover__radar">
+      <img src="{{RADAR_PNG}}" alt="Your Gap Map radar chart" width="320" height="320">
+    </div>
+
+    <div class="playbook-cover__scores">
+      <div class="playbook-cover__score">
+        <span class="playbook-cover__score-label">Pressure</span>
+        <span class="playbook-cover__score-value">{{SCORE_1}}%</span>
+      </div>
+      <div class="playbook-cover__score">
+        <span class="playbook-cover__score-label">Anxiety</span>
+        <span class="playbook-cover__score-value">{{SCORE_2}}%</span>
+      </div>
+      <div class="playbook-cover__score">
+        <span class="playbook-cover__score-label">Skill Gap</span>
+        <span class="playbook-cover__score-value">{{SCORE_3}}%</span>
+      </div>
+      <div class="playbook-cover__score">
+        <span class="playbook-cover__score-label">Identity</span>
+        <span class="playbook-cover__score-value">{{SCORE_4}}%</span>
+      </div>
+      <div class="playbook-cover__score">
+        <span class="playbook-cover__score-label">Blind Spot</span>
+        <span class="playbook-cover__score-value">{{SCORE_5}}%</span>
+      </div>
+    </div>
+
+    <div class="playbook-cover__profile">
+      <p class="playbook-cover__profile-label">Your profile</p>
+      <p class="playbook-cover__profile-name">{{PROFILE_NAME}}</p>
+    </div>
+
+    <p class="playbook-cover__date">{{DATE}}</p>
+  </div>
+</div>

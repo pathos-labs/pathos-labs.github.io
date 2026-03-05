@@ -54,6 +54,7 @@
   --ds-size-caption:      clamp(0.78rem, 0.9vw, 0.84rem);
   --ds-size-eyebrow:      clamp(0.75rem, 0.85vw, 0.78rem);
   --ds-size-btn:          clamp(0.8rem, 0.9vw, 0.85rem);
+  --ds-size-small:        clamp(0.82rem, 0.95vw, 0.88rem);
   --ds-size-nav:          0.78rem;
 
   --ds-leading-tight:     0.92;
@@ -103,6 +104,17 @@
   --ds-ease:              cubic-bezier(0.25, 0.1, 0.25, 1);
   --ds-ease-out:          cubic-bezier(0, 0, 0.25, 1);
 
+  /* Decorative / Utility */
+  --ds-grid-line:         oklch(94% 0 0 / 0.02);
+  --ds-grid-line-subtle:  oklch(94% 0 0 / 0.015);
+  --ds-overlay:           oklch(10% 0 0 / 0.8);
+  --ds-overlay-heavy:     oklch(10% 0.008 260 / 0.7);
+  --ds-color-error:       oklch(55% 0.2 25);
+  --ds-hero-gradient-from:oklch(10% 0.008 260 / 0.92);
+  --ds-hero-gradient-mid: oklch(10% 0.008 260 / 0.78);
+  --ds-hero-gradient-to:  oklch(10% 0.008 260 / 0.35);
+  --ds-cta-hover-bg:      oklch(94% 0.01 32 / 0.12);
+
 
   /* ─── LAYER 1: SEMANTIC ALIASES ─────────────────── */
   /* Components use ONLY these */
@@ -148,6 +160,7 @@
   --text-caption:         var(--ds-size-caption);
   --text-eyebrow:         var(--ds-size-eyebrow);
   --text-btn:             var(--ds-size-btn);
+  --text-small:           var(--ds-size-small);
   --text-nav:             var(--ds-size-nav);
 
   --leading-tight:        var(--ds-leading-tight);
@@ -195,4 +208,15 @@
   --dur-slow:             var(--ds-dur-slow);
   --ease:                 var(--ds-ease);
   --ease-out:             var(--ds-ease-out);
+
+  /* Decorative / Utility */
+  --color-grid-line:      var(--ds-grid-line);
+  --color-grid-line-subtle:var(--ds-grid-line-subtle);
+  --color-overlay:        var(--ds-overlay);
+  --color-overlay-heavy:  var(--ds-overlay-heavy);
+  --color-error:          var(--ds-color-error);
+  --color-hero-gradient-from:var(--ds-hero-gradient-from);
+  --color-hero-gradient-mid:var(--ds-hero-gradient-mid);
+  --color-hero-gradient-to:var(--ds-hero-gradient-to);
+  --color-cta-hover-bg:   var(--ds-cta-hover-bg);
 }

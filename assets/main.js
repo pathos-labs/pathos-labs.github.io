@@ -337,10 +337,18 @@
   if (progressBar) {
     var postBody = document.querySelector('.post-body');
     if (postBody) {
-      window.addEventListener('scroll', function () {
+      var bodyTop = 0;
+      var bodyHeight = 0;
+
+      function cachePostLayout() {
         var rect = postBody.getBoundingClientRect();
-        var bodyTop = rect.top + window.scrollY;
-        var bodyHeight = rect.height;
+        bodyTop = rect.top + window.scrollY;
+        bodyHeight = rect.height;
+      }
+      cachePostLayout();
+      window.addEventListener('resize', cachePostLayout, { passive: true });
+
+      window.addEventListener('scroll', function () {
         var scrolled = window.scrollY - bodyTop;
         var pct = Math.max(0, Math.min(100, (scrolled / bodyHeight) * 100));
         progressBar.style.width = pct + '%';
