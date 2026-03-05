@@ -771,12 +771,11 @@ button { font-family: inherit; }
 
 /* ─── SECTION: FINAL CTA (dark) ──────────────────── */
 .section-cta {
-  background: var(--color-dark-surface);
+  background: var(--color-dark-bg);
   padding: clamp(5rem, 8vw, 7rem) var(--section-x);
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid var(--color-accent);
 }
 .section-cta::before {
   content: '';
