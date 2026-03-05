@@ -97,7 +97,7 @@ img {
 
 .playbook-cover__eyebrow {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
@@ -143,7 +143,7 @@ img {
 
 .playbook-cover__score-label {
   font-family: var(--font-sans);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: var(--tracking-medium);
   text-transform: uppercase;
@@ -277,7 +277,7 @@ img {
 
 .score-instrument {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-style: italic;
   color: var(--color-text-muted);
   margin-top: var(--space-8);
@@ -325,7 +325,7 @@ img {
 
 .exercise__time {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--color-text-muted);
   flex-shrink: 0;
@@ -462,10 +462,6 @@ img {
   font-size: 15px;
   font-weight: 600;
   color: var(--color-accent);
-  text-decoration: none;
-}
-
-.playbook-cta__link:hover {
   text-decoration: underline;
 }
 
@@ -523,7 +519,7 @@ img {
   /* Links — show URL in print for credibility */
   .playbook-research .citation a[href]::after {
     content: " [" attr(href) "]";
-    font-size: 10px;
+    font-size: 12px;
     color: var(--color-text-muted);
     word-break: break-all;
   }

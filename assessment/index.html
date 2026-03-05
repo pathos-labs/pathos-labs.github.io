@@ -80,8 +80,8 @@
   position: absolute;
   inset: 0;
   background:
-    repeating-linear-gradient(0deg, transparent, transparent 79px, oklch(94% 0 0 / 0.015) 79px, oklch(94% 0 0 / 0.015) 80px),
-    repeating-linear-gradient(90deg, transparent, transparent 79px, oklch(94% 0 0 / 0.015) 79px, oklch(94% 0 0 / 0.015) 80px);
+    repeating-linear-gradient(0deg, transparent, transparent 79px, var(--color-grid-line-subtle) 79px, var(--color-grid-line-subtle) 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 79px, var(--color-grid-line-subtle) 79px, var(--color-grid-line-subtle) 80px);
   pointer-events: none;
 }
 .assess-hero-content {
@@ -170,7 +170,7 @@
   align-items: flex-start;
   gap: var(--space-16);
   padding: var(--space-16) 0;
-  border-bottom: 1px solid oklch(94% 0 0 / 0.06);
+  border-bottom: 1px solid var(--color-dark-separator);
 }
 .discover-num {
   font-family: var(--font-serif);
@@ -211,7 +211,7 @@
   gap: var(--space-16);
 }
 .report-feature {
-  padding: var(--space-20) var(--space-24);
+  padding: var(--space-24);
   background: var(--color-dark-surface);
   border-left: 2px solid var(--color-accent-on-dark);
 }
@@ -236,8 +236,8 @@
   gap: var(--space-32);
   margin-bottom: var(--space-64);
   padding: var(--space-24) 0;
-  border-top: 1px solid oklch(94% 0 0 / 0.06);
-  border-bottom: 1px solid oklch(94% 0 0 / 0.06);
+  border-top: 1px solid var(--color-dark-separator);
+  border-bottom: 1px solid var(--color-dark-separator);
 }
 .credibility-item {
   display: flex;
@@ -313,7 +313,7 @@
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: var(--text-caption);
-  color: oklch(65% 0.18 25);
+  color: var(--color-error-on-dark);
   margin-bottom: var(--space-8);
   display: none;
 }
@@ -340,9 +340,11 @@
 .progress-wrap.is-visible { opacity: 1; }
 .progress-bar {
   height: 100%;
-  width: 0%;
+  width: 100%;
   background: var(--color-accent);
-  transition: width var(--dur-med) var(--ease-out);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-med) var(--ease-out);
 }
 
 /* ─── QUESTION SCREEN ────────────────────────────── */
@@ -571,8 +573,11 @@
 }
 .construct-card-fill {
   height: 100%;
+  width: 100%;
   background: var(--color-accent);
-  transition: width 0.8s var(--ease-out);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease-out);
 }
 .construct-card-desc {
   font-family: var(--font-sans);
@@ -831,7 +836,7 @@
     font-size: clamp(1.2rem, 5vw, 1.5rem);
   }
   .scale-labels {
-    display: none;
+    font-size: var(--text-caption);
   }
   .research-instrument {
     flex-direction: column;
@@ -895,6 +900,13 @@
 </div>
 
 <main id="main">
+
+<noscript>
+  <div style="padding: var(--space-48) var(--section-x); text-align: center;">
+    <h1 style="font-family: var(--font-serif); font-size: var(--text-h2); margin-bottom: var(--space-16);">JavaScript Required</h1>
+    <p style="font-size: var(--text-body); color: var(--color-text-body); max-width: var(--max-text); margin: 0 auto;">The Gap Map assessment requires JavaScript to run. Please enable JavaScript in your browser settings and reload this page.</p>
+  </div>
+</noscript>
 
 <!-- ════════════════════════════════════════════════
      SCREEN 1: INTRO / HERO — with email gate
@@ -1003,7 +1015,7 @@
           <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit" class="btn-primary btn-primary--light">Begin</button>
         </form>
-        <div class="hero-gate-error" id="hero-gate-error">Something went wrong. Please try again.</div>
+        <div class="hero-gate-error" id="hero-gate-error" role="alert">Something went wrong. Please try again.</div>
         <p class="hero-gate-privacy">Results delivered instantly on completion. You'll also receive the Presence Under Pressure newsletter. Unsubscribe any time.</p>
       </div>
 
@@ -1016,7 +1028,8 @@
      ════════════════════════════════════════════════ -->
 <div id="screen-questions" class="screen">
   <section class="question-screen">
-    <div class="question-inner">
+    <h1 class="sr-only">Gap Map Assessment Questions</h1>
+    <div class="question-inner" aria-live="polite">
       <div class="question-number" id="q-number"></div>
       <div class="question-construct" id="q-construct"></div>
       <h2 class="question-text" id="q-text"></h2>
@@ -1056,7 +1069,7 @@
 
       <div class="results-body">
         <div class="radar-wrap">
-          <canvas class="radar-canvas" id="radar" width="440" height="440"></canvas>
+          <canvas class="radar-canvas" id="radar" width="440" height="440" role="img" aria-label="Gap Map radar chart"></canvas>
         </div>
         <div class="construct-list" id="construct-list"></div>
       </div>
@@ -1092,6 +1105,8 @@
   </section>
 </div>
 
+</main>
+
 <!-- ─── FOOTER ────────────────────────────────────── -->
 <footer class="footer">
   <div class="footer-left">
@@ -1108,7 +1123,6 @@
     <a href="/newsletter/">Newsletter</a>
   </div>
 </footer>
-</main>
 
 <!-- ─── NEWSLETTER MODAL ──────────────────────────── -->
 <div class="modal-backdrop" aria-hidden="true"></div>
@@ -1552,6 +1566,13 @@
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
+    // Move focus to the new screen's first heading
+    var heading = el.querySelector('h1, h2, [id="q-text"]');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      setTimeout(function() { heading.focus(); }, 100);
+    }
+
     // Force nav to solid when leaving the dark hero
     if (el !== screenIntro && nav) {
       nav.classList.add('nav--scrolled');
@@ -1568,7 +1589,7 @@
     scaleHigh.textContent = q.highLabel;
 
     var pct = ((currentIndex) / QUESTIONS.length) * 100;
-    progressBar.style.width = pct + '%';
+    progressBar.style.transform = 'scaleX(' + (pct / 100) + ')';
 
     var saved = answers[q.id];
     scaleBtns.forEach(function (btn) {
@@ -1828,7 +1849,7 @@
           '<span class="construct-card-name">' + CONSTRUCT_NAMES[c] + '</span>' +
           '<span class="construct-card-score">' + pct + '%</span>' +
         '</div>' +
-        '<div class="construct-card-bar"><div class="construct-card-fill" style="width: 0%"></div></div>' +
+        '<div class="construct-card-bar"><div class="construct-card-fill"></div></div>' +
         '<p class="construct-card-desc">' + interpretation + '</p>' +
         recsHtml +
         scienceHtml;
@@ -1838,7 +1859,7 @@
       // Animate bar fill
       (function (el, target) {
         setTimeout(function () {
-          el.querySelector('.construct-card-fill').style.width = target + '%';
+          el.querySelector('.construct-card-fill').style.transform = 'scaleX(' + (target / 100) + ')';
         }, 100);
       })(card, pct);
     }
@@ -1889,12 +1910,19 @@
       link.href = profile.readLinks[i].href;
       link.textContent = profile.readLinks[i].title;
       link.style.display = 'block';
-      if (i > 0) link.style.marginTop = 'var(--space-8)';
+      if (i > 0) link.style.marginTop = '8px';
       readLinksEl.appendChild(link);
     }
 
-    // Draw radar
-    setTimeout(function () { drawRadar(); }, 200);
+    // Draw radar and update its accessible label
+    setTimeout(function () {
+      drawRadar();
+      var radarEl = document.getElementById('radar');
+      if (radarEl) radarEl.setAttribute('aria-label',
+        'Gap Map radar: Pressure ' + scores[1] + '%, Anxiety ' + scores[2] +
+        '%, Skill Gap ' + scores[3] + '%, Identity ' + scores[4] +
+        '%, Blind Spot ' + scores[5] + '%');
+    }, 200);
 
     // Playbook download section
     var playbookSection = document.createElement('div');
@@ -1907,7 +1935,7 @@
         '<button id="playbook-download-btn" class="btn-primary" onclick="generatePlaybookPDF()">' +
         'Download Your Playbook</button>' +
       '</div>';
-    var resultsContainer = document.querySelector('#screen-results .assess-results');
+    var resultsContainer = document.querySelector('#screen-results .results-inner');
     if (resultsContainer) resultsContainer.appendChild(playbookSection);
 
   }
@@ -1932,11 +1960,12 @@
     var startAngle = -Math.PI / 2;
 
     var style = getComputedStyle(document.documentElement);
-    var colorBorder = style.getPropertyValue('--ds-warm-border').trim() || '#ddd';
-    var colorAccent = style.getPropertyValue('--ds-sienna').trim() || '#8b4d3b';
-    var colorAccentBg = 'oklch(48% 0.145 32 / 0.12)';
-    var colorText = style.getPropertyValue('--ds-text-body').trim() || '#444';
-    var colorMuted = style.getPropertyValue('--ds-text-muted').trim() || '#888';
+    var colorBorder = style.getPropertyValue('--color-border').trim() || '#ddd';
+    var colorAccent = style.getPropertyValue('--color-accent').trim() || '#8b4d3b';
+    var colorAccentBg = style.getPropertyValue('--color-accent-bg').trim() || 'rgba(139,77,59,0.12)';
+    var colorText = style.getPropertyValue('--color-text-body').trim() || '#444';
+    var colorMuted = style.getPropertyValue('--color-text-muted').trim() || '#888';
+    var colorGridLine = 'oklch(90% 0.004 80)'; /* matches --color-border-faint tone */
 
     ctx.clearRect(0, 0, displaySize, displaySize);
 
@@ -1952,7 +1981,7 @@
         else ctx.lineTo(x, y);
       }
       ctx.closePath();
-      ctx.strokeStyle = ring === 3 ? colorBorder : 'oklch(90% 0.004 80)';
+      ctx.strokeStyle = ring === 3 ? colorBorder : colorGridLine;
       ctx.lineWidth = ring === 3 ? 1.5 : 0.8;
       ctx.stroke();
     }
@@ -1963,7 +1992,7 @@
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(cx + maxR * Math.cos(angle), cy + maxR * Math.sin(angle));
-      ctx.strokeStyle = 'oklch(90% 0.004 80)';
+      ctx.strokeStyle = colorGridLine;
       ctx.lineWidth = 0.8;
       ctx.stroke();
     }
@@ -2058,6 +2087,9 @@ window.generatePlaybookPDF = function() {
   btn.disabled = true;
   btn.textContent = 'Generating\u2026';
 
+  // Load html2pdf on demand if not yet loaded
+  function proceed() {
+
   // 1. Capture radar chart as PNG
   var radarCanvas = document.getElementById('radar');
   var radarPNG = radarCanvas.toDataURL('image/png', 1.0);
@@ -2149,6 +2181,22 @@ window.generatePlaybookPDF = function() {
     btn.textContent = 'Download Your Playbook';
     window.open('playbooks/' + profileKey + '.pdf', '_blank');
   });
+  } // end proceed()
+
+  if (typeof html2pdf !== 'undefined') {
+    proceed();
+  } else {
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js';
+    s.crossOrigin = 'anonymous';
+    s.onload = proceed;
+    s.onerror = function() {
+      btn.disabled = false;
+      btn.textContent = 'Download Your Playbook';
+      window.open('playbooks/' + profileKey + '.pdf', '_blank');
+    };
+    document.head.appendChild(s);
+  }
 };
 
 })();
@@ -2157,7 +2205,6 @@ window.generatePlaybookPDF = function() {
 <!-- GoatCounter -->
 <script data-goatcounter="https://pathos-labs.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" crossorigin="anonymous" defer></script>
 
 </body>
 </html>

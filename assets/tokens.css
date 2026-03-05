@@ -110,6 +110,8 @@
   --ds-overlay:           oklch(10% 0 0 / 0.8);
   --ds-overlay-heavy:     oklch(10% 0.008 260 / 0.7);
   --ds-color-error:       oklch(55% 0.2 25);
+  --ds-color-error-on-dark:oklch(65% 0.18 25);
+  --ds-dark-separator:    oklch(94% 0 0 / 0.06);
   --ds-hero-gradient-from:oklch(10% 0.008 260 / 0.92);
   --ds-hero-gradient-mid: oklch(10% 0.008 260 / 0.78);
   --ds-hero-gradient-to:  oklch(10% 0.008 260 / 0.35);
@@ -215,6 +217,8 @@
   --color-overlay:        var(--ds-overlay);
   --color-overlay-heavy:  var(--ds-overlay-heavy);
   --color-error:          var(--ds-color-error);
+  --color-error-on-dark:  var(--ds-color-error-on-dark);
+  --color-dark-separator: var(--ds-dark-separator);
   --color-hero-gradient-from:var(--ds-hero-gradient-from);
   --color-hero-gradient-mid:var(--ds-hero-gradient-mid);
   --color-hero-gradient-to:var(--ds-hero-gradient-to);
