@@ -7,13 +7,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=1200">
+<link rel="stylesheet" href="local-fonts.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    width: 1200px; height: 630px;
+    min-height: 100vh;
     background: oklch(10% 0.008 260);
-    display: flex; align-items: center;
     overflow: hidden; position: relative;
   }
   body::before {
@@ -24,7 +24,9 @@
     pointer-events: none;
   }
   .content {
-    position: relative; z-index: 1;
+    position: absolute; z-index: 1;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
     padding: 80px 90px;
   }
   .eyebrow {
@@ -41,7 +43,7 @@
   }
   h1 {
     font-family: 'Instrument Serif', serif;
-    font-weight: 400; font-size: 132px;
+    font-weight: 400; font-size: 110px;
     line-height: 0.92; color: oklch(94% 0.005 80);
   }
   h1 em {

@@ -1,21 +1,22 @@
 <!--
   LINKEDIN COMPANY PAGE BANNER — 1128×191
-  Open in browser, screenshot at 1128×191, save as banner-company.png
+  Screenshot: chromium --headless=new --disable-gpu --no-sandbox --ozone-platform=headless --screenshot=banner-company.png --window-size=1128x191
   LinkedIn company logo overlaps bottom-left corner — keep left ~180px clear
+  NOTE: Chrome enforces min viewport height ~493px but screenshot crops to 191px. Use fixed top positioning.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=1128">
+<link rel="stylesheet" href="local-fonts.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    width: 1128px; height: 191px;
     background: oklch(10% 0.008 260);
-    display: flex; align-items: center;
     overflow: hidden; position: relative;
     font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
   }
   body::before {
     content: ''; position: absolute; inset: 0;
@@ -24,18 +25,18 @@
       repeating-linear-gradient(90deg, transparent, transparent 59px, oklch(94% 0 0 / 0.015) 59px, oklch(94% 0 0 / 0.015) 60px);
   }
   .content {
-    position: relative; z-index: 1;
-    padding: 0 40px 0 200px;
-    width: 100%;
+    position: absolute; z-index: 1;
+    top: 50px;
+    left: 160px; right: 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: 24px;
   }
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 44px;
+    font-size: 38px;
     line-height: 1.1;
     color: oklch(94% 0.005 80);
     white-space: nowrap;
@@ -43,19 +44,12 @@
   .strapline em {
     color: oklch(60% 0.135 35);
   }
-  .right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-  }
   .clients {
     display: flex; gap: 10px; align-items: center;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+    flex-shrink: 0;
   }
   .client {
-    font-size: 9px; font-weight: 500;
+    font-size: 12px; font-weight: 500;
     color: oklch(65% 0.005 260);
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -69,7 +63,7 @@
   }
   .accent-line {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
+    top: 189px; left: 0; right: 0;
     height: 2px;
     background: oklch(48% 0.145 32);
   }
@@ -78,16 +72,10 @@
 <body>
   <div class="content">
     <div class="strapline">Presence under <em>pressure.</em></div>
-    <div class="right">
-      <div class="clients">
-        <span class="client">Morgan Stanley</span>
-        <span class="client-sep"></span>
-        <span class="client">Church of England</span>
-        <span class="client-sep"></span>
-        <span class="client">Invesco</span>
-        <span class="client-sep"></span>
-        <span class="client">YuLife</span>
-      </div>
+    <div class="clients">
+      <span class="client">Morgan Stanley</span>
+      <span class="client-sep"></span>
+      <span class="client">Invesco</span>
     </div>
   </div>
   <div class="accent-line"></div>

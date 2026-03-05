@@ -1,20 +1,21 @@
 <!--
   LINKEDIN PERSONAL BANNER — 1584×396
-  Open in browser, screenshot at 1584×396, save as banner-linkedin.png
-  LinkedIn profile photo overlaps bottom-left ~200px — keep content right of center
+  Screenshot via Playwright with viewport: { width: 1584, height: 396 }
+  Profile photo covers bottom-left ~25% of banner.
+  ALL content placed in right half.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="local-fonts.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     width: 1584px; height: 396px;
     background: oklch(10% 0.008 260);
-    display: flex; align-items: center;
     overflow: hidden; position: relative;
+    font-family: 'Outfit', sans-serif;
   }
   body::before {
     content: ''; position: absolute; inset: 0;
@@ -23,68 +24,52 @@
       repeating-linear-gradient(90deg, transparent, transparent 99px, oklch(94% 0 0 / 0.015) 99px, oklch(94% 0 0 / 0.015) 100px);
   }
   .content {
-    position: relative; z-index: 1;
-    padding: 0 80px 0 320px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .left {
+    position: absolute; z-index: 1;
+    top: 80px;
+    right: 80px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    align-items: flex-end;
+    text-align: right;
+    gap: 12px;
   }
+  .wordmark {
+    font-weight: 700; font-size: 16px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: oklch(80% 0.005 80);
+    margin-bottom: 4px;
+  }
+  .wordmark .dot { color: oklch(60% 0.135 35); }
+  .wordmark .labs { font-weight: 400; }
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 72px;
-    line-height: 1.0;
+    font-size: 64px;
+    line-height: 1.1;
     color: oklch(94% 0.005 80);
+    white-space: nowrap;
   }
   .strapline em {
     color: oklch(60% 0.135 35);
   }
   .sub {
-    font-family: 'Outfit', sans-serif;
     font-weight: 300;
-    font-size: 22px;
+    font-size: 20px;
     color: oklch(60% 0.005 260);
     line-height: 1.4;
-    max-width: 520px;
+    white-space: nowrap;
   }
-  .right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
-    flex-shrink: 0;
-  }
-  .wordmark {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700; font-size: 16px;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: oklch(80% 0.005 80);
-  }
-  .wordmark .dot { color: oklch(60% 0.135 35); }
-  .wordmark .labs { font-weight: 400; }
-  .clients {
-    display: flex; flex-direction: column;
-    align-items: flex-end; gap: 6px;
-  }
-  .clients-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 2.5px; text-transform: uppercase;
-    color: oklch(55% 0.005 260);
+  .divider {
+    width: 40px; height: 2px;
+    background: oklch(48% 0.145 32);
+    margin: 2px 0;
   }
   .client-row {
-    display: flex; gap: 20px; align-items: center;
+    display: flex; gap: 14px; align-items: center;
   }
   .client {
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px; font-weight: 500;
-    color: oklch(65% 0.005 260);
+    font-size: 12px; font-weight: 500;
+    color: oklch(55% 0.005 260);
     letter-spacing: 1.5px;
     text-transform: uppercase;
     white-space: nowrap;
@@ -98,36 +83,25 @@
   .accent-line {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 3px;
+    height: 2px;
     background: oklch(48% 0.145 32);
   }
 </style>
 </head>
 <body>
   <div class="content">
-    <div class="left">
-      <div class="strapline">Presence under<br><em>pressure.</em></div>
-      <p class="sub">Executive communication advisory for founders and senior leaders.</p>
-    </div>
-    <div class="right">
-      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
-      <div class="clients">
-        <div class="clients-label">Trusted by leaders at</div>
-        <div class="client-row">
-          <span class="client">Morgan Stanley</span>
-          <span class="client-sep"></span>
-          <span class="client">Church of England</span>
-          <span class="client-sep"></span>
-          <span class="client">Invesco</span>
-        </div>
-        <div class="client-row">
-          <span class="client">YuLife</span>
-          <span class="client-sep"></span>
-          <span class="client">Relation Therapeutics</span>
-          <span class="client-sep"></span>
-          <span class="client">KYC360</span>
-        </div>
-      </div>
+    <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
+    <div class="strapline">Presence under <em>pressure.</em></div>
+    <p class="sub">Executive communication advisory for founders and senior leaders.</p>
+    <div class="divider"></div>
+    <div class="client-row">
+      <span class="client">Morgan Stanley</span>
+      <span class="client-sep"></span>
+      <span class="client">Church of England</span>
+      <span class="client-sep"></span>
+      <span class="client">Invesco</span>
+      <span class="client-sep"></span>
+      <span class="client">YuLife</span>
     </div>
   </div>
   <div class="accent-line"></div>

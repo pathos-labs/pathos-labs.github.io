@@ -6,13 +6,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=1200">
+<link rel="stylesheet" href="local-fonts.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    width: 1200px; height: 630px;
+    min-height: 100vh;
     background: oklch(10% 0.008 260);
-    display: flex; align-items: center;
     overflow: hidden; position: relative;
   }
   body::before {
@@ -21,7 +21,7 @@
       repeating-linear-gradient(0deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px),
       repeating-linear-gradient(90deg, transparent, transparent 89px, oklch(94% 0 0 / 0.02) 89px, oklch(94% 0 0 / 0.02) 90px);
   }
-  .content { position: relative; z-index: 1; padding: 80px 90px; }
+  .content { position: absolute; z-index: 1; top: 50%; left: 0; transform: translateY(-50%); padding: 80px 90px; }
   .eyebrow {
     font-family: 'Outfit', sans-serif;
     font-weight: 500; font-size: 22px;
