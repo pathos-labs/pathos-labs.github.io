@@ -1,7 +1,7 @@
 <!--
   TWITTER/X BANNER — 1500×500
   Open in browser, screenshot at 1500×500, save as banner-twitter.png
-  Style: Minimal, dark, right-oriented, strapline + client names
+  Profile photo overlaps bottom-left ~280px on mobile — keep content centered/right
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
     width: 1500px; height: 500px;
     background: oklch(10% 0.008 260);
     display: flex; align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     overflow: hidden; position: relative;
     font-family: 'Outfit', sans-serif;
   }
@@ -26,29 +26,31 @@
   }
   .content {
     position: relative; z-index: 1;
-    padding: 0 120px;
     display: flex; flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 24px;
-    text-align: right;
+    text-align: center;
   }
   .wordmark {
-    font-weight: 700; font-size: 15px;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: oklch(94% 0.005 80);
+    font-weight: 700; font-size: 16px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: oklch(80% 0.005 80);
   }
   .wordmark .dot { color: oklch(60% 0.135 35); }
   .wordmark .labs { font-weight: 400; }
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 48px;
-    line-height: 1.15;
+    font-size: 72px;
+    line-height: 1.05;
     color: oklch(94% 0.005 80);
   }
+  .strapline em {
+    color: oklch(60% 0.135 35);
+  }
   .clients-label {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
     color: oklch(55% 0.005 260);
     margin-top: 8px;
   }
@@ -56,8 +58,8 @@
     display: flex; gap: 24px; align-items: center;
   }
   .client {
-    font-size: 12px; font-weight: 500;
-    color: oklch(60% 0.005 260);
+    font-size: 13px; font-weight: 500;
+    color: oklch(65% 0.005 260);
     letter-spacing: 1.5px;
     text-transform: uppercase;
   }
@@ -78,7 +80,7 @@
 <body>
   <div class="content">
     <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
-    <div class="strapline">Presence under pressure.</div>
+    <div class="strapline">Presence under <em>pressure.</em></div>
     <div class="clients-label">Trusted by leaders at</div>
     <div class="clients">
       <span class="client">Morgan Stanley</span>

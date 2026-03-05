@@ -1,6 +1,7 @@
 <!--
   LINKEDIN PERSONAL BANNER — 1584×396
   Open in browser, screenshot at 1584×396, save as banner-linkedin.png
+  LinkedIn profile photo overlaps bottom-left ~200px — keep content right of center
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +14,7 @@
     width: 1584px; height: 396px;
     background: oklch(10% 0.008 260);
     display: flex; align-items: center;
-    justify-content: flex-end;
     overflow: hidden; position: relative;
-    font-family: 'Outfit', sans-serif;
   }
   body::before {
     content: ''; position: absolute; inset: 0;
@@ -25,49 +24,70 @@
   }
   .content {
     position: relative; z-index: 1;
-    padding: 0 80px;
-    display: flex; flex-direction: column;
-    align-items: flex-end;
+    padding: 0 80px 0 320px;
+    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    height: 280px;
-    text-align: right;
   }
-  .wordmark {
-    font-weight: 700; font-size: 18px;
-    letter-spacing: 4px; text-transform: uppercase;
-    color: oklch(92% 0.005 80);
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
-  .wordmark .dot { color: oklch(60% 0.135 35); }
-  .wordmark .labs { font-weight: 400; }
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 64px;
-    line-height: 1.1;
+    font-size: 72px;
+    line-height: 1.0;
     color: oklch(94% 0.005 80);
   }
-  .top {
-    display: flex; flex-direction: column;
-    align-items: flex-end; gap: 12px;
+  .strapline em {
+    color: oklch(60% 0.135 35);
   }
-  .bottom {
+  .sub {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    color: oklch(60% 0.005 260);
+    line-height: 1.4;
+    max-width: 520px;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+  .wordmark {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 16px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: oklch(80% 0.005 80);
+  }
+  .wordmark .dot { color: oklch(60% 0.135 35); }
+  .wordmark .labs { font-weight: 400; }
+  .clients {
     display: flex; flex-direction: column;
-    align-items: flex-end; gap: 8px;
+    align-items: flex-end; gap: 6px;
   }
   .clients-label {
+    font-family: 'Outfit', sans-serif;
     font-size: 11px; font-weight: 600;
     letter-spacing: 2.5px; text-transform: uppercase;
-    color: oklch(50% 0.005 260);
-    margin-top: 4px;
+    color: oklch(55% 0.005 260);
   }
-  .clients {
-    display: flex; gap: 24px; align-items: center;
+  .client-row {
+    display: flex; gap: 20px; align-items: center;
   }
   .client {
-    font-size: 14px; font-weight: 500;
-    color: oklch(60% 0.005 260);
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: oklch(65% 0.005 260);
     letter-spacing: 1.5px;
     text-transform: uppercase;
+    white-space: nowrap;
   }
   .client-sep {
     width: 3px; height: 3px;
@@ -85,24 +105,28 @@
 </head>
 <body>
   <div class="content">
-    <div class="top">
-      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
-      <div class="strapline">Presence under pressure.</div>
+    <div class="left">
+      <div class="strapline">Presence under<br><em>pressure.</em></div>
+      <p class="sub">Executive communication advisory for founders and senior leaders.</p>
     </div>
-    <div class="bottom">
-      <div class="clients-label">Trusted by leaders at</div>
+    <div class="right">
+      <div class="wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></div>
       <div class="clients">
-      <span class="client">Morgan Stanley</span>
-      <span class="client-sep"></span>
-      <span class="client">Church of England</span>
-      <span class="client-sep"></span>
-      <span class="client">Invesco</span>
-      <span class="client-sep"></span>
-      <span class="client">YuLife</span>
-      <span class="client-sep"></span>
-      <span class="client">Relation Therapeutics</span>
-      <span class="client-sep"></span>
-      <span class="client">KYC360</span>
+        <div class="clients-label">Trusted by leaders at</div>
+        <div class="client-row">
+          <span class="client">Morgan Stanley</span>
+          <span class="client-sep"></span>
+          <span class="client">Church of England</span>
+          <span class="client-sep"></span>
+          <span class="client">Invesco</span>
+        </div>
+        <div class="client-row">
+          <span class="client">YuLife</span>
+          <span class="client-sep"></span>
+          <span class="client">Relation Therapeutics</span>
+          <span class="client-sep"></span>
+          <span class="client">KYC360</span>
+        </div>
       </div>
     </div>
   </div>

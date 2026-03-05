@@ -1,8 +1,7 @@
 <!--
   LINKEDIN COMPANY PAGE BANNER — 1128×191
   Open in browser, screenshot at 1128×191, save as banner-company.png
-  LinkedIn company logo overlaps bottom-left corner — keep left ~220px clear
-  Content pushed right, large and legible
+  LinkedIn company logo overlaps bottom-left corner — keep left ~180px clear
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +14,8 @@
     width: 1128px; height: 191px;
     background: oklch(10% 0.008 260);
     display: flex; align-items: center;
-    justify-content: flex-end;
     overflow: hidden; position: relative;
     font-family: 'Outfit', sans-serif;
-    /* Hard left dead zone — LinkedIn logo overlaps ~200px from left */
-    padding-left: 220px;
   }
   body::before {
     content: ''; position: absolute; inset: 0;
@@ -29,35 +25,39 @@
   }
   .content {
     position: relative; z-index: 1;
-    padding: 0 56px 0 0;
+    padding: 0 40px 0 200px;
     width: 100%;
-    display: flex; flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
   }
   .strapline {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 42px;
+    font-size: 44px;
     line-height: 1.1;
     color: oklch(94% 0.005 80);
     white-space: nowrap;
   }
-  .clients-label {
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 2.5px; text-transform: uppercase;
-    color: oklch(55% 0.005 260);
+  .strapline em {
+    color: oklch(60% 0.135 35);
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
   }
   .clients {
-    display: flex; gap: 16px; align-items: center;
-    flex-wrap: wrap;
+    display: flex; gap: 10px; align-items: center;
+    flex-wrap: nowrap;
     justify-content: flex-end;
   }
   .client {
-    font-size: 12px; font-weight: 500;
+    font-size: 9px; font-weight: 500;
     color: oklch(65% 0.005 260);
-    letter-spacing: 1.2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     white-space: nowrap;
   }
@@ -77,20 +77,17 @@
 </head>
 <body>
   <div class="content">
-    <div class="strapline">Presence under pressure.</div>
-    <div class="clients-label">Trusted by leaders at</div>
-    <div class="clients">
-      <span class="client">Morgan Stanley</span>
-      <span class="client-sep"></span>
-      <span class="client">Church of England</span>
-      <span class="client-sep"></span>
-      <span class="client">Invesco</span>
-      <span class="client-sep"></span>
-      <span class="client">YuLife</span>
-      <span class="client-sep"></span>
-      <span class="client">Relation Therapeutics</span>
-      <span class="client-sep"></span>
-      <span class="client">KYC360</span>
+    <div class="strapline">Presence under <em>pressure.</em></div>
+    <div class="right">
+      <div class="clients">
+        <span class="client">Morgan Stanley</span>
+        <span class="client-sep"></span>
+        <span class="client">Church of England</span>
+        <span class="client-sep"></span>
+        <span class="client">Invesco</span>
+        <span class="client-sep"></span>
+        <span class="client">YuLife</span>
+      </div>
     </div>
   </div>
   <div class="accent-line"></div>
