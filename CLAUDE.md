@@ -78,3 +78,32 @@ Filter tabs below hero toggle content visibility via `data-section-type` on sect
 - **Research**: Shows only research section (gated deck cards)
 - **Blog/Article**: Shows blog section, filters individual cards by type
 - JS logic in `main.js` handles both section-level and card-level filtering
+
+## Design Context
+
+### Users
+High-performing founders, senior executives, and consultants who are capable but underleveraged. They arrive stressed, skeptical of "coaching," and time-poor. They're evaluating whether this person understands their problem — not shopping for features. The job to be done: confirm this is someone worth 30 minutes of their time.
+
+### Brand Personality
+**Sophisticated, sincere, precise.** The authority of deep expertise delivered with the warmth of a trusted friend. Never announces credentials — demonstrates thinking instead.
+
+### Aesthetic Direction
+**Editorial luxury** — Monocle, Cereal, Kinfolk. Type-forward, restrained, generous whitespace. Dark hero sections ground the page in seriousness; light body sections open into warmth. Single chromatic accent (warm sienna) used sparingly as a quiet signal, not decoration.
+
+**Anti-references (never resemble):**
+- Life coach / wellness (soft gradients, script fonts, "journey" energy)
+- Silicon Valley SaaS (purple gradients, Poppins, glassmorphism)
+- Corporate consulting (stock photos, blue-grey, PowerPoint aesthetic)
+- Info-product / course seller (countdown timers, urgency banners)
+
+### Emotional Goals
+1. **Quiet confidence** — they've arrived somewhere serious, no hard sell needed
+2. **Trust / credibility** — this person clearly knows what they're doing
+3. **Relief / recognition** — someone finally named the thing they've been feeling
+
+### Design Principles
+1. **Restraint is authority.** Every element earns its place. Whitespace is not empty — it's confident.
+2. **Type carries the brand.** Instrument Serif for gravity, Outfit for clarity. The typography does 80% of the design work.
+3. **One chromatic color, used with intent.** Warm sienna appears only where attention should go — eyebrows, accents, CTAs. Never decorative.
+4. **Sharp edges, warm tone.** No border-radius ever. The warmth comes from color temperature and voice, not rounded corners.
+5. **Dark grounds, light opens.** Heroes and section dividers use dark backgrounds for weight; content sections use warm whites for readability and approachability.
