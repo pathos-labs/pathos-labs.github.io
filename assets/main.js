@@ -109,6 +109,24 @@
     });
   }
 
+  /* ─── POST BODY REVEALS (pull quotes, callouts) ──── */
+  var postReveals = document.querySelectorAll('.post-body .pull-quote, .post-callout');
+  if (postReveals.length) {
+    if (!prefersReducedMotion) {
+      var postRevealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            postRevealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      postReveals.forEach(function (el) { postRevealObs.observe(el); });
+    } else {
+      postReveals.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  }
+
   /* ─── EVIDENCE COUNTER ANIMATION ─────────────────── */
   if (!prefersReducedMotion) {
     var counters = document.querySelectorAll('.evidence-num, .evidence-figure');
