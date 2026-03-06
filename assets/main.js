@@ -109,6 +109,76 @@
     });
   }
 
+  /* ─── EVIDENCE COUNTER ANIMATION ─────────────────── */
+  if (!prefersReducedMotion) {
+    var counters = document.querySelectorAll('.evidence-num, .evidence-figure');
+    if (counters.length) {
+      var counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          counterObserver.unobserve(el);
+          var raw = el.textContent.trim();
+          // Handle ranges like "55–60%"
+          var rangeMatch = raw.match(/^(\d+)(\D+)(\d+)(%.*)$/);
+          if (rangeMatch) {
+            var lo = parseInt(rangeMatch[1]);
+            var sep = rangeMatch[2];
+            var hi = parseInt(rangeMatch[3]);
+            var suf = rangeMatch[4];
+            var dur = 800;
+            var st = performance.now();
+            el.textContent = '0' + sep + '0' + suf;
+            (function animRange() {
+              requestAnimationFrame(function (now) {
+                var t = Math.min((now - st) / dur, 1);
+                var e = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(e * lo) + sep + Math.round(e * hi) + suf;
+                if (t < 1) animRange();
+              });
+            })();
+            return;
+          }
+          // Single number: "3.5×", "37", etc.
+          var match = raw.match(/^([^\d]*)(\d+(?:\.\d+)?)(.*)$/);
+          if (!match) return;
+          var prefix = match[1];
+          var target = parseFloat(match[2]);
+          var suffix = match[3];
+          var isFloat = match[2].indexOf('.') !== -1;
+          var duration = 800;
+          var start = performance.now();
+          function tick(now) {
+            var t = Math.min((now - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - t, 3);
+            var current = eased * target;
+            el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+          }
+          el.textContent = prefix + (isFloat ? '0.0' : '0') + suffix;
+          requestAnimationFrame(tick);
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function (el) { counterObserver.observe(el); });
+    }
+  }
+
+  /* ─── TESTIMONY SECTION REVEAL ─────────────────── */
+  if (!prefersReducedMotion) {
+    var testimonySection = document.querySelector('.section-testimony');
+    if (testimonySection) {
+      var testimonyObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            testimonyObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      testimonyObs.observe(testimonySection);
+    }
+  }
+
   /* ─── SMOOTH SCROLL WITH NAV OFFSET ──────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
