@@ -25,6 +25,138 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
 
+  <style>
+  /* ─── DELIGHT: HERO ENTRANCE ──────────────────────── */
+  @keyframes writing-fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .page-hero .eyebrow {
+    animation: writing-fade-up 0.6s var(--ease-out) 0.1s both;
+  }
+  .page-hero h1 {
+    animation: writing-fade-up 0.6s var(--ease-out) 0.25s both;
+  }
+
+  /* ─── DELIGHT: FILTER TAB ACTIVE UNDERLINE ────────── */
+  .filter-btn {
+    position: relative;
+    border-bottom-color: transparent !important;
+  }
+  .filter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--dur-med) var(--ease-out);
+  }
+  .filter-btn.is-active::after {
+    transform: scaleX(1);
+  }
+
+  /* ─── DELIGHT: RESEARCH CARD STAGGER ──────────────── */
+  .research-card {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s var(--ease-out),
+                transform 0.5s var(--ease-out),
+                border-color var(--dur-fast),
+                background var(--dur-fast);
+  }
+  .research-grid.is-visible .research-card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .research-grid.is-visible .research-card:nth-child(2) { transition-delay: 0.1s; }
+  .research-grid.is-visible .research-card:nth-child(3) { transition-delay: 0.2s; }
+
+  /* Research card hover: CTA arrow nudge */
+  .research-card-cta {
+    transition: transform var(--dur-fast) var(--ease);
+    display: inline-block;
+  }
+  .research-card:hover .research-card-cta {
+    transform: translateX(4px);
+  }
+
+  /* ─── DELIGHT: WRITING CARD REVEAL ────────────────── */
+  .writing-card {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.45s var(--ease-out),
+                transform 0.45s var(--ease-out),
+                border-color var(--dur-fast);
+  }
+  .writing-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Writing card hover: subtle lift + border */
+  .writing-card:hover {
+    border-color: var(--color-border);
+  }
+
+  /* Writing card link arrow nudge */
+  .writing-card-link {
+    display: inline-block;
+    transition: color var(--dur-fast), transform var(--dur-fast) var(--ease);
+  }
+  .writing-card:hover .writing-card-link {
+    transform: translateX(3px);
+  }
+
+  /* ─── PROGRESSIVE REVEAL ───────────────────────────── */
+  .writing-card:nth-child(n+7) {
+    display: none;
+  }
+  .writing-list[data-show-all] .writing-card:nth-child(n+7) {
+    display: flex;
+  }
+  .writing-list[data-filtered] .writing-card:nth-child(n+7) {
+    display: flex;
+  }
+  .writing-more {
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--section-x) var(--section-y);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .writing-more-btn {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--text-caption);
+    letter-spacing: var(--tracking-btn);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: none;
+    border: 1px solid var(--color-accent);
+    padding: 0.8em 2.4em;
+    cursor: pointer;
+    transition: background var(--dur-fast), color var(--dur-fast);
+  }
+  .writing-more-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+  .writing-more[hidden] { display: none; }
+
+  /* ─── REDUCED MOTION ──────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero .eyebrow,
+    .page-hero h1 { animation: none; opacity: 1; transform: none; }
+    .research-card { opacity: 1; transform: none; }
+    .writing-card { opacity: 1; transform: none; transition: border-color var(--dur-fast); }
+    .filter-btn::after { transition: none; }
+    .research-card-cta,
+    .writing-card-link { transition: none; }
+  }
+  </style>
+
   <meta property="og:site_name" content="Pathos Labs">
   <meta property="og:locale" content="en_US">
   <meta property="og:image:width" content="1200">
@@ -54,7 +186,7 @@
   <a href="/" class="nav-wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></a>
   <ul class="nav-links">
     <li><a href="/about/">About</a></li>
-    <li><a href="/writing/">Writing</a></li>
+    <li><a href="/writing/" aria-current="page">Writing</a></li>
     <li><a href="/assessment/">Assessment</a></li>
     <li><a href="/newsletter/">Newsletter</a></li>
     <li><a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="nav-cta">Start the Conversation</a></li>
@@ -67,7 +199,7 @@
   <a href="/#gap">The Gap</a>
   <a href="/#work">The Work</a>
   <a href="/about/">About</a>
-  <a href="/writing/">Writing</a>
+  <a href="/writing/" aria-current="page">Writing</a>
   <a href="/assessment/">Assessment</a>
   <a href="/newsletter/">Newsletter</a>
   <a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="nav-cta">Start the Conversation</a>
@@ -360,6 +492,9 @@
       <a href="/writing/cold-outreach-is-like-asking-for-a-date-most-people-are-doin.html" class="writing-card-link">Read &rarr;</a>
     </div>
   </div>
+  <div class="writing-more" id="writing-more">
+    <button class="writing-more-btn" type="button">See More Writing</button>
+  </div>
 </section>
 
 <!-- ─── EMAIL GATE MODAL ──────────────────────────── -->
@@ -593,6 +728,98 @@
       btn.textContent = 'Get Access';
     }
   });
+})();
+</script>
+<script>
+/* ─── DELIGHT: SCROLL REVEALS ────────────────────── */
+(function () {
+  'use strict';
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reducedMotion) {
+    document.querySelectorAll('.research-grid, .writing-card').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  var writingList = document.querySelector('.writing-list');
+  var allCards = writingList ? writingList.querySelectorAll('.writing-card') : [];
+  var cardObs = null;
+
+  if (!reducedMotion) {
+    /* Research grid — reveal container to trigger card stagger */
+    var grid = document.querySelector('.research-grid');
+    if (grid) {
+      var gridObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            gridObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      gridObs.observe(grid);
+    }
+
+    /* Writing cards — individual reveal as they scroll in */
+    cardObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          cardObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+    /* Observe only the first 6 (visible) cards initially */
+    for (var i = 0; i < Math.min(6, allCards.length); i++) {
+      cardObs.observe(allCards[i]);
+    }
+  }
+
+  /* Filter tabs: show all cards when filtered, restore limit on "All" */
+  document.querySelectorAll('.filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.getAttribute('data-filter');
+      if (writingList) {
+        if (filter === 'all') {
+          writingList.removeAttribute('data-filtered');
+        } else {
+          writingList.setAttribute('data-filtered', '');
+          /* Observe newly visible cards */
+          if (cardObs) {
+            for (var k = 6; k < allCards.length; k++) {
+              if (!allCards[k].classList.contains('is-visible')) cardObs.observe(allCards[k]);
+            }
+          }
+        }
+      }
+      /* Hide "See more" when filtered, show when back to All */
+      if (moreWrap && !writingList.hasAttribute('data-show-all')) {
+        moreWrap.hidden = (filter !== 'all');
+      }
+    });
+  });
+
+  /* "See more" button — reveal remaining cards and observe them */
+  var moreWrap = document.getElementById('writing-more');
+  var moreBtn = moreWrap ? moreWrap.querySelector('.writing-more-btn') : null;
+  if (moreBtn && writingList && allCards.length > 6) {
+    moreBtn.addEventListener('click', function () {
+      writingList.setAttribute('data-show-all', '');
+      moreWrap.hidden = true;
+      for (var j = 6; j < allCards.length; j++) {
+        if (reducedMotion) {
+          allCards[j].classList.add('is-visible');
+        } else {
+          cardObs.observe(allCards[j]);
+        }
+      }
+    });
+  } else if (moreWrap) {
+    /* 6 or fewer cards — hide the button */
+    moreWrap.hidden = true;
+  }
 })();
 </script>
 </body>
