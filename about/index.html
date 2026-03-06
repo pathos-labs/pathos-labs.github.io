@@ -15,6 +15,10 @@
   <meta property="og:title" content="About — Pathos Labs">
   <meta property="og:description" content="The methodology behind Pathos Labs. Diagnose, build, close.">
   <meta property="og:image" content="https://pathoslabs.co/assets/images/og-about.png">
+  <meta property="og:site_name" content="Pathos Labs">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="About — Pathos Labs">
   <meta name="twitter:description" content="The methodology behind Pathos Labs. Diagnose, build, close.">
@@ -24,11 +28,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
-
-  <meta property="og:site_name" content="Pathos Labs">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
 
   <script type="application/ld+json">
   {
@@ -51,6 +50,226 @@
     ]
   }
   </script>
+
+  <style>
+  /* ─── ABOUT: EDITORIAL LAYOUT ─────────────────────── */
+  .about-intro {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  .about-photo {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--space-24));
+  }
+  .about-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(0.15) contrast(1.05);
+  }
+  .about-photo::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--color-accent);
+    margin-top: var(--space-12);
+  }
+  .about-text .eyebrow {
+    color: var(--color-accent);
+    margin-bottom: 0.8rem;
+  }
+  .about-text h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: var(--text-h2);
+    color: var(--color-text);
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  }
+  .about-text p {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-lead);
+    line-height: var(--leading-body);
+    color: var(--color-text-body);
+    margin-bottom: 1.8rem;
+  }
+  .about-text p:first-of-type::first-letter {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(3.2rem, 5vw, 4rem);
+    line-height: 0.85;
+    float: left;
+    margin-right: 0.12em;
+    margin-top: 0.08em;
+    color: var(--color-accent);
+  }
+
+  /* Pull quote — full width break */
+  .about-pull-quote {
+    max-width: 700px;
+    margin: clamp(2rem, 4vw, 3.5rem) auto;
+    padding: clamp(2rem, 4vw, 3rem) 0;
+    position: relative;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    line-height: var(--leading-quote);
+    color: var(--color-text);
+    text-align: center;
+    border: none;
+  }
+  .about-pull-quote::before,
+  .about-pull-quote::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-border);
+    transform: scaleX(0);
+    transition: transform 0.9s var(--ease-out);
+  }
+  .about-pull-quote::before { top: 0; }
+  .about-pull-quote::after { bottom: 0; }
+  .about-pull-quote.is-visible::before,
+  .about-pull-quote.is-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Continued text after pull quote */
+  .about-continued {
+    max-width: var(--max-text);
+    margin: 0 auto;
+  }
+  .about-continued p {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-lead);
+    line-height: var(--leading-body);
+    color: var(--color-text-body);
+    margin-bottom: 1.8rem;
+  }
+  .about-continued p:last-child { margin-bottom: 0; }
+
+  /* ─── HERO SUBTITLE ───────────────────────────────── */
+  .page-hero-sub {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--text-lead);
+    line-height: 1.5;
+    color: var(--color-dark-text-muted);
+    margin-top: var(--space-24);
+    max-width: 520px;
+  }
+
+  /* ─── DELIGHT: HERO ENTRANCE ──────────────────────── */
+  @keyframes about-fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .page-hero .eyebrow {
+    animation: about-fade-up 0.6s var(--ease-out) 0.1s both;
+  }
+  .page-hero h1 {
+    animation: about-fade-up 0.6s var(--ease-out) 0.25s both;
+  }
+  .page-hero-sub {
+    animation: about-fade-up 0.6s var(--ease-out) 0.4s both;
+  }
+
+  /* ─── DELIGHT: BIO REVEAL ─────────────────────────── */
+  .about-photo {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s var(--ease-out),
+                transform 0.7s var(--ease-out);
+  }
+  .about-bio.is-visible .about-photo {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .about-text {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s var(--ease-out) 0.15s,
+                transform 0.7s var(--ease-out) 0.15s;
+  }
+  .about-bio.is-visible .about-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── DELIGHT: CONTINUED TEXT REVEAL ──────────────── */
+  .about-continued {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s var(--ease-out),
+                transform 0.6s var(--ease-out);
+  }
+  .about-continued.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── DELIGHT: PHASE STAGGER ──────────────────────── */
+  .phase {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s var(--ease-out),
+                transform 0.5s var(--ease-out),
+                background var(--dur-fast) var(--ease);
+  }
+  .section-work.is-visible .phase {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .section-work.is-visible .phase:nth-child(2) { transition-delay: 0.12s; }
+  .section-work.is-visible .phase:nth-child(3) { transition-delay: 0.24s; }
+
+  /* ─── DELIGHT: PHASE HOVER ────────────────────────── */
+  .phase:hover {
+    background: var(--color-accent-bg-subtle);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 768px) {
+    .about-intro {
+      grid-template-columns: 1fr;
+    }
+    .about-photo {
+      position: static;
+      max-width: 400px;
+    }
+    .about-photo img {
+      max-height: 420px;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+  }
+  @media (max-width: 480px) {
+    .about-photo { max-width: 100%; }
+    .about-photo img { max-height: 340px; }
+  }
+
+  /* ─── REDUCED MOTION ──────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .page-hero .eyebrow,
+    .page-hero h1,
+    .page-hero-sub { animation: none; opacity: 1; transform: none; }
+    .about-photo,
+    .about-text,
+    .about-continued { opacity: 1; transform: none; transition: none; }
+    .about-pull-quote::before,
+    .about-pull-quote::after { transform: scaleX(1); transition: none; }
+    .phase { opacity: 1; transform: none; }
+  }
+  </style>
 </head>
 <body>
 
@@ -60,7 +279,7 @@
 <nav class="nav nav--transparent" role="navigation" aria-label="Main navigation">
   <a href="/" class="nav-wordmark">PATHOS<span class="dot">.</span><span class="labs">LABS</span></a>
   <ul class="nav-links">
-    <li><a href="/about/">About</a></li>
+    <li><a href="/about/" aria-current="page">About</a></li>
     <li><a href="/writing/">Writing</a></li>
     <li><a href="/assessment/">Assessment</a></li>
     <li><a href="/newsletter/">Newsletter</a></li>
@@ -73,7 +292,7 @@
 <div class="nav-mobile-panel" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
   <a href="/#gap">The Gap</a>
   <a href="/#work">The Work</a>
-  <a href="/about/">About</a>
+  <a href="/about/" aria-current="page">About</a>
   <a href="/writing/">Writing</a>
   <a href="/assessment/">Assessment</a>
   <a href="/newsletter/">Newsletter</a>
@@ -83,31 +302,38 @@
 
 <main id="main">
 
-<!-- ─── PAGE HERO (photo as background) ──────────────── -->
-<section class="page-hero page-hero--about">
-  <img class="page-hero-bg" src="../assets/images/sam-1-040326.png" alt="" role="presentation" loading="eager" width="2048" height="2048">
+<!-- ─── PAGE HERO (dark, no photo) ──────────────── -->
+<section class="page-hero" aria-label="About introduction">
   <div class="page-hero-content">
     <span class="eyebrow">About</span>
     <h1>The <em>Background.</em></h1>
+    <p class="page-hero-sub">IDF combat medic. Ordained rabbi. A hundred funerals in London. Then executive advisory. The thread through all of it is the same.</p>
   </div>
 </section>
 
-<!-- ─── BIO ───────────────────────────────────────── -->
-<section class="about-bio reveal">
-  <div class="about-bio-header">
-    <span class="eyebrow">Who</span>
-    <h2>Sam Millunchick</h2>
+<!-- ─── BIO: EDITORIAL 2-COLUMN ─────────────────── -->
+<section class="about-bio reveal" aria-label="Biography">
+  <div class="about-intro">
+    <div class="about-photo">
+      <img src="../assets/images/sam-1-040326.png" alt="Sam Millunchick writing at a desk in natural light" loading="eager" fetchpriority="high" width="2048" height="2048">
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">Who</span>
+      <h2>Sam Millunchick</h2>
+      <p>
+        I spent a long time &mdash; longer than I think most people realise, because the line only looks coherent in retrospect &mdash; doing some version of the same thing in very different contexts. IDF combat medic, which is its own kind of education in saying the right thing under pressure. Then rabbinical studies, and then ordained, and then several years as a community rabbi in London, which involved, among other things, somewhere around a hundred funerals. Each one of those is a room full of grieving people, and you have to find the thing that is both true and useful and say it in a way that actually lands. You learn, doing that work, that the words matter less than you think and the delivery matters more, and that the gap between knowing what to say and being able to say it when it counts is wider than almost anyone appreciates until they&rsquo;re standing in it.
+      </p>
+      <p>
+        The thread through all of it is a person in front of you who needs to say the thing that matters, in the moment that matters, and something is getting in the way. Sometimes the thing in the way is grief. Sometimes it&rsquo;s a pitch deck. Sometimes it&rsquo;s a pattern so deeply embedded in how they communicate that they can&rsquo;t see it any more than a fish can see water &mdash; which is, suffice it to say, very often the hardest kind to shift, because you&rsquo;re asking someone to notice the thing they&rsquo;ve been doing automatically for twenty years.
+      </p>
+    </div>
   </div>
-  <div class="about-bio-body">
-    <p>
-      I spent a long time &mdash; longer than I think most people realise, because the line only looks coherent in retrospect &mdash; doing some version of the same thing in very different contexts. IDF combat medic, which is its own kind of education in saying the right thing under pressure. Then rabbinical studies, and then ordained, and then several years as a community rabbi in London, which involved, among other things, somewhere around a hundred funerals. Each one of those is a room full of grieving people, and you have to find the thing that is both true and useful and say it in a way that actually lands. You learn, doing that work, that the words matter less than you think and the delivery matters more, and that the gap between knowing what to say and being able to say it when it counts is wider than almost anyone appreciates until they&rsquo;re standing in it.
-    </p>
-    <p>
-      The thread through all of it is a person in front of you who needs to say the thing that matters, in the moment that matters, and something is getting in the way. Sometimes the thing in the way is grief. Sometimes it&rsquo;s a pitch deck. Sometimes it&rsquo;s a pattern so deeply embedded in how they communicate that they can&rsquo;t see it any more than a fish can see water &mdash; which is, suffice it to say, very often the hardest kind to shift, because you&rsquo;re asking someone to notice the thing they&rsquo;ve been doing automatically for twenty years.
-    </p>
-    <blockquote class="pull-quote">
-      The gap between knowing what to say and being able to say it when it counts is wider than almost anyone appreciates until they&rsquo;re standing in it.
-    </blockquote>
+
+  <blockquote class="about-pull-quote reveal">
+    The gap between knowing what to say and being able to say it when it counts is wider than almost anyone appreciates until they&rsquo;re standing in it.
+  </blockquote>
+
+  <div class="about-continued reveal">
     <p>
       Pathos Labs is how that experience became a practice. I work with founders, CEOs, and senior executives &mdash; people who are, by any reasonable measure, extraordinarily capable &mdash; and I help them close the gap between what they know and what other people receive. The gap is never ability. Not once, in any of the work I&rsquo;ve done, has the person across from me lacked the capacity to do the thing. What&rsquo;s missing is the capacity to make that capability visible, in real time, under pressure, to the people who need to see it.
     </p>
@@ -216,5 +442,26 @@
 </div>
 
 <script src="../assets/main.js"></script>
+<script>
+(function () {
+  'use strict';
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  /* Pull quote + continued text: individual scroll reveals */
+  var revealEls = document.querySelectorAll('.about-pull-quote.reveal, .about-continued.reveal');
+  if (revealEls.length) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    revealEls.forEach(function (el) { obs.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>

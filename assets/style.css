@@ -1196,89 +1196,11 @@ button { font-family: inherit; }
   color: var(--color-accent-on-dark);
 }
 
-/* About hero — photo as background */
-.page-hero--about {
-  min-height: clamp(50vh, 55vw, 70vh);
-}
-.page-hero-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  z-index: 0;
-  filter: grayscale(0.15) contrast(1.05);
-}
-.page-hero--about::before {
-  z-index: 1;
-  background: linear-gradient(
-    105deg,
-    var(--color-hero-gradient-from) 0%,
-    var(--color-hero-gradient-mid) 40%,
-    var(--color-hero-gradient-to) 100%
-  );
-}
-
 /* Bio section */
 .about-bio {
   background: var(--color-bg);
   padding: var(--section-y) var(--section-x);
   border-bottom: 1px solid var(--color-border-faint);
-}
-.about-bio-header {
-  max-width: var(--max-text);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-}
-.about-bio-header .eyebrow {
-  color: var(--color-accent);
-  margin-bottom: 0.8rem;
-}
-.about-bio-header h2 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: var(--text-h2);
-  color: var(--color-text);
-}
-.about-bio-body {
-  max-width: var(--max-text);
-  margin-left: auto;
-  margin-right: auto;
-}
-.about-bio-body p {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: var(--text-lead);
-  line-height: var(--leading-body);
-  color: var(--color-text-body);
-  margin-bottom: 1.8rem;
-}
-.about-bio-body p:first-child::first-letter {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(3.2rem, 5vw, 4rem);
-  line-height: 0.85;
-  float: left;
-  margin-right: 0.12em;
-  margin-top: 0.08em;
-  color: var(--color-accent);
-}
-.about-bio-body .pull-quote {
-  border-left: none;
-  background: transparent;
-  padding: clamp(2rem, 4vw, 3rem) 0;
-  margin: clamp(1rem, 2vw, 1.5rem) 0;
-  border-top: 1px solid var(--color-border-faint);
-  border-bottom: 1px solid var(--color-border-faint);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-  line-height: var(--leading-quote);
-  color: var(--color-text);
-  text-align: center;
 }
 
 /* ─── WRITING/BLOG PAGE ──────────────────────────── */
@@ -2045,14 +1967,6 @@ button { font-family: inherit; }
   .writing-list { grid-template-columns: 1fr; }
   .testimony-inner { grid-template-columns: 1fr; }
   .testimony-featured { border-right: none; padding-right: 0; padding-bottom: clamp(1.5rem, 3vw, 2rem); border-bottom: 1px solid var(--color-dark-border); }
-  .page-hero--about::before {
-    background: linear-gradient(
-      180deg,
-      var(--color-hero-gradient-from) 0%,
-      var(--color-hero-gradient-mid) 50%,
-      var(--color-hero-gradient-to) 100%
-    );
-  }
 }
 
 @media (max-width: 480px) {
