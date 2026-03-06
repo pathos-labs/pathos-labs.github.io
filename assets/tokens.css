@@ -38,6 +38,7 @@
   --ds-sienna-dark:       oklch(40% 0.150 30);
   --ds-sienna-bg:         oklch(48% 0.145 32 / 0.07);
   --ds-sienna-bg-subtle:  oklch(48% 0.145 32 / 0.03);
+  --ds-sienna-shadow:     oklch(48% 0.145 32 / 0.22);
   --ds-sienna-on-dark:    oklch(60% 0.135 35);
 
   /* Typography */
@@ -146,6 +147,7 @@
   --color-accent-dark:    var(--ds-sienna-dark);
   --color-accent-bg:      var(--ds-sienna-bg);
   --color-accent-bg-subtle:var(--ds-sienna-bg-subtle);
+  --color-accent-shadow:  var(--ds-sienna-shadow);
   --color-accent-on-dark: var(--ds-sienna-on-dark);
 
   /* Typography */

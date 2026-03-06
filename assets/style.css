@@ -282,7 +282,7 @@ button { font-family: inherit; }
   background: var(--color-accent-dark);
   border-color: var(--color-accent-dark);
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px oklch(48% 0.145 32 / 0.18);
+  box-shadow: 0 2px 8px var(--color-accent-shadow);
 }
 .btn-primary:active {
   background: oklch(36% 0.150 30);
@@ -911,7 +911,7 @@ button { font-family: inherit; }
 .featured-card:hover {
   border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px oklch(48% 0.145 32 / 0.06);
+  box-shadow: 0 4px 16px var(--color-accent-bg);
 }
 .featured-card-tag {
   font-family: var(--font-sans);

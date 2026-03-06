@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://pathoslabs.co/assessment/">
   <meta property="og:title" content="The Gap Map — Where Does Your Gap Live?">
   <meta property="og:description" content="A 3-minute diagnostic that identifies where the gap lives between your capability and how others perceive you.">
-  <meta property="og:image" content="https://pathoslabs.co/assets/images/og-home.png">
+  <meta property="og:image" content="https://pathoslabs.co/assets/images/og-assessment.png">
   <meta property="og:site_name" content="Pathos Labs">
   <meta property="og:locale" content="en_US">
   <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Gap Map — Where Does Your Gap Live?">
   <meta name="twitter:description" content="A 3-minute diagnostic that identifies where the gap lives between your capability and how others perceive you.">
-  <meta name="twitter:image" content="https://pathoslabs.co/assets/images/og-home.png">
+  <meta name="twitter:image" content="https://pathoslabs.co/assets/images/og-assessment.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +92,8 @@
 .assess-hero .eyebrow {
   color: var(--color-accent-on-dark);
   margin-bottom: var(--space-24);
+  animation: hero-stagger 0.6s var(--ease-out) both;
+  animation-delay: 0.1s;
 }
 .assess-hero h1 {
   font-family: var(--font-serif);
@@ -100,6 +102,8 @@
   line-height: var(--leading-heading);
   color: var(--color-dark-text);
   margin-bottom: var(--space-24);
+  animation: hero-stagger 0.6s var(--ease-out) both;
+  animation-delay: 0.2s;
 }
 .assess-hero h1 em {
   font-style: italic;
@@ -107,17 +111,29 @@
 }
 .assess-hero-sub {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-lead);
   line-height: var(--leading-body);
   color: var(--color-dark-text-muted);
   max-width: 540px;
   margin-bottom: var(--space-48);
+  animation: hero-stagger 0.6s var(--ease-out) both;
+  animation-delay: 0.35s;
 }
-.assess-hero-meta {
+@keyframes hero-stagger {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+dl.assess-hero-meta {
   display: flex;
   gap: var(--space-32);
-  margin-bottom: var(--space-48);
+  margin: 0 0 var(--space-48);
+  padding: 0;
+  animation: hero-stagger 0.6s var(--ease-out) both;
+  animation-delay: 0.5s;
+}
+dl.assess-hero-meta dd {
+  margin: 0;
 }
 .assess-hero-meta-item {
   display: flex;
@@ -163,7 +179,6 @@
 .discover-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 .discover-item {
   display: flex;
@@ -171,7 +186,17 @@
   gap: var(--space-16);
   padding: var(--space-16) 0;
   border-bottom: 1px solid var(--color-dark-separator);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
 }
+.discover-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.discover-item:nth-child(1) { transition-delay: 0s; }
+.discover-item:nth-child(2) { transition-delay: 0.12s; }
+.discover-item:nth-child(3) { transition-delay: 0.24s; }
 .discover-num {
   font-family: var(--font-serif);
   font-style: italic;
@@ -183,7 +208,7 @@
 }
 .discover-text {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-dark-text-muted);
@@ -214,7 +239,20 @@
   padding: var(--space-24);
   background: var(--color-dark-surface);
   border-left: 2px solid var(--color-accent-on-dark);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
 }
+.report-feature.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.report-feature:nth-child(1) { transition-delay: 0s; }
+.report-feature:nth-child(2) { transition-delay: 0.08s; }
+.report-feature:nth-child(3) { transition-delay: 0.16s; }
+.report-feature:nth-child(4) { transition-delay: 0.24s; }
+.report-feature:nth-child(5) { transition-delay: 0.32s; }
+.report-feature:nth-child(6) { transition-delay: 0.40s; }
 .report-feature-title {
   font-family: var(--font-sans);
   font-weight: 500;
@@ -224,7 +262,7 @@
 }
 .report-feature-desc {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-caption);
   color: var(--color-dark-text-muted);
   line-height: var(--leading-body);
@@ -261,7 +299,14 @@
 
 /* Gate form (at bottom of landing) */
 .assess-gate {
-  max-width: 420px;
+  max-width: 480px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.assess-gate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .assess-gate-heading {
   font-family: var(--font-serif);
@@ -269,37 +314,78 @@
   font-style: italic;
   font-size: var(--text-h3);
   color: var(--color-dark-text);
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-24);
 }
 .hero-gate-form {
   display: flex;
-  gap: var(--space-12);
-  margin-bottom: var(--space-12);
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--space-16);
 }
-.hero-gate-form input[type="email"],
-.hero-gate-form input[type="text"]:not(.honeypot) {
-  flex: 1;
+
+/* Floating-label field wrapper */
+.gate-field {
+  position: relative;
+  margin-bottom: var(--space-16);
+}
+.gate-field label {
+  position: absolute;
+  top: 50%;
+  left: var(--space-16);
+  transform: translateY(-50%);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-body);
-  padding: 0.8em 1em;
+  color: var(--color-dark-text-muted);
+  pointer-events: none;
+  transition: transform 0.2s var(--ease), font-size 0.2s var(--ease), color 0.2s var(--ease);
+  transform-origin: left center;
+}
+.gate-field input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-body);
+  padding: 1.4em var(--space-16) 0.6em;
   background: var(--color-dark-surface);
   border: 1px solid var(--color-dark-border);
   color: var(--color-dark-text);
   outline: none;
-  transition: border-color var(--dur-fast);
-  min-width: 0;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
 }
-.hero-gate-form input[type="email"]:focus,
-.hero-gate-form input[type="text"]:not(.honeypot):focus {
+.gate-field input:focus {
   border-color: var(--color-accent-on-dark);
+  box-shadow: inset 0 -2px 0 var(--color-accent-on-dark);
 }
-.hero-gate-form input[type="email"]::placeholder,
-.hero-gate-form input[type="text"]:not(.honeypot)::placeholder {
-  color: var(--color-dark-text-muted);
+.gate-field input:focus-visible {
+  outline: 2px solid var(--color-accent-on-dark);
+  outline-offset: 3px;
 }
+/* Float label up when focused or has value */
+.gate-field input:focus + label,
+.gate-field input:not(:placeholder-shown) + label {
+  transform: translateY(-130%);
+  font-size: var(--text-caption);
+  color: var(--color-accent-on-dark);
+}
+.gate-field input::placeholder {
+  color: transparent; /* hidden — label is the visual placeholder */
+}
+
 .hero-gate-form .btn-primary {
-  white-space: nowrap;
+  width: 100%;
+  padding: 1em 2em;
+  font-size: var(--text-body-sm);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease),
+              background var(--dur-fast), color var(--dur-fast);
+}
+.hero-gate-form .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px var(--color-accent-shadow);
+}
+.hero-gate-form .btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: none;
 }
 .hero-gate-form .honeypot {
   position: absolute;
@@ -441,10 +527,25 @@
   background: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--color-bg);
+  animation: scale-select 0.25s var(--ease) both;
+}
+@keyframes scale-select {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
 }
 .scale-btn:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
+}
+
+/* ─── QUESTION CROSSFADE ─────────────────────────── */
+.question-inner {
+  animation: q-fade-in 0.35s var(--ease) both;
+}
+@keyframes q-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ─── QUESTION NAV ───────────────────────────────── */
@@ -494,7 +595,7 @@
 }
 .results-profile-desc {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-lead);
   line-height: var(--leading-body);
   color: var(--color-text-body);
@@ -536,6 +637,18 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-24);
+}
+.construct-card {
+  animation: card-stagger 0.5s var(--ease-out) both;
+}
+.construct-card:nth-child(1) { animation-delay: 0.1s; }
+.construct-card:nth-child(2) { animation-delay: 0.22s; }
+.construct-card:nth-child(3) { animation-delay: 0.34s; }
+.construct-card:nth-child(4) { animation-delay: 0.46s; }
+.construct-card:nth-child(5) { animation-delay: 0.58s; }
+@keyframes card-stagger {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .construct-card {
   background: var(--color-surface);
@@ -581,7 +694,7 @@
 }
 .construct-card-desc {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-body-sm);
   line-height: var(--leading-body);
   color: var(--color-text-muted);
@@ -609,7 +722,7 @@
 }
 .construct-card-recs li {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-body-sm);
   line-height: var(--leading-body);
   color: var(--color-text-body);
@@ -628,7 +741,7 @@
 .construct-card-science {
   margin-top: var(--space-12);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-caption);
   line-height: var(--leading-body);
   color: var(--color-text-muted);
@@ -656,7 +769,7 @@
 }
 .priority-section p {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-text-body);
@@ -687,7 +800,7 @@
   color: var(--color-text-body);
 }
 .priority-step-text.is-muted {
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text-muted);
 }
 
@@ -706,7 +819,7 @@
 }
 .research-basis p {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-body-sm);
   line-height: var(--leading-body);
   color: var(--color-text-muted);
@@ -732,7 +845,7 @@
 }
 .research-instrument-source {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-caption);
   color: var(--color-text-muted);
 }
@@ -787,12 +900,27 @@
 }
 .assess-cta p {
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   font-size: var(--text-body);
   line-height: var(--leading-body);
   color: var(--color-dark-text-muted);
   max-width: var(--max-text);
   margin: 0 auto var(--space-32);
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .assess-hero .eyebrow,
+  .assess-hero h1,
+  .assess-hero-sub,
+  dl.assess-hero-meta { animation: none; opacity: 1; transform: none; }
+  .assess-gate { opacity: 1; transform: none; transition: none; }
+  .scale-btn.is-selected { animation: none; }
+  .question-inner { animation: none; }
+  .construct-card { animation: none; opacity: 1; transform: none; }
+  .discover-item { opacity: 1; transform: none; transition: none; }
+  .report-feature { opacity: 1; transform: none; transition: none; }
+  .gate-field label { transition: none; }
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────── */
@@ -819,9 +947,6 @@
     font-size: clamp(1rem, 1.3vw, 1.1rem);
     min-height: 48px;
   }
-  .hero-gate-form {
-    flex-direction: column;
-  }
   .report-features {
     grid-template-columns: 1fr;
   }
@@ -832,6 +957,11 @@
 }
 
 @media (max-width: 480px) {
+  .assess-credibility {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
   .question-text {
     font-size: clamp(1.2rem, 5vw, 1.5rem);
   }
@@ -875,7 +1005,7 @@
   <ul class="nav-links">
     <li><a href="/about/">About</a></li>
     <li><a href="/writing/">Writing</a></li>
-    <li><a href="/assessment/">Assessment</a></li>
+    <li><a href="/assessment/" aria-current="page">Assessment</a></li>
     <li><a href="/newsletter/">Newsletter</a></li>
     <li><a href="https://cal.com/pathos-labs/fit-match-30" target="_blank" rel="noopener" class="nav-cta">Start the Conversation</a></li>
   </ul>
@@ -917,25 +1047,25 @@
       <span class="eyebrow">Diagnostic Assessment</span>
       <h1>Where does your <em>gap</em> live?</h1>
       <p class="assess-hero-sub">You know more than you communicate. Most people do. The question is where the signal breaks down &mdash; and that's almost never where you think.</p>
-      <div class="assess-hero-meta">
+      <dl class="assess-hero-meta">
         <div class="assess-hero-meta-item">
-          <span class="assess-hero-meta-val">3 min</span>
-          <span class="assess-hero-meta-label">To complete</span>
+          <dd class="assess-hero-meta-val">3 min</dd>
+          <dt class="assess-hero-meta-label">To complete</dt>
         </div>
         <div class="assess-hero-meta-item">
-          <span class="assess-hero-meta-val">18</span>
-          <span class="assess-hero-meta-label">Questions</span>
+          <dd class="assess-hero-meta-val">18</dd>
+          <dt class="assess-hero-meta-label">Questions</dt>
         </div>
         <div class="assess-hero-meta-item">
-          <span class="assess-hero-meta-val">5</span>
-          <span class="assess-hero-meta-label">Constructs measured</span>
+          <dd class="assess-hero-meta-val">5</dd>
+          <dt class="assess-hero-meta-label">Constructs measured</dt>
         </div>
-      </div>
+      </dl>
     </div>
   </section>
 
   <!-- Landing page value prop -->
-  <section class="assess-landing">
+  <section class="assess-landing" aria-label="Assessment details">
     <div class="assess-landing-inner">
 
       <div class="assess-discover">
@@ -1008,12 +1138,16 @@
       <div class="assess-gate">
         <h2 class="assess-gate-heading">Take the assessment.</h2>
         <form class="hero-gate-form" id="hero-gate-form" aria-label="Enter email to begin assessment">
-          <label class="sr-only" for="gate-name">First name</label>
-          <input type="text" id="gate-name" name="first_name" placeholder="First name" required autocomplete="given-name" aria-label="First name">
-          <label class="sr-only" for="gate-email">Email address</label>
-          <input type="email" id="gate-email" name="email" placeholder="Your email" required autocomplete="email" aria-label="Email address">
+          <div class="gate-field">
+            <input type="text" id="gate-name" name="first_name" placeholder="First name" required autocomplete="given-name">
+            <label for="gate-name">First name</label>
+          </div>
+          <div class="gate-field">
+            <input type="email" id="gate-email" name="email" placeholder="Your email" required autocomplete="email">
+            <label for="gate-email">Email address</label>
+          </div>
           <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="btn-primary btn-primary--light">Begin</button>
+          <button type="submit" class="btn-primary btn-primary--light">Begin the Assessment</button>
         </form>
         <div class="hero-gate-error" id="hero-gate-error" role="alert">Something went wrong. Please try again.</div>
         <p class="hero-gate-privacy">Results delivered instantly on completion. You'll also receive the Presence Under Pressure newsletter. Unsubscribe any time.</p>
@@ -1582,6 +1716,13 @@
   // ─── RENDER QUESTION ───────────────────────────────────
   function renderQuestion() {
     var q = QUESTIONS[currentIndex];
+    // Re-trigger crossfade animation
+    var inner = document.querySelector('.question-inner');
+    if (inner && !prefersReducedMotion) {
+      inner.style.animation = 'none';
+      inner.offsetHeight; // force reflow
+      inner.style.animation = '';
+    }
     qNumber.textContent = 'Question ' + (currentIndex + 1) + ' of ' + QUESTIONS.length;
     qConstruct.textContent = q.constructName;
     qText.textContent = q.text;
@@ -1914,15 +2055,19 @@
       readLinksEl.appendChild(link);
     }
 
-    // Draw radar and update its accessible label
+    // Draw radar with animation and update its accessible label
     setTimeout(function () {
-      drawRadar();
+      if (!prefersReducedMotion) {
+        animateRadar();
+      } else {
+        drawRadar();
+      }
       var radarEl = document.getElementById('radar');
       if (radarEl) radarEl.setAttribute('aria-label',
         'Gap Map radar: Pressure ' + scores[1] + '%, Anxiety ' + scores[2] +
         '%, Skill Gap ' + scores[3] + '%, Identity ' + scores[4] +
         '%, Blind Spot ' + scores[5] + '%');
-    }, 200);
+    }, 400);
 
     // Playbook download section
     var playbookSection = document.createElement('div');
@@ -2068,6 +2213,30 @@
     ctx.setLineDash([]);
   }
 
+  // ─── ANIMATED RADAR DRAW ───────────────────────────────
+  function animateRadar() {
+    var duration = 900;
+    var start = performance.now();
+    var savedScores = {};
+    for (var c = 1; c <= 5; c++) savedScores[c] = scores[c];
+
+    (function frame(now) {
+      var t = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      for (var c = 1; c <= 5; c++) {
+        scores[c] = Math.round(savedScores[c] * eased);
+      }
+      drawRadar();
+      if (t < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        // Restore exact scores
+        for (var c = 1; c <= 5; c++) scores[c] = savedScores[c];
+        drawRadar();
+      }
+    })(start);
+  }
+
   // ─── HASH-BASED RESULT RESTORATION ─────────────────────
   function checkHash() {
     var hash = window.location.hash.substring(1);
@@ -2078,6 +2247,57 @@
   }
 
   checkHash();
+
+  // ─── DELIGHT: SCROLL REVEALS & COUNTERS ────────────────
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    // Discover items, report features, gate section: stagger reveal on scroll
+    var revealEls = document.querySelectorAll('.discover-item, .report-feature, .assess-gate');
+    if (revealEls.length) {
+      var revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach(function (el) { revealObs.observe(el); });
+    }
+
+    // Credibility + hero meta counters
+    var counterEls = document.querySelectorAll('.credibility-val, .assess-hero-meta-val');
+    if (counterEls.length) {
+      var counterObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          counterObs.unobserve(el);
+          var raw = el.textContent.trim();
+          var match = raw.match(/^(\d+)\s*(.*)$/);
+          if (!match) return;
+          var target = parseInt(match[1]);
+          var suffix = match[2] ? ' ' + match[2] : '';
+          var duration = 700;
+          var start = performance.now();
+          el.textContent = '0' + suffix;
+          (function tick(now) {
+            var t = Math.min((now - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(eased * target) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+          })(start);
+        });
+      }, { threshold: 0.5 });
+      counterEls.forEach(function (el) { counterObs.observe(el); });
+    }
+  } else {
+    // Immediately show all reveal elements
+    document.querySelectorAll('.discover-item, .report-feature, .assess-gate').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
 
 /* ─── PLAYBOOK PDF GENERATION ────────────────────────── */
 
